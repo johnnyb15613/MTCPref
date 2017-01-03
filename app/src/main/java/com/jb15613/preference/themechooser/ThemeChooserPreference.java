@@ -6,11 +6,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
-import android.os.Bundle;
+import android.os.Build;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.content.res.ResourcesCompat;
-import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +26,9 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
     private Boolean mBool;
 
 
-    private ThemeChooserDialog mDialog;
-    private View mView;
+    //private ThemeChooserDialog mDialog;
     private SharedPreferences prefs;
     private Context mContext;
-
-    private final String mIsLightThemeKey = "isLightTheme";
-    private final String mThemeKey = "themeColor";
 
     private  LinearLayout mSwatchContainer;
 
@@ -41,21 +36,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         super(context);
         mContext = context;
         prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        init(context, null);
-    }
-
-    public ThemeChooserPreference(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        mContext = context;
-        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        init(context, attrs);
-    }
-
-    public ThemeChooserPreference(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        mContext = context;
-        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        init(context, attrs);
+        init();
     }
 
     @Override
@@ -84,16 +65,13 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         onThemeChanged(restoreValue ? getPersistedString(mValue) : (String) defaultValue, mBool);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init() {
         setOnPreferenceClickListener(this);
-        if (attrs != null) {
-        }
     }
 
     @Override
     protected void onBindView(View view) {
         super.onBindView(view);
-        mView = view;
     }
 
     @Override
@@ -108,16 +86,16 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
     }
 
     public boolean onPreferenceClick(Preference preference) {
-        showDialog(null);
+        showDialog();
         return false;
     }
 
-    private void showDialog(Bundle state) {
+    private void showDialog() {
 
         FragmentManager fm = getFragManager();
 
         if (fm != null) {
-            mDialog = new ThemeChooserDialog();
+            ThemeChooserDialog mDialog = new ThemeChooserDialog();
             mDialog.setOnThemeChangedListener(this);
             mDialog.show(fm, "");
         }
@@ -171,9 +149,17 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         middleCircle.setLayoutParams(middleCircleParams);
         topCircle.setLayoutParams(topCircleParams);
 
-        bottomCircle.setImageDrawable(mContext.getResources().getDrawable(R.drawable.themechooser_shape_circle, null));
-        middleCircle.setImageDrawable(mContext.getResources().getDrawable(R.drawable.themechooser_shape_circle, null));
-        topCircle.setImageDrawable(mContext.getResources().getDrawable(R.drawable.themechooser_shape_circle, null));
+        // return ResourcesCompat.getDrawable(mContext.getResources(), mId, null);
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            bottomCircle.setImageDrawable(mContext.getResources().getDrawable(R.drawable.themechooser_shape_circle, null));
+            middleCircle.setImageDrawable(mContext.getResources().getDrawable(R.drawable.themechooser_shape_circle, null));
+            topCircle.setImageDrawable(mContext.getResources().getDrawable(R.drawable.themechooser_shape_circle, null));
+        } else {
+            bottomCircle.setImageDrawable(ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.themechooser_shape_circle, null));
+            middleCircle.setImageDrawable(ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.themechooser_shape_circle, null));
+            topCircle.setImageDrawable(ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.themechooser_shape_circle, null));
+        }
 
         bottomCircle.setColorFilter(colors[2], PorterDuff.Mode.MULTIPLY);
         middleCircle.setColorFilter(colors[0], PorterDuff.Mode.MULTIPLY);

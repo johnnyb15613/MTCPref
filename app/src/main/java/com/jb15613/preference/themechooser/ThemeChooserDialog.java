@@ -98,6 +98,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
     }
 
+    /*
     public void onThemeChanged(String theme, boolean hue) {
 
         SharedPreferences.Editor editor = prefs.edit();
@@ -105,7 +106,7 @@ public class ThemeChooserDialog extends DialogFragment {
         editor.putBoolean("isLightTheme", hue);
         editor.apply();
 
-    }
+    } */
 
     public void setOnThemeChangedListener(OnThemeChangedListener listener) {
         mListener = listener;
@@ -128,7 +129,7 @@ public class ThemeChooserDialog extends DialogFragment {
             if (counter == 1) {
                 tr = new TableRow(mContext);
                 tr.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                        TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
                 tr.setPadding(10, 5, 10, 5);
             }
 
@@ -156,11 +157,9 @@ public class ThemeChooserDialog extends DialogFragment {
 
         String[] themesArray = mContext.getResources().getStringArray(R.array.theme_color_names);
 
-        for (int i = 0; i < themesArray.length; i++) {
-
-            cells.add(getCellItem(themesArray[i]));
-
-        } // for loop themesArray
+        for (String th : themesArray) {
+            cells.add(getCellItem(th));
+        }
 
         return cells;
     }

@@ -6,6 +6,8 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.v4.content.res.ResourcesCompat;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
@@ -38,7 +40,12 @@ class ImageLoader extends AsyncTask<String, Void, Drawable> {
             colorMode = PorterDuff.Mode.SRC_IN;
         }
 
-        return mContext.getResources().getDrawable(mId, null);
+        if (Build.VERSION.SDK_INT >= 21) {
+            return mContext.getResources().getDrawable(mId, null);
+        } else {
+            return ResourcesCompat.getDrawable(mContext.getResources(), mId, null);
+        }
+
     }
 
     @Override
@@ -66,7 +73,7 @@ class ImageLoader extends AsyncTask<String, Void, Drawable> {
 
         private final WeakReference<ImageLoader> imageLoaderTaskReference;
 
-        public AsyncDrawable(Resources res, ImageLoader imageLoader) {
+        AsyncDrawable(Resources res, ImageLoader imageLoader) {
             super(res);
             imageLoaderTaskReference = new WeakReference<>(imageLoader);
         }
