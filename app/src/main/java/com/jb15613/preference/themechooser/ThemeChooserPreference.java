@@ -10,6 +10,7 @@ import android.os.Build;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.content.res.ResourcesCompat;
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,21 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         super(context);
         mContext = context;
         prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        init();
+        init(context, null);
+    }
+
+    public ThemeChooserPreference(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mContext = context;
+        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        init(context, attrs);
+    }
+
+    public ThemeChooserPreference(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        mContext = context;
+        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        init(context, attrs);
     }
 
     @Override
@@ -65,7 +80,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         onThemeChanged(restoreValue ? getPersistedString(mValue) : (String) defaultValue, mBool);
     }
 
-    private void init() {
+    private void init(Context con, AttributeSet attr) {
         setOnPreferenceClickListener(this);
     }
 
