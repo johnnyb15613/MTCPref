@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <!-- Red -->
+    <color name="material_primary_red">#f44336</color>
+    <color name="material_primaryDark_red">#d32f2f</color>
+    <color name="material_accent_red">#ff8a80</color>
+
+    <!-- Pink -->
+    <color name="material_primary_pink">#e91e63</color>
+    <color name="material_primaryDark_pink">#c2185b</color>
+    <color name="material_accent_pink">#ff80ab</color>
+
+    <!-- Purple -->
+    <color name="material_primary_purple">#9c27b0</color>
+    <color name="material_primaryDark_purple">#7b1fa2</color>
+    <color name="material_accent_purple">#ea80fc</color>
+
+    <!-- Deep Purple -->
+    <color name="material_primary_deepPurple">#673ab7</color>
+    <color name="material_primaryDark_deepPurple">#512da8</color>
+    <color name="material_accent_deepPurple">#b38aff</color>
+
+    <!-- Indigo -->
+    <color name="material_primary_indigo">#3F51B5</color>
+    <color name="material_primaryDark_indigo">#303F9F</color>
+    <color name="material_accent_indigo">#8C9EFF</color>
+
+    <!-- Blue -->
+    <color name="material_primary_blue">#2196f3</color>
+    <color name="material_primaryDark_blue">#1976d2</color>
+    <color name="material_accent_blue">#82b1ff</color>
+
+    <!-- Light Blue -->
+    <color name="material_primary_lightBlue">#03a9f4</color>
+    <color name="material_primaryDark_lightBlue">#0288d1</color>
+    <color name="material_accent_lightBlue">#80d8ff</color>
+
+    <!-- Cyan -->
+    <color name="material_primary_cyan">#00bcd4</color>
+    <color name="material_primaryDark_cyan">#0097a7</color>
+    <color name="material_accent_cyan">#84ffff</color>
+
+    <!-- Teal -->
+    <color name="material_primary_teal">#009688</color>
+    <color name="material_primaryDark_teal">#00796b</color>
+    <color name="material_accent_teal">#a7ffeb</color>
+
+    <!-- Green -->
+    <color name="material_primary_green">#4caf50</color>
+    <color name="material_primaryDark_green">#388e3c</color>
+    <color name="material_accent_green">#b9f6ca</color>
+
+    <!-- Light Green -->
+    <color name="material_primary_lightGreen">#8bc34a</color>
+    <color name="material_primaryDark_lightGreen">#689f38</color>
+    <color name="material_accent_lightGreen">#ccff90</color>
+
+    <!-- Lime -->
+    <color name="material_primary_lime">#cddc39</color>
+    <color name="material_primaryDark_lime">#afb42b</color>
+    <color name="material_accent_lime">#f4ff81</color>
+
+    <!-- Yellow -->
+    <color name="material_primary_yellow">#ffeb3b</color>
+    <color name="material_primaryDark_yellow">#fbc02d</color>
+    <color name="material_accent_yellow">#ffff8d</color>
+
+    <!-- Amber -->
+    <color name="material_primary_amber">#ffc107</color>
+    <color name="material_primaryDark_amber">#ffa000</color>
+    <color name="material_accent_amber">#ffe57f</color>
+
+    <!-- Orange -->
+    <color name="material_primary_orange">#ff9800</color>
+    <color name="material_primaryDark_orange">#f57c00</color>
+    <color name="material_accent_orange">#ffd180</color>
+
+    <!-- Deep Orange -->
+    <color name="material_primary_deepOrange">#ff5722</color>
+    <color name="material_primaryDark_deepOrange">#e64a19</color>
+    <color name="material_accent_deepOrange">#ff9e80</color>
+
+    <!-- Brown -->
+    <color name="material_primary_brown">#795548</color>
+    <color name="material_primaryDark_brown">#5d4037</color>
+    <color name="material_accent_brown">#a1887f</color>
+
+    <!-- Grey -->
+    <color name="material_primary_grey">#e9e9e9</color>
+    <color name="material_primaryDark_grey">#616161</color>
+    <color name="material_accent_grey">#e0e0e0</color>
+
+    <!-- Blue Grey -->
+    <color name="material_primary_blueGrey">#607d8b</color>
+    <color name="material_primaryDark_blueGrey">#455a64</color>
+    <color name="material_accent_blueGrey">#90a4ae</color>
+
 </resources>

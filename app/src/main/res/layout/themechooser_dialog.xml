@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_above="@+id/tcd_switch"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:stretchColumns="*"
+            android:id="@+id/tcd_tableLayout"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+        </TableLayout>
+
+    </ScrollView>
+
+    <Switch
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Light Theme"
+        android:textColor="?android:attr/textColorPrimary"
+        android:id="@+id/tcd_switch"
+        android:paddingLeft="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
