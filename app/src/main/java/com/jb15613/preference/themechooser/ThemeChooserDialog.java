@@ -205,7 +205,12 @@ public class ThemeChooserDialog extends DialogFragment {
         loadDrawable("bottomCircle" + themeName, bottomCircle, R.drawable.themechooser_shape_circle, colors[2]);
         loadDrawable("middleCircle" + themeName, middleCircle, R.drawable.themechooser_shape_circle, colors[0]);
         loadDrawable("topCircle" + themeName, topCircle, R.drawable.themechooser_shape_circle, colors[1]);
-        loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xffffffff);
+		
+		if (getIsLightTheme()) {
+			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xff000000);
+		} else {
+			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xffffffff);
+		}
 
         bottomCircleParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         bottomCircleParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
