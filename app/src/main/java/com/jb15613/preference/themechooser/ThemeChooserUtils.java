@@ -6,6 +6,18 @@ import android.graphics.Color;
 
 public class ThemeChooserUtils {
 	
+	public static int getThemeColor(Context context) {
+
+		TypedValue typedValue = new TypedValue();
+
+		if (context.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true)) {
+			return typedValue.data;
+		} else {
+			return Color.TRANSPARENT;
+		}
+
+	} // getThemeColor
+	
 	public static int getThemeColor(Context context, float opacity) {
 
 		TypedValue typedValue = new TypedValue();
@@ -44,6 +56,18 @@ public class ThemeChooserUtils {
 
 	} // getThemeColor
 	
+	public static int getThemeDarkColor(Context context) {
+
+		TypedValue typedValue = new TypedValue();
+
+		if (context.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true)) {
+			return typedValue.data;
+		} else {
+			return Color.TRANSPARENT;
+		}
+
+	} // getThemeDarkColor
+	
 	public static int getThemeDarkColor(Context context, float opacity) {
 
 		TypedValue typedValue = new TypedValue();
@@ -81,6 +105,18 @@ public class ThemeChooserUtils {
 		}
 
 	} // getThemeDarkColor
+	
+	public static int getThemeAccentColor(Context context) {
+
+		TypedValue typedValue = new TypedValue();
+
+		if (context.getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true)) {
+			return typedValue.data;
+		} else {
+			return Color.TRANSPARENT;
+		}
+
+	} // getThemeAccentColor
 	
 	public static int getThemeAccentColor(Context context, float opacity) {
 
