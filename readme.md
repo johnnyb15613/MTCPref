@@ -174,8 +174,8 @@ ThemeChooserUtils.getSecondaryTextColor(context);
 ```
 
 ## Screenshots
-![Screen 1](https://www.dropbox.com/s/tfvaohxyz0y27ff/2017_01_06_00.29.23.png?dl=0)
+![Screen 1](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_1.png)
 
-![Screen 2](https://www.dropbox.com/s/0vgicoqxqlkiqlu/2017_01_06_00.30.17.png?dl=0)
+![Screen 2](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_2.png)
 
-![Screen 3](https://www.dropbox.com/s/sqgkv7cmlltnmgv/2017_01_06_00.29.47.png?dl=0)
+![Screen 3](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_3.png)
