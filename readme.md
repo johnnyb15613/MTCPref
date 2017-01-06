@@ -174,5 +174,5 @@ ThemeChooserUtils.getSecondaryTextColor(context);
 ```
 
 ## Screenshots
-<img src="/screenshots/screen_1.png" alt="75percent" width="810" height="1440"/>  <img src="/screenshots/screen_2.png" alt="50percent" width="540" height="960"/>  <img src="/screenshots/screen_3.png" alt="60percent" width="648" height="1152"/>
+<img src="/screenshots/screen_1.png" alt="25percent" width="270" height="480"/>  <img src="/screenshots/screen_2.png" alt="25percent" width="270" height="480"/>  <img src="/screenshots/screen_3.png" alt="25percent" width="270" height="480"/>
 
