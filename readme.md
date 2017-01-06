@@ -162,24 +162,25 @@ void getColor() {
 	// 0.0 is transparent, 1.0 is fully opaque
   
 	// Theme Color
-	ThemeChooserUtils.getThemeColor(context);
-	ThemeChooserUtils.getThemeColor(context, float);
+	imageView.setColorFilter(ThemeChooserUtils.getThemeColor(context), PorterDuff.Mode.SRC_IN);
+	imageView.setColorFilter(ThemeChooserUtils.getThemeColor(context, 0.7f), PorterDuff.Mode.SRC_IN);
   
 	// Theme Color Dark
-	ThemeChooserUtils.getThemeDarkColor(context);
-	ThemeChooserUtils.getThemeDarkColor(context, float);
+	Drawable d = DrawableCompat.wrap(getResources.getDrawable(R.drawable.my_drawable));
+	DrawableCompat.setTint(d.mutate(), ThemeChooserUtils.getThemeDarkColor(context));
+	DrawableCompat.setTint(d.mutate(), ThemeChooserUtils.getThemeDarkColor(context, 0.2f));
   
 	// Theme Color Accent
-	ThemeChooserUtils.getThemeAccentColor(context);
-	ThemeChooserUtils.getThemeAccentColor(context, float);
+	linearLayout.setBackgroundColor(ThemeChooserUtils.getThemeAccentColor(context));
+	linearLayout.setBackgroundColor(ThemeChooserUtils.getThemeAccentColor(context, 0.5f));
   
 	// Background Color
-	ThemeChooserUtils.getPrimaryBgColor(context);
-	ThemeChooserUtils.getSecondaryBgColor(context);
+	linearLayout.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(context));
+	linearLayout.setBackgroundColor(ThemeChooserUtils.getSecondaryBgColor(context));
   
 	// Text Color
-	ThemeChooserUtils.getPrimaryTextColor(context);
-	ThemeChooserUtils.getSecondaryTextColor(context);
+	textView.setTextColor(ThemeChooserUtils.getPrimaryTextColor(context));
+	textView.setTextColor(ThemeChooserUtils.getSecondaryTextColor(context));
 	
 }
 ```
