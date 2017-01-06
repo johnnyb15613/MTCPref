@@ -1,4 +1,4 @@
-<img src="icon.png" align="right" />
+<img src="icon.png" align="right" alt="icon" width="100" height="100"/>
 # MTCPref
 Material Theme Chooser Preference
 
