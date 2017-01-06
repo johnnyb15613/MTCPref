@@ -50,64 +50,6 @@ dependencies {
     
   <img src="/screenshots/screen_pref_dark.png"/>
 
-* Make sure you update values and register a PreferenceChangeListener
-```Java
-public class SettingsFragment extends PreferenceFragment {
-
-  ThemeChooserPreference mThemePreference;
-
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-
-	// Load the preferences from an XML resource
-	addPreferencesFromResource(R.xml.preferences);
-  }
-  
-  @Override 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-		View view = super.onCreateView(inflater, container, savedInstanceState);
-
-		// The Pref Manager
-		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-   
-        mThemePreference = (ThemeChooserPreference) getPreferenceManager().findPreference("themeColorPref");
-		
-		String hue = "";
-
-		if (prefs.getBoolean("isLightTheme", false)) {
-			hue = " - Light";
-		} else {
-			hue = " - Dark";
-		}
-		
-		mThemePreference.setSummary(prefs.getString("themeColor", "Light Blue") + hue);
-		
-		mThemePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-				@Override
-				public boolean onPreferenceChange(Preference preference, Object newValue) {
-					
-					String hue = "";
-					
-					if (prefs.getBoolean("isLightTheme", false)) {
-						hue = " - Light";
-					} else {
-						hue = " - Dark";
-					}
-					
-					mThemePreference.setSummary(String.valueOf(newValue) + hue);
-					return true;
-				}
-			});	
-
-		return view; 
-		
-	} // onCreateView
-  
-} // Class
-```
-
 * Set the Theme in your Activity
 ```Java
 public class MainActivity extends AppCompatActivity {
