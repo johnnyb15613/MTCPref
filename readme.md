@@ -13,7 +13,7 @@ While learning to theme using the AppCompat and Design Libraries, I started to h
 * Add Maven Repo for Jit in your build.gradle(Module)
 ```android
 allprojects {
-    repositories {
+    repositories {
 		maven { url "https://jitpack.io" }
 }
 ```
@@ -36,7 +36,7 @@ dependencies {
 
 		<com.jb15613.preference.themechooser.ThemeChooserPreference
 			android:key="themeColorPref"
-            android:title="Theme Color"
+            android:title="Theme Color"
 			default="Light Blue"
 			android:dialogTitle="Theme Chooser"/>
 
@@ -49,7 +49,7 @@ dependencies {
 ```android
 public class SettingsFragment extends PreferenceFragment {
 
-  ThemeChooserPreference mThemePreference;
+  ThemeChooserPreference mThemePreference;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class SettingsFragment extends PreferenceFragment {
 
 		// The Pref Manager
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-   
+   
         mThemePreference = (ThemeChooserPreference) getPreferenceManager().findPreference("themeColorPref");
 		
 		String hue = "";
@@ -107,9 +107,9 @@ public class SettingsFragment extends PreferenceFragment {
 ```android
 public class MainActivity extends AppCompatActivity {
 
-  @Override
+  @Override
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    super.onCreate(savedInstanceState);
 		
 	setTheme(ThemeChooserUtils.getTheme(this));
 	
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 	
     setContentView(R.layout.main);
     
-  } // onCreate
+  } // onCreate
   
 } // Class
 ```
@@ -174,10 +174,4 @@ ThemeChooserUtils.getSecondaryTextColor(context);
 ```
 
 ## Screenshots
-![Screen 1](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_1.png)
-
-![Screen 2](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_2.png)
-
-![Screen 3](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_3.png)
-
-
+<img src="/screenshots/screen_1.png" alt="Screen_1" style="width: 100px;"/>
