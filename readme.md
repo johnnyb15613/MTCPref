@@ -45,10 +45,10 @@ dependencies {
 </PreferenceScreen>
 ```
 
-    * Result:
-    <img src="/screenshots/screen_nav_light.png"/>
+  * Result:
+  <img src="/screenshots/screen_nav_light.png"/>
     
-    <img src="/screenshots/screen_nav_dark.png"/>
+  <img src="/screenshots/screen_nav_dark.png"/>
 
 * Make sure you update values and register a PreferenceChangeListener
 ```Java
