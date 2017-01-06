@@ -26,7 +26,6 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
     // the hue
     private Boolean mBool;
 
-
     //private ThemeChooserDialog mDialog;
     private SharedPreferences prefs;
     private Context mContext;
@@ -82,6 +81,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
 
     private void init(Context con, AttributeSet attr) {
         setOnPreferenceClickListener(this);
+		setOnPreferenceChangeListener(pcListener);
     }
 
     @Override
@@ -95,13 +95,12 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         mBool = hue;
         try {
             getOnPreferenceChangeListener().onPreferenceChange(this, theme);
-			setSummary(theme + getThemeHue());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
 		
     }
-	
+
 	private String getThemeHue() {
 		
 		String h = "";
@@ -119,6 +118,15 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         showDialog();
         return false;
     }
+	
+	public OnPreferenceChangeListener pcListener = new OnPreferenceChangeListener() {
+
+		@Override
+		public boolean onPreferenceChange(Preference p1, Object p2) {
+			p1.setSummary(String.valueOf(p2) + getThemeHue());
+			return true;
+		}
+	};
 
     private void showDialog() {
 
