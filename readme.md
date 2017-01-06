@@ -11,7 +11,7 @@ While learning to theme using the AppCompat and Design Libraries, I started to h
 
 ## Usage
 * Add Maven Repo for Jit in your build.gradle(Module)
-```android
+```Gradle
 allprojects {
     repositories {
 		maven { url "https://jitpack.io" }
@@ -19,14 +19,14 @@ allprojects {
 ```
 
 * Add MTCPref dependency in your build.gradle(app)
-```android
+```Gradle
 dependencies {
 	compile 'com.github.johnnyb15613:MTCPref:v0.1.7'
 }
 ```
 
 * Add MTCPreferenceItem to your settings xml
-```android
+```XML
 <PreferenceScreen
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/pref_screen">
@@ -45,8 +45,13 @@ dependencies {
 </PreferenceScreen>
 ```
 
+    * Result:
+    <img src="/screenshots/screen_nav_light.png"/>
+    
+    <img src="/screenshots/screen_nav_dark.png"/>
+
 * Make sure you update values and register a PreferenceChangeListener
-```android
+```Java
 public class SettingsFragment extends PreferenceFragment {
 
   ThemeChooserPreference mThemePreference;
@@ -104,7 +109,7 @@ public class SettingsFragment extends PreferenceFragment {
 ```
 
 * Set the Theme in your Activity
-```android
+```Java
 public class MainActivity extends AppCompatActivity {
 
   @Override
@@ -174,5 +179,7 @@ ThemeChooserUtils.getSecondaryTextColor(context);
 ```
 
 ## Screenshots
-<img src="/screenshots/screen_1.png" alt="25percent" width="270" height="480"/>  <img src="/screenshots/screen_2.png" alt="25percent" width="270" height="480"/>  <img src="/screenshots/screen_3.png" alt="25percent" width="270" height="480"/>
+<img src="/screenshots/screen_1.png" alt="25percent" width="270" height="480"/>  <img src="/screenshots/screen_3.png" alt="25percent" width="270" height="480"/>
+
+<img src="/screenshots/screen_2.png" alt="25percent" width="270" height="480"/>  <img src="/screenshots/screen_4.png" alt="25percent" width="270" height="480"/>
 
