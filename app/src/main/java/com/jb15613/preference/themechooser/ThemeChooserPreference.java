@@ -69,9 +69,9 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         String mThemeDefaultValue = a.getString(index);
 
         if (mThemeDefaultValue != null) {
-            return mThemeDefaultValue + getThemeHue();
+            return mThemeDefaultValue;
         } else {
-            return "Light Blue" + getThemeHue();
+            return "Light Blue";
         }
     }
 
@@ -96,10 +96,10 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         try {
             getOnPreferenceChangeListener().onPreferenceChange(this, theme);
 			setSummary(theme + getThemeHue());
-			
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+		
     }
 	
 	private String getThemeHue() {
@@ -113,11 +113,6 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
 		}
 		
 		return h;
-	}
-
-	@Override
-	public void setSummary(CharSequence summary) {
-		super.setSummary(summary);
 	}
 
     public boolean onPreferenceClick(Preference preference) {
