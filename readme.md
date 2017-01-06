@@ -21,8 +21,7 @@ allprojects {
 * Add MTCPref dependency in your build.gradle(app)
 ```android
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-		compile 'com.github.johnnyb15613:MTCPref:v0.1.7'
+	compile 'com.github.johnnyb15613:MTCPref:v0.1.7'
 }
 ```
 
@@ -52,13 +51,13 @@ public class SettingsFragment extends PreferenceFragment {
 
   ThemeChooserPreference mThemePreference;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
 
-		// Load the preferences from an XML resource
-		addPreferencesFromResource(R.xml.preferences);
-	}
+	// Load the preferences from an XML resource
+	addPreferencesFromResource(R.xml.preferences);
+  }
   
   @Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,7 +67,7 @@ public class SettingsFragment extends PreferenceFragment {
 		// The Pref Manager
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
    
-   mThemePreference = (ThemeChooserPreference) getPreferenceManager().findPreference("themeColorPref");
+        mThemePreference = (ThemeChooserPreference) getPreferenceManager().findPreference("themeColorPref");
 		
 		String hue = "";
 
@@ -98,6 +97,7 @@ public class SettingsFragment extends PreferenceFragment {
 			});	
 
 		return view; 
+		
 	} // onCreateView
   
 } // Class
@@ -106,11 +106,15 @@ public class SettingsFragment extends PreferenceFragment {
 * Set the Theme in your Activity
 ```android
 public class MainActivity extends AppCompatActivity {
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 		
-		setTheme(ThemeChooserUtils.getTheme(this));
+	setTheme(ThemeChooserUtils.getTheme(this));
+	
+	// Make sure you call setTheme() BEFORE you call setContentView()
+	
     setContentView(R.layout.main);
     
   } // onCreate
