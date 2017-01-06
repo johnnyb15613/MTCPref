@@ -179,3 +179,5 @@ ThemeChooserUtils.getSecondaryTextColor(context);
 ![Screen 2](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_2.png)
 
 ![Screen 3](https://github.com/johnnyb15613/MTCPref/blob/master/screenshots/screen_3.png)
+
+
