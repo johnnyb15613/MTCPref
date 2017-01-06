@@ -129,53 +129,59 @@ public class MainActivity extends AppCompatActivity {
 
 ## Utilities
 * To theme views in layout resources use the following syntax
-```android
-// Theme Color
-android:background="?attr/colorPrimary"
+```XML
+<View
+	// Theme Color
+	android:background="?attr/colorPrimary"
 
-// Theme Color Dark
-android:background="?attr/colorPrimaryDark"
+	// Theme Color Dark
+	android:background="?attr/colorPrimaryDark"
 
-// Theme Color Accent
-android:background="?attr/colorPrimaryAccent"
+	// Theme Color Accent
+	android:background="?attr/colorPrimaryAccent"
 
-// Primary Bg Color
-android:background="?attr/primaryBgColor"
+	// Primary Bg Color
+	android:background="?attr/primaryBgColor"
 
-// Secondary Bg Color
-android:background="?attr/secondaryBgColor"
+	// Secondary Bg Color
+	android:background="?attr/secondaryBgColor"
 
-// Primary Text Color
-android:textColor="?attr/primaryTextColor"
+	// Primary Text Color
+	android:textColor="?attr/primaryTextColor"
 
-// Secondary Text Color
-android:textColor="?attr/secondaryTextColor"
+	// Secondary Text Color
+	android:textColor="?attr/secondaryTextColor"
+/>
 ```
 
 * To theme views in Java use the following syntax
-```android
-// provide a float between 0.0 and 1.0 to get the theme color with opacity
-// 0.0 is transparent, 1.0 is fully opaque
+```Java
+void getColor() {
+
+	// provide a float between 0.0 and 1.0 to get the theme color with opacity
+	// 0.0 is transparent, 1.0 is fully opaque
   
-// Theme Color
-ThemeChooserUtils.getThemeColor(context);
-ThemeChooserUtils.getThemeColor(context, float);
+	// Theme Color
+	ThemeChooserUtils.getThemeColor(context);
+	ThemeChooserUtils.getThemeColor(context, float);
   
-// Theme Color Dark
-ThemeChooserUtils.getThemeDarkColor(context);
-ThemeChooserUtils.getThemeDarkColor(context, float);
+	// Theme Color Dark
+	ThemeChooserUtils.getThemeDarkColor(context);
+	ThemeChooserUtils.getThemeDarkColor(context, float);
   
-// Theme Color Accent
-ThemeChooserUtils.getThemeAccentColor(context);
-ThemeChooserUtils.getThemeAccentColor(context, float);
+	// Theme Color Accent
+	ThemeChooserUtils.getThemeAccentColor(context);
+	ThemeChooserUtils.getThemeAccentColor(context, float);
   
-// Background Color
-ThemeChooserUtils.getPrimaryBgColor(context);
-ThemeChooserUtils.getSecondaryBgColor(context);
+	// Background Color
+	ThemeChooserUtils.getPrimaryBgColor(context);
+	ThemeChooserUtils.getSecondaryBgColor(context);
   
-// Text Color
-ThemeChooserUtils.getPrimaryTextColor(context);
-ThemeChooserUtils.getSecondaryTextColor(context);
+	// Text Color
+	ThemeChooserUtils.getPrimaryTextColor(context);
+	ThemeChooserUtils.getSecondaryTextColor(context);
+	
+}
 ```
 
 ## Screenshots
