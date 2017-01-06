@@ -59,6 +59,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         View v = li.inflate( R.layout.themechooser_preference, parent, false);
         mSwatchContainer = (LinearLayout) v.findViewById(R.id.swatchView);
         swapThemeSwatch(prefs.getString("themeColor", "Light Blue"));
+		setSummary(prefs.getString("themeColor", "Light Blue") + getThemeHue());
         return v;
     }
 
@@ -122,8 +123,8 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
 	public OnPreferenceChangeListener pcListener = new OnPreferenceChangeListener() {
 
 		@Override
-		public boolean onPreferenceChange(Preference p1, Object p2) {
-			p1.setSummary(String.valueOf(p2) + getThemeHue());
+		public boolean onPreferenceChange(Preference preference, Object newValue) {
+			preference.setSummary(String.valueOf(newValue) + getThemeHue());
 			return true;
 		}
 	};
