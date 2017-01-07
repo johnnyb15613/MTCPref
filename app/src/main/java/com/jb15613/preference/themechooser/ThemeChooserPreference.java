@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.os.Bundle;
+import android.os.Parcelable;
 
 public class ThemeChooserPreference extends Preference implements Preference.OnPreferenceClickListener, ThemeChooserDialog.OnThemeChangedListener {
 
@@ -345,5 +347,34 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
 
         return colors;
     } // getColorSet
+	
+	/*
+	void dispatchSaveInstanceState(Bundle container) {
+		if (hasKey()) {
+			mBaseMethodCalled = false;
+			Parcelable state = onSaveInstanceState();
+			if (!mBaseMethodCalled) {
+				throw new IllegalStateException(
+                    "Derived class did not call super.onSaveInstanceState()");
+			}
+			if (state != null) {
+				container.putParcelable(mKey, state);
+			}
+		}
+	}
+	
+	void dispatchRestoreInstanceState(Bundle container) {
+		if (hasKey()) {
+			Parcelable state = container.getParcelable(mKey);
+			if (state != null) {
+				mBaseMethodCalled = false;
+				onRestoreInstanceState(state);
+				if (!mBaseMethodCalled) {
+					throw new IllegalStateException(
+                        "Derived class did not call super.onRestoreInstanceState()");
+				}
+			}
+		}
+	} */
 
 } // Class
