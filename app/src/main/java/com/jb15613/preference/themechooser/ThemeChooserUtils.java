@@ -10,180 +10,32 @@ public class ThemeChooserUtils {
 	
 	public static int getTheme(Context context) {
 		
-		int theme = 0;
-		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		
 		String themeName = prefs.getString("themeColor", "Light Blue");
 		boolean isLightTheme = prefs.getBoolean("isLightTheme", false);
 		
 		if (!isLightTheme) {
-
-			switch (themeName) {
-
-				case "Red":
-					theme = R.style.AppThemeDark_Red;
-					break;
-
-				case "Pink":
-					theme = R.style.AppThemeDark_Pink;
-					break;
-
-				case "Purple":
-					theme = R.style.AppThemeDark_Purple;
-					break;
-
-				case "Deep Purple":
-					theme = R.style.AppThemeDark_DeepPurple;
-					break;
-
-				case "Indigo":
-					theme = R.style.AppThemeDark_Indigo;
-					break;
-
-				case "Blue":
-					theme = R.style.AppThemeDark_Blue;
-					break;
-
-				case "Light Blue":
-					theme = R.style.AppThemeDark_LightBlue;
-					break;
-
-				case "Cyan":
-					theme = R.style.AppThemeDark_Cyan;
-					break;
-
-				case "Teal":
-					theme = R.style.AppThemeDark_Teal;
-					break;
-
-				case "Green":
-					theme = R.style.AppThemeDark_Green;
-					break;
-
-				case "Light Green":
-					theme = R.style.AppThemeDark_LightGreen;
-					break;
-
-				case "Lime":
-					theme = R.style.AppThemeDark_Lime;
-					break;
-
-				case "Yellow":
-					theme = R.style.AppThemeDark_Yellow;
-					break;
-
-				case "Amber":
-					theme = R.style.AppThemeDark_Amber;
-					break;
-
-				case "Orange":
-					theme = R.style.AppThemeDark_Orange;
-					break;
-
-				case "Deep Orange":
-					theme = R.style.AppThemeDark_DeepOrange;
-					break;
-
-				case "Brown":
-					theme = R.style.AppThemeDark_Brown;
-					break;
-
-				case "Grey":
-					theme = R.style.AppThemeDark_Grey;
-					break;
-
-				case "Blue Grey":
-					theme = R.style.AppThemeDark_BlueGrey;
-					break;
-
-			} // switch
+			// Dark Theme
+			if (themeName.contains(" & ")) {
+				// Custom Color Theme
+				return ThemeUtils.getCustomColoredDarkTheme(themeName);
+			} else {
+				// Default Color Theme
+				return ThemeUtils.getColoredThemeDark(themeName);
+			} // if theme contains "-"
 
 		} else {
+			// Light Theme
+			if (themeName.contains(" & ")) {
+				// Custom Color Theme
+				return ThemeUtils.getCustomColoredLightTheme(themeName);
+			} else {
+				// Default Color Theme
+				return ThemeUtils.getColoredThemeLight(themeName);
+			} // if theme contains "-"
 
-			switch (themeName) {
-
-				case "Red":
-					theme = R.style.AppThemeLight_Red;
-					break;
-
-				case "Pink":
-					theme = R.style.AppThemeLight_Pink;
-					break;
-
-				case "Purple":
-					theme = R.style.AppThemeLight_Purple;
-					break;
-
-				case "Deep Purple":
-					theme = R.style.AppThemeLight_DeepPurple;
-					break;
-
-				case "Indigo":
-					theme = R.style.AppThemeLight_Indigo;
-					break;
-
-				case "Blue":
-					theme = R.style.AppThemeLight_Blue;
-					break;
-
-				case "Light Blue":
-					theme = R.style.AppThemeLight_LightBlue;
-					break;
-
-				case "Cyan":
-					theme = R.style.AppThemeLight_Cyan;
-					break;
-
-				case "Teal":
-					theme = R.style.AppThemeLight_Teal;
-					break;
-
-				case "Green":
-					theme = R.style.AppThemeLight_Green;
-					break;
-
-				case "Light Green":
-					theme = R.style.AppThemeLight_LightGreen;
-					break;
-
-				case "Lime":
-					theme = R.style.AppThemeLight_Lime;
-					break;
-
-				case "Yellow":
-					theme = R.style.AppThemeLight_Yellow;
-					break;
-
-				case "Amber":
-					theme = R.style.AppThemeLight_Amber;
-					break;
-
-				case "Orange":
-					theme = R.style.AppThemeLight_Orange;
-					break;
-
-				case "Deep Orange":
-					theme = R.style.AppThemeLight_DeepOrange;
-					break;
-
-				case "Brown":
-					theme = R.style.AppThemeLight_Brown;
-					break;
-
-				case "Grey":
-					theme = R.style.AppThemeLight_Grey;
-					break;
-
-				case "Blue Grey":
-					theme = R.style.AppThemeLight_BlueGrey;
-					break;
-
-			} // switch		
-
-		}
-		
-		return theme;
+		} // if theme is dark or light
 		
 	} // getTheme
 	
