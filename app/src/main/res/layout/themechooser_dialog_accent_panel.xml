@@ -1,0 +1,24 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/tcdap_relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+		android:id="@+id/tcdap_scrollView"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+			android:id="@+id/tcdap_linearLayoutContainer"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+    </HorizontalScrollView>
+
+</RelativeLayout>

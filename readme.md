@@ -46,9 +46,9 @@ dependencies {
 ```
 
   * Result:
-<img src="/screenshots/screen_pref_light.png"/>
+  <img src="/screenshots/screen_pref_light.png"/>
     
-<img src="/screenshots/screen_pref_dark.png"/>
+  <img src="/screenshots/screen_pref_dark.png"/>
 
 * Set the Theme in your Activity
 ```Java

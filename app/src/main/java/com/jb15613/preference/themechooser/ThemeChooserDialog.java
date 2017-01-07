@@ -40,6 +40,8 @@ public class ThemeChooserDialog extends DialogFragment {
     OnThemeChangedListener mListener;
 
     SharedPreferences prefs;
+	
+	View accentView;
 
     public interface OnThemeChangedListener {
         void onThemeChanged(String theme, boolean hue);
@@ -150,6 +152,102 @@ public class ThemeChooserDialog extends DialogFragment {
         } // for each loop
 
     }
+	
+	public void initializeAccentTable() {
+		
+		accentView = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog_accent_panel, null);
+		
+		LinearLayout layout = (LinearLayout) accentView.findViewById(R.id.tcdap_linearLayoutContainer);
+		
+		ArrayList<LinearLayout> array = getAccentsArray();
+		
+		for (int i = 0; i < array.size(); i++) {
+
+            LinearLayout lay = array.get(i);
+            lay.setOnClickListener(accentClickListener);
+			
+			layout.addView(lay);
+
+        } // for loop
+		
+	}
+	
+	public ArrayList<LinearLayout> getAccentsArray() {
+
+        ArrayList<LinearLayout> cells = new ArrayList<>();
+
+        String[] themesArray = mContext.getResources().getStringArray(R.array.theme_color_names);
+
+        for (String th : themesArray) {
+            cells.add(getAccentItem(th));
+        }
+
+        return cells;
+    }
+	
+	public LinearLayout getAccentItem(String themeName) {
+
+        int[] colors = ColorUtils.getColorSet(themeName, mContext);
+
+        LinearLayout ll = new LinearLayout(mContext);
+        RelativeLayout rl = new RelativeLayout(mContext);
+
+        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        ll.setLayoutParams(llParams);
+        ll.setOrientation(LinearLayout.VERTICAL);
+        ll.setGravity(Gravity.CENTER);
+
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(200, 200);
+        rl.setLayoutParams(rlParams);
+        rl.setPadding(3, 3, 3, 3);
+
+        TextView tv = new TextView(mContext);
+
+        ImageView circle = new ImageView(mContext);
+        ImageView checked = new ImageView(mContext);
+
+        LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        RelativeLayout.LayoutParams circleParams = new RelativeLayout.LayoutParams(180, 180);
+        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(154, 154);
+		
+        tv.setLayoutParams(tvParams);
+        tv.setGravity(Gravity.CENTER);
+
+        circle.setLayoutParams(circleParams);
+        checked.setLayoutParams(checkedParams);
+
+        loadDrawable("circle" + themeName, circle, R.drawable.themechooser_shape_circle, colors[2]);
+        
+		if (getIsLightTheme()) {
+			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xff000000);
+		} else {
+			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xffffffff);
+		}
+
+        circleParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+        checkedParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+        tv.setText(themeName);
+        tv.setTextColor(colors[2]);
+
+        rl.addView(circle);
+       
+        ll.addView(rl);
+        ll.addView(tv);
+
+        ll.setTag(themeName);
+
+        if (getThemeName().equals(themeName)) {
+            checked.setVisibility(View.VISIBLE);
+        } else {
+            checked.setVisibility(View.INVISIBLE);
+        }
+
+        checked.setTag("checked");
+
+        return ll;
+    } // getAccentItem
 
     public ArrayList<LinearLayout> getCellsArray() {
 
@@ -166,7 +264,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
     public LinearLayout getCellItem(String themeName) {
 
-        int[] colors = getColorSet(themeName);
+        int[] colors = ColorUtils.getColorSet(themeName, mContext);
 
         LinearLayout ll = new LinearLayout(mContext);
         RelativeLayout rl = new RelativeLayout(mContext);
@@ -246,131 +344,6 @@ public class ThemeChooserDialog extends DialogFragment {
         return ll;
     } // getCellItem
 
-    public int[] getColorSet(String themeName) {
-
-        int[] colors = new int[3];
-
-        switch (themeName.replaceAll(" ", "")) {
-
-            case "Red":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_red, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_red, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_red, null);
-                break;
-
-            case "Pink":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_pink, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_pink, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_pink, null);
-                break;
-
-            case "Purple":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_purple, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_purple, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_purple, null);
-                break;
-
-            case "DeepPurple":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_deepPurple, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_deepPurple, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepPurple, null);
-                break;
-
-            case "Indigo":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_indigo, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_indigo, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_indigo, null);
-                break;
-
-            case "Blue":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_blue, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_blue, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_blue, null);
-                break;
-
-            case "LightBlue":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_lightBlue, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_lightBlue, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightBlue, null);
-                break;
-
-            case "Cyan":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_cyan, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_cyan, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_cyan, null);
-                break;
-
-            case "Teal":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_teal, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_teal, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_teal, null);
-                break;
-
-            case "Green":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_green, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_green, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_green, null);
-                break;
-
-            case "LightGreen":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_lightGreen, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_lightGreen, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightGreen, null);
-                break;
-
-            case "Lime":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_lime, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_lime, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lime, null);
-                break;
-
-            case "Yellow":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_yellow, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_yellow, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_yellow, null);
-                break;
-
-            case "Amber":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_amber, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_amber, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_amber, null);
-                break;
-
-            case "Orange":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_orange, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_orange, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_orange, null);
-                break;
-
-            case "DeepOrange":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_deepOrange, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_deepOrange, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepOrange, null);
-                break;
-
-            case "Brown":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_brown, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_brown, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_brown, null);
-                break;
-
-            case "Grey":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_grey, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_grey, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_grey, null);
-                break;
-
-            case "BlueGrey":
-                colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_blueGrey, null);
-                colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primaryDark_blueGrey, null);
-                colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_blueGrey, null);
-                break;
-
-        }
-
-        return colors;
-    }
-
     CompoundButton.OnCheckedChangeListener mSwitchListener = new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             // true if the switch is in the On position
@@ -401,10 +374,40 @@ public class ThemeChooserDialog extends DialogFragment {
 
             ImageView checked = (ImageView) v.findViewWithTag("checked");
             checked.setVisibility(View.VISIBLE);
+			
+			initializeAccentTable();
 
             if (mListener != null) {
                 mListener.onThemeChanged(themeName, getIsLightTheme());
             }
+
+        }
+    };
+	
+	View.OnClickListener accentClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            String accentName = v.getTag().toString();
+			
+			String themeName = getThemeName();
+			if (themeName.contains(" & ")) {
+				String[] items = themeName.split(" & ");
+				themeName = items[0];
+			}
+			
+			if (themeName.equals(accentName)) {
+				setThemeName(themeName);
+			} else {
+				setThemeName(themeName + " & " + accentName);
+			}
+			
+            if (mListener != null) {
+                mListener.onThemeChanged(themeName, getIsLightTheme());
+            }
+			
+			((ViewGroup) accentView.getParent()).removeView(accentView);
+			// accentView.setVisibility(View.GONE);
 
         }
     };
