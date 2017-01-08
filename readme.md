@@ -18,7 +18,7 @@ allprojects {
 }
 ```
 
-* Add MTCPref dependency in your build.gradle(app)
+* Add MTCPref dependency in your build.gradle(app) [![](https://jitpack.io/v/johnnyb15613/MTCPref.svg)](https://jitpack.io/#johnnyb15613/MTCPref)
 ```Gradle
 dependencies {
 	compile 'com.github.johnnyb15613:MTCPref:v0.1.7'

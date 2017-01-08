@@ -62,7 +62,7 @@
 	<style name="AppThemeDark.Red">
 		<item name="colorPrimary">@color/material_primary_red</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_red</item>
-        <item name="colorAccent">@color/material_primary_red</item>
+        <item name="colorAccent">@color/material_accent_red</item>
 		<item name="colorControlNormal">@color/material_accent_red</item>
 		<item name="colorControlActivated">@color/material_primary_red</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_red</item>
@@ -70,7 +70,7 @@
 	<style name="AppThemeDark.Pink">
 		<item name="colorPrimary">@color/material_primary_pink</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_pink</item>
-        <item name="colorAccent">@color/material_primary_pink</item>
+        <item name="colorAccent">@color/material_accent_pink</item>
 		<item name="colorControlNormal">@color/material_accent_pink</item>
 		<item name="colorControlActivated">@color/material_primary_pink</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_pink</item>
@@ -78,7 +78,7 @@
 	<style name="AppThemeDark.Purple">
 		<item name="colorPrimary">@color/material_primary_purple</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_purple</item>
-        <item name="colorAccent">@color/material_primary_purple</item>
+        <item name="colorAccent">@color/material_accent_purple</item>
 		<item name="colorControlNormal">@color/material_accent_purple</item>
 		<item name="colorControlActivated">@color/material_primary_purple</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_purple</item>
@@ -86,7 +86,7 @@
 	<style name="AppThemeDark.DeepPurple">
 		<item name="colorPrimary">@color/material_primary_deepPurple</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_deepPurple</item>
-        <item name="colorAccent">@color/material_primary_deepPurple</item>
+        <item name="colorAccent">@color/material_accent_deepPurple</item>
 		<item name="colorControlNormal">@color/material_accent_deepPurple</item>
 		<item name="colorControlActivated">@color/material_primary_deepPurple</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_deepPurple</item>
@@ -94,7 +94,7 @@
 	<style name="AppThemeDark.Indigo">
 		<item name="colorPrimary">@color/material_primary_indigo</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_indigo</item>
-        <item name="colorAccent">@color/material_primary_indigo</item>
+        <item name="colorAccent">@color/material_accent_indigo</item>
 		<item name="colorControlNormal">@color/material_accent_indigo</item>
 		<item name="colorControlActivated">@color/material_primary_indigo</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_indigo</item>
@@ -102,7 +102,7 @@
 	<style name="AppThemeDark.Blue">
 		<item name="colorPrimary">@color/material_primary_blue</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_blue</item>
-        <item name="colorAccent">@color/material_primary_blue</item>
+        <item name="colorAccent">@color/material_accent_blue</item>
 		<item name="colorControlNormal">@color/material_accent_blue</item>
 		<item name="colorControlActivated">@color/material_primary_blue</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_blue</item>
@@ -110,7 +110,7 @@
 	<style name="AppThemeDark.LightBlue">
 		<item name="colorPrimary">@color/material_primary_lightBlue</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_lightBlue</item>
-        <item name="colorAccent">@color/material_primary_lightBlue</item>
+        <item name="colorAccent">@color/material_accent_lightBlue</item>
 		<item name="colorControlNormal">@color/material_accent_lightBlue</item>
 		<item name="colorControlActivated">@color/material_primary_lightBlue</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_lightBlue</item>
@@ -118,7 +118,7 @@
 	<style name="AppThemeDark.Cyan">
 		<item name="colorPrimary">@color/material_primary_cyan</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_cyan</item>
-        <item name="colorAccent">@color/material_primary_cyan</item>
+        <item name="colorAccent">@color/material_accent_cyan</item>
 		<item name="colorControlNormal">@color/material_accent_cyan</item>
 		<item name="colorControlActivated">@color/material_primary_cyan</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_cyan</item>
@@ -126,7 +126,7 @@
 	<style name="AppThemeDark.Teal">
 		<item name="colorPrimary">@color/material_primary_teal</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_teal</item>
-        <item name="colorAccent">@color/material_primary_teal</item>
+        <item name="colorAccent">@color/material_accent_teal</item>
 		<item name="colorControlNormal">@color/material_accent_teal</item>
 		<item name="colorControlActivated">@color/material_primary_teal</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_teal</item>
@@ -134,7 +134,7 @@
 	<style name="AppThemeDark.Green">
 		<item name="colorPrimary">@color/material_primary_green</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_green</item>
-        <item name="colorAccent">@color/material_primary_green</item>
+        <item name="colorAccent">@color/material_accent_green</item>
 		<item name="colorControlNormal">@color/material_accent_green</item>
 		<item name="colorControlActivated">@color/material_primary_green</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_green</item>
@@ -142,7 +142,7 @@
 	<style name="AppThemeDark.LightGreen">
 		<item name="colorPrimary">@color/material_primary_lightGreen</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_lightGreen</item>
-        <item name="colorAccent">@color/material_primary_lightGreen</item>
+        <item name="colorAccent">@color/material_accent_lightGreen</item>
 		<item name="colorControlNormal">@color/material_accent_lightGreen</item>
 		<item name="colorControlActivated">@color/material_primary_lightGreen</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_lightGreen</item>
@@ -150,7 +150,7 @@
 	<style name="AppThemeDark.Lime">
 		<item name="colorPrimary">@color/material_primary_lime</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_lime</item>
-        <item name="colorAccent">@color/material_primary_lime</item>
+        <item name="colorAccent">@color/material_accent_lime</item>
 		<item name="colorControlNormal">@color/material_accent_lime</item>
 		<item name="colorControlActivated">@color/material_primary_lime</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_lime</item>
@@ -158,7 +158,7 @@
 	<style name="AppThemeDark.Yellow">
 		<item name="colorPrimary">@color/material_primary_yellow</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_yellow</item>
-        <item name="colorAccent">@color/material_primary_yellow</item>
+        <item name="colorAccent">@color/material_accent_yellow</item>
 		<item name="colorControlNormal">@color/material_accent_yellow</item>
 		<item name="colorControlActivated">@color/material_primary_yellow</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_yellow</item>
@@ -166,7 +166,7 @@
 	<style name="AppThemeDark.Amber">
 		<item name="colorPrimary">@color/material_primary_amber</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_amber</item>
-        <item name="colorAccent">@color/material_primary_amber</item>
+        <item name="colorAccent">@color/material_accent_amber</item>
 		<item name="colorControlNormal">@color/material_accent_amber</item>
 		<item name="colorControlActivated">@color/material_primary_amber</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_amber</item>
@@ -174,7 +174,7 @@
 	<style name="AppThemeDark.Orange">
 		<item name="colorPrimary">@color/material_primary_orange</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_orange</item>
-        <item name="colorAccent">@color/material_primary_orange</item>
+        <item name="colorAccent">@color/material_accent_orange</item>
 		<item name="colorControlNormal">@color/material_accent_orange</item>
 		<item name="colorControlActivated">@color/material_primary_orange</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_orange</item>
@@ -182,7 +182,7 @@
 	<style name="AppThemeDark.DeepOrange">
 		<item name="colorPrimary">@color/material_primary_deepOrange</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_deepOrange</item>
-        <item name="colorAccent">@color/material_primary_deepOrange</item>
+        <item name="colorAccent">@color/material_accent_deepOrange</item>
 		<item name="colorControlNormal">@color/material_accent_deepOrange</item>
 		<item name="colorControlActivated">@color/material_primary_deepOrange</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_deepOrange</item>
@@ -190,7 +190,7 @@
 	<style name="AppThemeDark.Brown">
 		<item name="colorPrimary">@color/material_primary_brown</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_brown</item>
-        <item name="colorAccent">@color/material_primary_brown</item>
+        <item name="colorAccent">@color/material_accent_brown</item>
 		<item name="colorControlNormal">@color/material_accent_brown</item>
 		<item name="colorControlActivated">@color/material_primary_brown</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_brown</item>
@@ -198,7 +198,7 @@
 	<style name="AppThemeDark.Grey">
 		<item name="colorPrimary">@color/material_primary_grey</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_grey</item>
-        <item name="colorAccent">@color/material_primary_grey</item>
+        <item name="colorAccent">@color/material_accent_grey</item>
 		<item name="colorControlNormal">@color/material_accent_grey</item>
 		<item name="colorControlActivated">@color/material_primary_grey</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_grey</item>
@@ -206,7 +206,7 @@
 	<style name="AppThemeDark.BlueGrey">
 		<item name="colorPrimary">@color/material_primary_blueGrey</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_blueGrey</item>
-        <item name="colorAccent">@color/material_primary_blueGrey</item>
+        <item name="colorAccent">@color/material_accent_blueGrey</item>
 		<item name="colorControlNormal">@color/material_accent_blueGrey</item>
 		<item name="colorControlActivated">@color/material_primary_blueGrey</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_blueGrey</item>
@@ -219,7 +219,7 @@
 	<style name="AppThemeLight.Red">
 		<item name="colorPrimary">@color/material_primary_red</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_red</item>
-        <item name="colorAccent">@color/material_primary_red</item>
+        <item name="colorAccent">@color/material_accent_red</item>
 		<item name="colorControlNormal">@color/material_accent_red</item>
 		<item name="colorControlActivated">@color/material_primary_red</item>
 		<item name="colorControlHighlight">@color/material_primary_red</item>
@@ -227,7 +227,7 @@
 	<style name="AppThemeLight.Pink">
 		<item name="colorPrimary">@color/material_primary_pink</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_pink</item>
-        <item name="colorAccent">@color/material_primary_pink</item>
+        <item name="colorAccent">@color/material_accent_pink</item>
 		<item name="colorControlNormal">@color/material_accent_pink</item>
 		<item name="colorControlActivated">@color/material_primary_pink</item>
 		<item name="colorControlHighlight">@color/material_primary_pink</item>
@@ -235,7 +235,7 @@
 	<style name="AppThemeLight.Purple">
 		<item name="colorPrimary">@color/material_primary_purple</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_purple</item>
-        <item name="colorAccent">@color/material_primary_purple</item>
+        <item name="colorAccent">@color/material_accent_purple</item>
 		<item name="colorControlNormal">@color/material_accent_purple</item>
 		<item name="colorControlActivated">@color/material_primary_purple</item>
 		<item name="colorControlHighlight">@color/material_primary_purple</item>
@@ -243,7 +243,7 @@
 	<style name="AppThemeLight.DeepPurple">
 		<item name="colorPrimary">@color/material_primary_deepPurple</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_deepPurple</item>
-        <item name="colorAccent">@color/material_primary_deepPurple</item>
+        <item name="colorAccent">@color/material_accent_deepPurple</item>
 		<item name="colorControlNormal">@color/material_accent_deepPurple</item>
 		<item name="colorControlActivated">@color/material_primary_deepPurple</item>
 		<item name="colorControlHighlight">@color/material_primary_deepPurple</item>
@@ -251,7 +251,7 @@
 	<style name="AppThemeLight.Indigo">
 		<item name="colorPrimary">@color/material_primary_indigo</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_indigo</item>
-        <item name="colorAccent">@color/material_primary_indigo</item>
+        <item name="colorAccent">@color/material_accent_indigo</item>
 		<item name="colorControlNormal">@color/material_accent_indigo</item>
 		<item name="colorControlActivated">@color/material_primary_indigo</item>
 		<item name="colorControlHighlight">@color/material_primary_indigo</item>
@@ -259,7 +259,7 @@
 	<style name="AppThemeLight.Blue">
 		<item name="colorPrimary">@color/material_primary_blue</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_blue</item>
-        <item name="colorAccent">@color/material_primary_blue</item>
+        <item name="colorAccent">@color/material_accent_blue</item>
 		<item name="colorControlNormal">@color/material_accent_blue</item>
 		<item name="colorControlActivated">@color/material_primary_blue</item>
 		<item name="colorControlHighlight">@color/material_primary_blue</item>
@@ -267,7 +267,7 @@
 	<style name="AppThemeLight.LightBlue">
 		<item name="colorPrimary">@color/material_primary_lightBlue</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_lightBlue</item>
-        <item name="colorAccent">@color/material_primary_lightBlue</item>
+        <item name="colorAccent">@color/material_accent_lightBlue</item>
 		<item name="colorControlNormal">@color/material_accent_lightBlue</item>
 		<item name="colorControlActivated">@color/material_primary_lightBlue</item>
 		<item name="colorControlHighlight">@color/material_primary_lightBlue</item>
@@ -275,7 +275,7 @@
 	<style name="AppThemeLight.Cyan">
 		<item name="colorPrimary">@color/material_primary_cyan</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_cyan</item>
-        <item name="colorAccent">@color/material_primary_cyan</item>
+        <item name="colorAccent">@color/material_accent_cyan</item>
 		<item name="colorControlNormal">@color/material_accent_cyan</item>
 		<item name="colorControlActivated">@color/material_primary_cyan</item>
 		<item name="colorControlHighlight">@color/material_primary_cyan</item>
@@ -283,7 +283,7 @@
 	<style name="AppThemeLight.Teal">
 		<item name="colorPrimary">@color/material_primary_teal</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_teal</item>
-        <item name="colorAccent">@color/material_primary_teal</item>
+        <item name="colorAccent">@color/material_accent_teal</item>
 		<item name="colorControlNormal">@color/material_accent_teal</item>
 		<item name="colorControlActivated">@color/material_primary_teal</item>
 		<item name="colorControlHighlight">@color/material_primary_teal</item>
@@ -291,7 +291,7 @@
 	<style name="AppThemeLight.Green">
 		<item name="colorPrimary">@color/material_primary_green</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_green</item>
-        <item name="colorAccent">@color/material_primary_green</item>
+        <item name="colorAccent">@color/material_accent_green</item>
 		<item name="colorControlNormal">@color/material_accent_green</item>
 		<item name="colorControlActivated">@color/material_primary_green</item>
 		<item name="colorControlHighlight">@color/material_primary_green</item>
@@ -299,7 +299,7 @@
 	<style name="AppThemeLight.LightGreen">
 		<item name="colorPrimary">@color/material_primary_lightGreen</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_lightGreen</item>
-        <item name="colorAccent">@color/material_primary_lightGreen</item>
+        <item name="colorAccent">@color/material_accent_lightGreen</item>
 		<item name="colorControlNormal">@color/material_accent_lightGreen</item>
 		<item name="colorControlActivated">@color/material_primary_lightGreen</item>
 		<item name="colorControlHighlight">@color/material_primary_lightGreen</item>
@@ -307,7 +307,7 @@
 	<style name="AppThemeLight.Lime">
 		<item name="colorPrimary">@color/material_primary_lime</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_lime</item>
-        <item name="colorAccent">@color/material_primary_lime</item>
+        <item name="colorAccent">@color/material_accent_lime</item>
 		<item name="colorControlNormal">@color/material_accent_lime</item>
 		<item name="colorControlActivated">@color/material_primary_lime</item>
 		<item name="colorControlHighlight">@color/material_primary_lime</item>
@@ -315,7 +315,7 @@
 	<style name="AppThemeLight.Yellow">
 		<item name="colorPrimary">@color/material_primary_yellow</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_yellow</item>
-        <item name="colorAccent">@color/material_primary_yellow</item>
+        <item name="colorAccent">@color/material_accent_yellow</item>
 		<item name="colorControlNormal">@color/material_accent_yellow</item>
 		<item name="colorControlActivated">@color/material_primary_yellow</item>
 		<item name="colorControlHighlight">@color/material_primary_yellow</item>
@@ -323,7 +323,7 @@
 	<style name="AppThemeLight.Amber">
 		<item name="colorPrimary">@color/material_primary_amber</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_amber</item>
-        <item name="colorAccent">@color/material_primary_amber</item>
+        <item name="colorAccent">@color/material_accent_amber</item>
 		<item name="colorControlNormal">@color/material_accent_amber</item>
 		<item name="colorControlActivated">@color/material_primary_amber</item>
 		<item name="colorControlHighlight">@color/material_primary_amber</item>
@@ -331,7 +331,7 @@
 	<style name="AppThemeLight.Orange">
 		<item name="colorPrimary">@color/material_primary_orange</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_orange</item>
-        <item name="colorAccent">@color/material_primary_orange</item>
+        <item name="colorAccent">@color/material_accent_orange</item>
 		<item name="colorControlNormal">@color/material_accent_orange</item>
 		<item name="colorControlActivated">@color/material_primary_orange</item>
 		<item name="colorControlHighlight">@color/material_primary_orange</item>
@@ -339,7 +339,7 @@
 	<style name="AppThemeLight.DeepOrange">
 		<item name="colorPrimary">@color/material_primary_deepOrange</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_deepOrange</item>
-        <item name="colorAccent">@color/material_primary_deepOrange</item>
+        <item name="colorAccent">@color/material_accent_deepOrange</item>
 		<item name="colorControlNormal">@color/material_accent_deepOrange</item>
 		<item name="colorControlActivated">@color/material_primary_deepOrange</item>
 		<item name="colorControlHighlight">@color/material_primary_deepOrange</item>
@@ -347,7 +347,7 @@
 	<style name="AppThemeLight.Brown">
 		<item name="colorPrimary">@color/material_primary_brown</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_brown</item>
-        <item name="colorAccent">@color/material_primary_brown</item>
+        <item name="colorAccent">@color/material_accent_brown</item>
 		<item name="colorControlNormal">@color/material_accent_brown</item>
 		<item name="colorControlActivated">@color/material_primary_brown</item>
 		<item name="colorControlHighlight">@color/material_primary_brown</item>
@@ -355,7 +355,7 @@
 	<style name="AppThemeLight.Grey">
 		<item name="colorPrimary">@color/material_primary_grey</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_grey</item>
-        <item name="colorAccent">@color/material_primary_grey</item>
+        <item name="colorAccent">@color/material_accent_grey</item>
 		<item name="colorControlNormal">@color/material_accent_grey</item>
 		<item name="colorControlActivated">@color/material_primary_grey</item>
 		<item name="colorControlHighlight">@color/material_primary_grey</item>
@@ -363,7 +363,7 @@
 	<style name="AppThemeLight.BlueGrey">
 		<item name="colorPrimary">@color/material_primary_blueGrey</item>
         <item name="colorPrimaryDark">@color/material_primaryDark_blueGrey</item>
-        <item name="colorAccent">@color/material_primary_blueGrey</item>
+        <item name="colorAccent">@color/material_accent_blueGrey</item>
 		<item name="colorControlNormal">@color/material_accent_blueGrey</item>
 		<item name="colorControlActivated">@color/material_primary_blueGrey</item>
 		<item name="colorControlHighlight">@color/material_primary_blueGrey</item>

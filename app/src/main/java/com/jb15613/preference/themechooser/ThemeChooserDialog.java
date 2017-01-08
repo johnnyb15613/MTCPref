@@ -42,6 +42,8 @@ public class ThemeChooserDialog extends DialogFragment {
     OnThemeChangedListener mListener;
 
     SharedPreferences prefs;
+	
+	boolean accentClicked = false;
 
     public interface OnThemeChangedListener {
         void onThemeChanged(String theme, boolean hue);
@@ -375,12 +377,16 @@ public class ThemeChooserDialog extends DialogFragment {
             String themeName = v.getTag().toString();
 			String accentName = getAccentName();
 			
-            if (themeName.equals(accentName)) {
-				setThemeName(themeName);
+			if (accentClicked) {
+				if (themeName.equals(accentName)) {
+					setThemeName(themeName);
+				} else {
+					setThemeName(themeName + " \u0026 " + accentName);
+				}
 			} else {
-				setThemeName(themeName + " \u0026 " + accentName);
+				setThemeName(themeName);
 			}
-
+			
             removeOldCheckFromTable(master);
 
             ImageView checked = (ImageView) v.findViewWithTag("checked");
@@ -396,6 +402,8 @@ public class ThemeChooserDialog extends DialogFragment {
 	View.OnClickListener accentClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+			
+			accentClicked = true;
 			
 			ViewGroup vg = (ViewGroup) v.getParent();
 			ViewGroup master = (ViewGroup) vg.getParent();
