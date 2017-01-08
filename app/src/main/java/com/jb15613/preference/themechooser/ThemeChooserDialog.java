@@ -31,17 +31,17 @@ public class ThemeChooserDialog extends DialogFragment {
 
     AlertDialog mAlertDialog;
 
+	LinearLayout mAccentLayout;
     TableLayout mTableLayout;
     Switch mSwitch;
 
     final String mIsLightThemeKey = "isLightTheme";
     final String mThemeKey = "themeColor";
+	final String mAccentKey = "accentColor";
 
     OnThemeChangedListener mListener;
 
     SharedPreferences prefs;
-	
-	View accentView;
 
     public interface OnThemeChangedListener {
         void onThemeChanged(String theme, boolean hue);
@@ -60,6 +60,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
 
+		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
         mTableLayout = (TableLayout) view.findViewById(R.id.tcd_tableLayout);
         mSwitch = (Switch) view.findViewById(R.id.tcd_switch);
 
@@ -150,27 +151,19 @@ public class ThemeChooserDialog extends DialogFragment {
         for (TableRow row : rows) {
             mTableLayout.addView(row);
         } // for each loop
+		
+		ArrayList<LinearLayout> accentArray = getAccentsArray();
 
-    }
-	
-	public void initializeAccentTable() {
-		
-		accentView = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog_accent_panel, null);
-		
-		LinearLayout layout = (LinearLayout) accentView.findViewById(R.id.tcdap_linearLayoutContainer);
-		
-		ArrayList<LinearLayout> array = getAccentsArray();
-		
-		for (int i = 0; i < array.size(); i++) {
+		for (int ii = 0; ii < accentArray.size(); ii++) {
 
-            LinearLayout lay = array.get(i);
+            LinearLayout lay = accentArray.get(ii);
             lay.setOnClickListener(accentClickListener);
-			
-			layout.addView(lay);
+
+			mAccentLayout.addView(lay);
 
         } // for loop
-		
-	}
+
+    }
 	
 	public ArrayList<LinearLayout> getAccentsArray() {
 
@@ -368,14 +361,18 @@ public class ThemeChooserDialog extends DialogFragment {
             ViewGroup master = (ViewGroup) vg.getParent();
 
             String themeName = v.getTag().toString();
-            setThemeName(themeName);
+			String accentName = getAccentName();
+			
+            if (themeName.equals(accentName)) {
+				setThemeName(themeName);
+			} else {
+				setThemeName(themeName + " & " + accentName);
+			}
 
-            removeOldCheck(master);
+            removeOldCheckFromTable(master);
 
             ImageView checked = (ImageView) v.findViewWithTag("checked");
             checked.setVisibility(View.VISIBLE);
-			
-			initializeAccentTable();
 
             if (mListener != null) {
                 mListener.onThemeChanged(themeName, getIsLightTheme());
@@ -387,6 +384,10 @@ public class ThemeChooserDialog extends DialogFragment {
 	View.OnClickListener accentClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+			
+			ViewGroup vg = (ViewGroup) v.getParent();
+			
+			removeOldCheckFromAccent(vg);
 
             String accentName = v.getTag().toString();
 			
@@ -405,15 +406,12 @@ public class ThemeChooserDialog extends DialogFragment {
             if (mListener != null) {
                 mListener.onThemeChanged(themeName, getIsLightTheme());
             }
-			
-			((ViewGroup) accentView.getParent()).removeView(accentView);
-			// accentView.setVisibility(View.GONE);
 
         }
     };
 
 
-    public void removeOldCheck(ViewGroup vg) {
+    public void removeOldCheckFromTable(ViewGroup vg) {
 
         for (int i = 0; i < vg.getChildCount(); i++) {
 
@@ -431,6 +429,29 @@ public class ThemeChooserDialog extends DialogFragment {
                 }
 
             } // for each item in tablerow
+
+        } // for each TableRow
+
+    }
+	
+	public void removeOldCheckFromAccent(ViewGroup vg) {
+
+        for (int i = 0; i < vg.getChildCount(); i++) {
+
+            LinearLayout tr = (LinearLayout) vg.getChildAt(i);
+
+            for (int ii = 0; ii < tr.getChildCount(); ii++) {
+
+                LinearLayout ll = (LinearLayout) tr.getChildAt(ii);
+                RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
+
+                ImageView checked = (ImageView) rl.findViewWithTag("checked");
+
+                if (checked.getVisibility() == View.VISIBLE) {
+                    checked.setVisibility(View.INVISIBLE);
+                }
+
+            } // for each item in linearlayout
 
         } // for each TableRow
 
@@ -455,6 +476,16 @@ public class ThemeChooserDialog extends DialogFragment {
     public String getThemeName() {
         return prefs.getString(mThemeKey, "Light Blue");
     }
+	
+	public void setAccentName(String v) {
+		SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(mAccentKey, v);
+        editor.apply();
+	}
+	
+	public String getAccentName() {
+		return prefs.getString(mAccentKey, "Default");
+	}
 
     public void loadDrawable(String title, ImageView imageView, int id, int color) {
         if (ImageLoader.cancelPotentialWork(title, imageView)) {
