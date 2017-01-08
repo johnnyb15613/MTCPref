@@ -190,7 +190,7 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
 
-        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(200, 200);
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(150, 150);
         rl.setLayoutParams(rlParams);
         rl.setPadding(3, 3, 3, 3);
 
@@ -201,8 +201,8 @@ public class ThemeChooserDialog extends DialogFragment {
 
         LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        RelativeLayout.LayoutParams circleParams = new RelativeLayout.LayoutParams(180, 180);
-        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(154, 154);
+        RelativeLayout.LayoutParams circleParams = new RelativeLayout.LayoutParams(130, 130);
+        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(100, 100);
 		
         tv.setLayoutParams(tvParams);
         tv.setGravity(Gravity.CENTER);
@@ -210,7 +210,7 @@ public class ThemeChooserDialog extends DialogFragment {
         circle.setLayoutParams(circleParams);
         checked.setLayoutParams(checkedParams);
 
-        loadDrawable("circle" + themeName, circle, R.drawable.themechooser_shape_circle, colors[2]);
+        loadDrawable("circle" + themeName, circle, R.drawable.themechooser_shape_circle, colors[0]);
         
 		if (getIsLightTheme()) {
 			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xff000000);
@@ -222,7 +222,7 @@ public class ThemeChooserDialog extends DialogFragment {
         checkedParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 
         tv.setText(themeName);
-        tv.setTextColor(colors[2]);
+        tv.setTextColor(colors[0]);
 
         rl.addView(circle);
 		rl.addView(checked);
