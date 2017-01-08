@@ -326,12 +326,23 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.addView(tv);
 
         ll.setTag(themeName);
-
-        if (getThemeName().equals(themeName)) {
-            checked.setVisibility(View.VISIBLE);
-        } else {
-            checked.setVisibility(View.INVISIBLE);
-        }
+		
+		String tn = getThemeName();
+		
+		if (tn.contains(" \u0026 ")) {
+			String[] t = tn.split(" \u0026 ");
+			if (t[0].equals(themeName)) {
+				checked.setVisibility(View.VISIBLE);
+			} else {
+				checked.setVisibility(View.INVISIBLE);
+			}
+		} else {
+			if (tn.equals(themeName)) {
+				checked.setVisibility(View.VISIBLE);
+			} else {
+				checked.setVisibility(View.INVISIBLE);
+			}
+		}
 
         checked.setTag("checked");
 
@@ -402,8 +413,12 @@ public class ThemeChooserDialog extends DialogFragment {
 			if (themeName.equals(accentName)) {
 				setThemeName(themeName);
 			} else {
-				setThemeName(themeName + " \u0026 " + accentName);
+				themeName = themeName + " \u0026 " + accentName;
+				setThemeName(themeName);
 			}
+			
+			ImageView checked = (ImageView) v.findViewWithTag("checked");
+            checked.setVisibility(View.VISIBLE);
 			
             if (mListener != null) {
                 mListener.onThemeChanged(themeName, getIsLightTheme());
@@ -486,7 +501,7 @@ public class ThemeChooserDialog extends DialogFragment {
 	}
 	
 	public String getAccentName() {
-		return prefs.getString(mAccentKey, "Default");
+		return prefs.getString(mAccentKey, "Light Blue");
 	}
 
     public void loadDrawable(String title, ImageView imageView, int id, int color) {
