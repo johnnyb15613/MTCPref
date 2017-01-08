@@ -140,6 +140,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
             LinearLayout lay = array.get(i);
             lay.setOnClickListener(swatchClickListener);
+			lay.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
             tr.addView(lay);
 
             if ((counter == 3) || (i == array.size() - 1)) {
@@ -159,7 +160,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
             LinearLayout lay = accentArray.get(ii);
             lay.setOnClickListener(accentClickListener);
-
+			lay.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
 			mAccentLayout.addView(lay);
 
         } // for loop
@@ -191,7 +192,6 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
-		ll.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
 		ll.setPadding(3, 3, 3, 3);
 
         RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(150, 150);
@@ -272,7 +272,6 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
-		ll.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
 		ll.setPadding(3, 3, 3, 3);
 
         RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(200, 200);
