@@ -225,6 +225,7 @@ public class ThemeChooserDialog extends DialogFragment {
         tv.setTextColor(colors[2]);
 
         rl.addView(circle);
+		rl.addView(checked);
        
         ll.addView(rl);
         ll.addView(tv);
