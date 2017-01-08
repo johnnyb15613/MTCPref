@@ -17,7 +17,7 @@ public class ThemeChooserUtils {
 		
 		if (!isLightTheme) {
 			// Dark Theme
-			if (themeName.contains(" & ")) {
+			if (themeName.contains(" \u0026 ")) {
 				// Custom Color Theme
 				return ThemeUtils.getCustomColoredDarkTheme(themeName);
 			} else {
@@ -27,7 +27,7 @@ public class ThemeChooserUtils {
 
 		} else {
 			// Light Theme
-			if (themeName.contains(" & ")) {
+			if (themeName.contains(" \u0026 ")) {
 				// Custom Color Theme
 				return ThemeUtils.getCustomColoredLightTheme(themeName);
 			} else {

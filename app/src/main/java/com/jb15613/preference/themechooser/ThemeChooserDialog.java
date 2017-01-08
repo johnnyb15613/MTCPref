@@ -366,7 +366,7 @@ public class ThemeChooserDialog extends DialogFragment {
             if (themeName.equals(accentName)) {
 				setThemeName(themeName);
 			} else {
-				setThemeName(themeName + " & " + accentName);
+				setThemeName(themeName + " \u0026 " + accentName);
 			}
 
             removeOldCheckFromTable(master);
@@ -386,21 +386,22 @@ public class ThemeChooserDialog extends DialogFragment {
         public void onClick(View v) {
 			
 			ViewGroup vg = (ViewGroup) v.getParent();
+			ViewGroup master = (ViewGroup) vg.getParent();
 			
-			removeOldCheckFromAccent(vg);
+			removeOldCheckFromAccent(master);
 
             String accentName = v.getTag().toString();
 			
 			String themeName = getThemeName();
-			if (themeName.contains(" & ")) {
-				String[] items = themeName.split(" & ");
+			if (themeName.contains(" \u0026 ")) {
+				String[] items = themeName.split(" \u0026 ");
 				themeName = items[0];
 			}
 			
 			if (themeName.equals(accentName)) {
 				setThemeName(themeName);
 			} else {
-				setThemeName(themeName + " & " + accentName);
+				setThemeName(themeName + " \u0026 " + accentName);
 			}
 			
             if (mListener != null) {

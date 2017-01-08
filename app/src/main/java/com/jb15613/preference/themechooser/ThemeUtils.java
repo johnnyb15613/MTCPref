@@ -162,7 +162,7 @@ public class ThemeUtils {
 
 		int theme = 0;
 
-		String[] items = themeName.split(" & ");
+		String[] items = themeName.split(" \u0026 ");
 
 		switch (items[0]) {
 			case "Red":

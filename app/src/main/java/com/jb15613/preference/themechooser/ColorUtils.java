@@ -13,9 +13,9 @@ public class ColorUtils {
 		String tn = "";
 		String ta = "";
 
-        if (themeName.contains(" & ")) {
+        if (themeName.contains(" \u0026 ")) {
 			isCustom = true;
-			String[] items = themeName.split(" & ");
+			String[] items = themeName.split(" \u0026 ");
 			tn = items[0];
 			ta = items[1];
 			// colors = getCustomColorSet(themeName, mContext);
