@@ -142,7 +142,6 @@ public class ThemeChooserDialog extends DialogFragment {
             lay.setOnClickListener(swatchClickListener);
             tr.addView(lay);
 
-
             if ((counter == 3) || (i == array.size() - 1)) {
                 counter = 0;
                 rows.add(tr);
@@ -188,9 +187,12 @@ public class ThemeChooserDialog extends DialogFragment {
         RelativeLayout rl = new RelativeLayout(mContext);
 
         LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		llParams.setMargins(2, 2, 2, 2);
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
+		ll.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
+		ll.setPadding(3, 3, 3, 3);
 
         RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(150, 150);
         rl.setLayoutParams(rlParams);
@@ -266,9 +268,12 @@ public class ThemeChooserDialog extends DialogFragment {
         RelativeLayout rl = new RelativeLayout(mContext);
 
         TableRow.LayoutParams llParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+		llParams.setMargins(2, 2, 2, 2);
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
+		ll.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
+		ll.setPadding(3, 3, 3, 3);
 
         RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(200, 200);
         rl.setLayoutParams(rlParams);
