@@ -64,7 +64,7 @@ public class ThemeChooserDialog extends DialogFragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
 		
 		int width = this.getResources().getDisplayMetrics().widthPixels;
-		int cellDimen = width / 4;
+		int cellDimen = width / 6;
 		setCellSize(cellDimen);
 
 		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
