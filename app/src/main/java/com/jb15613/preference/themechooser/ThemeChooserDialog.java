@@ -147,6 +147,7 @@ public class ThemeChooserDialog extends DialogFragment {
             LinearLayout lay = array.get(i);
             lay.setOnClickListener(swatchClickListener);
 			lay.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
+			
             tr.addView(lay);
 
             if ((counter == 3) || (i == array.size() - 1)) {
@@ -286,6 +287,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
         TableRow.LayoutParams llParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 		llParams.setMargins(2, 2, 2, 2);
+		llParams.weight = 1.0f;
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
