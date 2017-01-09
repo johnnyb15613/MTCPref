@@ -65,7 +65,7 @@ public class ThemeChooserDialog extends DialogFragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
 		
 		int width = this.getResources().getDisplayMetrics().widthPixels;
-		int cellDimen = width / 7;
+		int cellDimen = width / 6;
 		setCellSize(cellDimen);
 
 		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
@@ -103,7 +103,7 @@ public class ThemeChooserDialog extends DialogFragment {
             mSwitch.setTextColor(0xffffffff);
         }
 
-        mAlertDialog = new AlertDialog.Builder(context).setTitle("Pick Theme Swatch").setView(view).create();
+        mAlertDialog = new AlertDialog.Builder(context).setTitle("MTCPref").setView(view).create();
 
         return this.mAlertDialog;
 

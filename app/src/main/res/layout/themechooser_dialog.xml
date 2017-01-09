@@ -9,7 +9,10 @@
 	<ScrollView
 		android:id="@+id/tcd_scrollView"
 		android:gravity="center"
-		android:padding="10dp"
+		android:paddingLeft="10dp"
+		android:paddingTop="10dp"
+		android:paddingRight="10dp"
+		android:paddingBottom="4dp"
 		android:layout_above="@+id/tcd_textView"
 		android:layout_alignParentTop="true"
 		android:layout_gravity="center"
@@ -29,7 +32,6 @@
 	<TextView
 		android:id="@+id/tcd_textView"
 		android:gravity="center"
-		android:padding="4dp"
 		android:text="Accent Color"
 		android:layout_above="@+id/tcd_horizontalScrollView"
 		android:layout_gravity="center"
@@ -41,7 +43,10 @@
 	<HorizontalScrollView
 		android:id="@+id/tcd_horizontalScrollView"
 		android:gravity="center"
-		android:padding="10dp"
+		android:paddingLeft="10dp"
+		android:paddingTop="4dp"
+		android:paddingRight="10dp"
+		android:paddingBottom="10dp"
 		android:layout_above="@+id/tcd_switch"
 		android:layout_gravity="center"
 		android:layout_width="match_parent"
