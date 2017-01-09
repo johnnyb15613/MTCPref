@@ -38,6 +38,7 @@ public class ThemeChooserDialog extends DialogFragment {
     final String mIsLightThemeKey = "isLightTheme";
     final String mThemeKey = "themeColor";
 	final String mAccentKey = "accentColor";
+	final String mCellDimenKey = "cellSize";
 
     OnThemeChangedListener mListener;
 
@@ -61,6 +62,10 @@ public class ThemeChooserDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle bundle) {
 
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
+		
+		int width = this.getResources().getDisplayMetrics().widthPixels;
+		int cellDimen = width / 4;
+		setCellSize(cellDimen);
 
 		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
         mTableLayout = (TableLayout) view.findViewById(R.id.tcd_tableLayout);
@@ -194,7 +199,7 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.setGravity(Gravity.CENTER);
 		ll.setPadding(3, 3, 3, 3);
 
-        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(150, 150);
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(getCellSize(), getCellSize());
         rl.setLayoutParams(rlParams);
         rl.setPadding(3, 3, 3, 3);
 
@@ -205,8 +210,8 @@ public class ThemeChooserDialog extends DialogFragment {
 
         LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        RelativeLayout.LayoutParams circleParams = new RelativeLayout.LayoutParams(130, 130);
-        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(100, 100);
+        RelativeLayout.LayoutParams circleParams = new RelativeLayout.LayoutParams((getCellSize() / 2) + 30, (getCellSize() / 2) + 30);
+        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
 		
         tv.setLayoutParams(tvParams);
         tv.setGravity(Gravity.CENTER);
@@ -274,7 +279,7 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.setGravity(Gravity.CENTER);
 		ll.setPadding(3, 3, 3, 3);
 
-        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(200, 200);
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(getCellSize(), getCellSize());
         rl.setLayoutParams(rlParams);
         rl.setPadding(3, 3, 3, 3);
 
@@ -287,10 +292,10 @@ public class ThemeChooserDialog extends DialogFragment {
 
         LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        RelativeLayout.LayoutParams bottomCircleParams = new RelativeLayout.LayoutParams(90, 90);
-        RelativeLayout.LayoutParams middleCircleParams = new RelativeLayout.LayoutParams(90, 90);
-        RelativeLayout.LayoutParams topCircleParams = new RelativeLayout.LayoutParams(90, 90);
-        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(194, 194);
+        RelativeLayout.LayoutParams bottomCircleParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
+        RelativeLayout.LayoutParams middleCircleParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
+        RelativeLayout.LayoutParams topCircleParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
+        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(getCellSize() - 8, getCellSize() - 8);
 
         tv.setLayoutParams(tvParams);
         tv.setGravity(Gravity.CENTER);
@@ -514,6 +519,16 @@ public class ThemeChooserDialog extends DialogFragment {
 	
 	public String getAccentName() {
 		return prefs.getString(mAccentKey, "Light Blue");
+	}
+	
+	public void setCellSize(int v) {
+		SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(mCellDimenKey, v);
+        editor.apply();
+	}
+
+	public int getCellSize() {
+		return prefs.getInt(mCellDimenKey, 0);
 	}
 
     public void loadDrawable(String title, ImageView imageView, int id, int color) {
