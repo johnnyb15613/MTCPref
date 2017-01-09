@@ -285,7 +285,7 @@ public class ThemeChooserDialog extends DialogFragment {
         LinearLayout ll = new LinearLayout(mContext);
         RelativeLayout rl = new RelativeLayout(mContext);
 
-        TableRow.LayoutParams llParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams llParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
 		llParams.setMargins(2, 2, 2, 2);
 		llParams.weight = 1.0f;
         ll.setLayoutParams(llParams);
