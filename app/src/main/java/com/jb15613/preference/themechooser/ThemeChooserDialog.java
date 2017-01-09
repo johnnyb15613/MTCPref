@@ -65,7 +65,7 @@ public class ThemeChooserDialog extends DialogFragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
 		
 		int width = this.getResources().getDisplayMetrics().widthPixels;
-		int cellDimen = width / 6;
+		int cellDimen = width / 7;
 		setCellSize(cellDimen);
 
 		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
@@ -242,11 +242,22 @@ public class ThemeChooserDialog extends DialogFragment {
 
         ll.setTag(themeName);
 
-        if (getThemeName().equals(themeName)) {
-            checked.setVisibility(View.VISIBLE);
-        } else {
-            checked.setVisibility(View.INVISIBLE);
-        }
+        String tn = getThemeName();
+
+		if (tn.contains(" \u0026 ")) {
+			String[] t = tn.split(" \u0026 ");
+			if (t[1].equals(themeName)) {
+				checked.setVisibility(View.VISIBLE);
+			} else {
+				checked.setVisibility(View.INVISIBLE);
+			}
+		} else {
+			if (tn.equals(themeName)) {
+				checked.setVisibility(View.VISIBLE);
+			} else {
+				checked.setVisibility(View.INVISIBLE);
+			}
+		}
 
         checked.setTag("checked");
 
