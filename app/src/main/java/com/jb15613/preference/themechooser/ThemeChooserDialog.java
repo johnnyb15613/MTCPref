@@ -39,6 +39,7 @@ public class ThemeChooserDialog extends DialogFragment {
     final String mThemeKey = "themeColor";
 	final String mAccentKey = "accentColor";
 	final String mCellDimenKey = "cellSize";
+	final String mPrefKey = "mtc_pref_preferences";
 
     OnThemeChangedListener mListener;
 
@@ -56,7 +57,7 @@ public class ThemeChooserDialog extends DialogFragment {
         super.onCreate(bundle);
         setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Holo_Dialog);
         mContext = getActivity();
-        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        prefs = mContext.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
     }
 
     public Dialog onCreateDialog(Bundle bundle) {

@@ -8,9 +8,11 @@ import android.preference.PreferenceManager;
 
 public class ThemeChooserUtils {
 	
+	final static String mPrefKey = "mtc_pref_preferences";
+	
 	public static int getTheme(Context context) {
 		
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		SharedPreferences prefs = context.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
 		
 		String themeName = prefs.getString("themeColor", "Light Blue");
 		boolean isLightTheme = prefs.getBoolean("isLightTheme", false);

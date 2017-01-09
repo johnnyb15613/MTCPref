@@ -22,6 +22,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 
 public class ThemeChooserPreference extends Preference implements Preference.OnPreferenceClickListener, ThemeChooserDialog.OnThemeChangedListener {
+	
+	final static String mPrefKey = "mtc_pref_preferences";
 
     // the theme name
     private String mValue;
@@ -37,21 +39,21 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
     public ThemeChooserPreference(Context context) {
         super(context);
         mContext = context;
-        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        prefs = context.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
         init(context, null);
     }
 
     public ThemeChooserPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        prefs = context.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
         init(context, attrs);
     }
 
     public ThemeChooserPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-        prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        prefs = context.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
         init(context, attrs);
     }
 
