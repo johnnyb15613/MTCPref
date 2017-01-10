@@ -24,108 +24,121 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import android.support.v7.widget.CardView;
 
 public class ThemeChooserDialog extends DialogFragment {
 
+	// Context
     Context mContext;
 
+	// Dialog
     AlertDialog mAlertDialog;
 
+	// Layout to add Accent Items to
 	LinearLayout mAccentLayout;
+	// Layout to add Swatch Items to
     TableLayout mTableLayout;
+	// Switch for Light/Dark
     Switch mSwitch;
 
+	// Keys for preferences
+	final String mPrefKey = "mtc_pref_preferences";
     final String mIsLightThemeKey = "isLightTheme";
     final String mThemeKey = "themeColor";
 	final String mAccentKey = "accentColor";
 	final String mCellDimenKey = "cellSize";
-	final String mPrefKey = "mtc_pref_preferences";
 
+	// Theme Cange Listener
     OnThemeChangedListener mListener;
 
-    SharedPreferences prefs;
+	// Preferences
+    SharedPreferences mPrefs;
 	
-	boolean accentClicked = false;
+	// 
+	boolean mAccentClicked = false;
 
+	// Interface linked to ThemeChooserPreference
     public interface OnThemeChangedListener {
         void onThemeChanged(String theme, boolean hue);
-    }
+    } // OnThemeChangedListener
 
-    public ThemeChooserDialog(){}
+    public ThemeChooserDialog(){
+	} // Constructor
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Holo_Dialog);
         mContext = getActivity();
-        prefs = mContext.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
-    }
+        mPrefs = mContext.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
+    } // onCreate
 
     public Dialog onCreateDialog(Bundle bundle) {
 
+		// Inflate layoyt
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
 		
-		int width = this.getResources().getDisplayMetrics().widthPixels;
-		int cellDimen = width / 6;
-		setCellSize(cellDimen);
+		// set cell size if it hasn't already been done
+		if (getCellSize() == 0) {
+			int width = this.getResources().getDisplayMetrics().widthPixels;
+			int cellDimen = width / 6;
+			setCellSize(cellDimen);
+		}
 
+		// get views
 		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
         mTableLayout = (TableLayout) view.findViewById(R.id.tcd_tableLayout);
         mSwitch = (Switch) view.findViewById(R.id.tcd_switch);
 
+		// set switch position
         mSwitch.setChecked(getIsLightTheme());
+		// set switch listener
         mSwitch.setOnCheckedChangeListener(mSwitchListener);
 
+		// start building the table
         initializeTable();
 
+		// ThemeWrapper for the Dialog
         ContextThemeWrapper context;
 
         if (Build.VERSION.SDK_INT >= 21) {
-            // Call some material design APIs here
             if (getIsLightTheme()) {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Material_Light_Dialog);
             } else {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Material_Dialog);
-            }
+            } // if theme is light or dark
 
         } else {
-            // Implement this feature without material design
             if (getIsLightTheme()) {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Holo_Light_Dialog);
             } else {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Holo_Dialog);
-            }
+            } // if theme is light or dark
 
-        }
+        } // if we are running on Jellybean or lower
 
+		// set switch text color
         if (getIsLightTheme()) {
             mSwitch.setTextColor(0xff000000);
         } else {
             mSwitch.setTextColor(0xffffffff);
         }
 
+		// create dialog
         mAlertDialog = new AlertDialog.Builder(context).setTitle("MTCPref").setView(view).create();
 
+		// return dialog
         return this.mAlertDialog;
 
-    }
-
-    /*
-    public void onThemeChanged(String theme, boolean hue) {
-
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("themeColor", theme);
-        editor.putBoolean("isLightTheme", hue);
-        editor.apply();
-
-    } */
+    } // onCreateDialog
 
     public void setOnThemeChangedListener(OnThemeChangedListener listener) {
         mListener = listener;
-    }
-
+    } // setOnThemeChangedListener
+	
+	// Processes and builds the dialog
     public void initializeTable() {
 
-        ArrayList<LinearLayout> array = getCellsArray();
+        ArrayList<CardView> array = getCellsArray();
 
         ArrayList<TableRow> rows = new ArrayList<>();
 
@@ -144,9 +157,8 @@ public class ThemeChooserDialog extends DialogFragment {
                 tr.setPadding(10, 5, 10, 5);
             }
 
-            LinearLayout lay = array.get(i);
+            CardView lay = array.get(i);
             lay.setOnClickListener(swatchClickListener);
-			lay.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
 			
             tr.addView(lay);
 
@@ -172,8 +184,9 @@ public class ThemeChooserDialog extends DialogFragment {
 
         } // for loop
 
-    }
+    } // initializeTable
 	
+	// Processes Accent Items
 	public ArrayList<LinearLayout> getAccentsArray() {
 
         ArrayList<LinearLayout> cells = new ArrayList<>();
@@ -185,8 +198,14 @@ public class ThemeChooserDialog extends DialogFragment {
         }
 
         return cells;
-    }
+    } // getAccentsArray
 	
+	/**
+	 * Creates a {@code LinearLayout} containing an Accent Item
+	 *
+	 * @param  themeName a {@code String} 
+	 * @return a {@code LinearLayout};
+	 */
 	public LinearLayout getAccentItem(String themeName) {
 
         int[] colors = ColorUtils.getColorSet(themeName, mContext);
@@ -224,9 +243,9 @@ public class ThemeChooserDialog extends DialogFragment {
         loadDrawable("circle" + themeName, circle, R.drawable.themechooser_shape_circle, colors[0]);
         
 		if (getIsLightTheme()) {
-			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xff000000);
+			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xff000000);
 		} else {
-			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xffffffff);
+			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xffffffff);
 		}
 
         circleParams.addRule(RelativeLayout.CENTER_IN_PARENT);
@@ -265,9 +284,10 @@ public class ThemeChooserDialog extends DialogFragment {
         return ll;
     } // getAccentItem
 
-    public ArrayList<LinearLayout> getCellsArray() {
+	// Processes Swatch Items
+    public ArrayList<CardView> getCellsArray() {
 
-        ArrayList<LinearLayout> cells = new ArrayList<>();
+        ArrayList<CardView> cells = new ArrayList<>();
 
         String[] themesArray = mContext.getResources().getStringArray(R.array.theme_color_names);
 
@@ -276,18 +296,30 @@ public class ThemeChooserDialog extends DialogFragment {
         }
 
         return cells;
-    }
+    } // getCellsArray
 
-    public LinearLayout getCellItem(String themeName) {
+	/**
+	 * Creates a {@code LinearLayout} containing a Swatch Item
+	 *
+	 * @param  themeName a {@code String} 
+	 * @return a {@code LinearLayout};
+	 */
+    public CardView getCellItem(String themeName) {
 
         int[] colors = ColorUtils.getColorSet(themeName, mContext);
 
+		CardView cv = new CardView(mContext);
         LinearLayout ll = new LinearLayout(mContext);
         RelativeLayout rl = new RelativeLayout(mContext);
-
-        TableRow.LayoutParams llParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
-		llParams.setMargins(2, 2, 2, 2);
-		llParams.weight = 1.0f;
+		
+		TableRow.LayoutParams cvParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
+		cvParams.setMargins(2, 2, 2, 2);
+		cvParams.weight = 1.0f;
+		cv.setLayoutParams(cvParams);
+		cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
+		cv.setCardElevation(5f);
+		
+        CardView.LayoutParams llParams = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
@@ -324,9 +356,9 @@ public class ThemeChooserDialog extends DialogFragment {
         loadDrawable("topCircle" + themeName, topCircle, R.drawable.themechooser_shape_circle, colors[1]);
 		
 		if (getIsLightTheme()) {
-			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xff000000);
+			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xff000000);
 		} else {
-			loadDrawable("checked" + themeName, checked, R.drawable.swatch_check, 0xffffffff);
+			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xffffffff);
 		}
 
         bottomCircleParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -349,8 +381,6 @@ public class ThemeChooserDialog extends DialogFragment {
 
         ll.addView(rl);
         ll.addView(tv);
-
-        ll.setTag(themeName);
 		
 		String tn = getThemeName();
 		
@@ -370,26 +400,32 @@ public class ThemeChooserDialog extends DialogFragment {
 		}
 
         checked.setTag("checked");
+		
+		cv.setTag(themeName);
+		cv.addView(ll);
 
-        return ll;
+        return cv;
     } // getCellItem
 
+	// Switch Listener
     CompoundButton.OnCheckedChangeListener mSwitchListener = new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            // true if the switch is in the On position
+            
             if (isChecked) {
                 setIsLightTheme(true);
             } else {
                 setIsLightTheme(false);
-            }
+            } // if theme is light or dark
 
             if (mListener != null) {
                 mListener.onThemeChanged(getThemeName(), getIsLightTheme());
-            }
+            } // if listener is not null
 
-        }
-    };
+        } // onCheckChanged
+		
+    }; // mSwitchListener
 
+	// SwatchListener
     View.OnClickListener swatchClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -400,15 +436,17 @@ public class ThemeChooserDialog extends DialogFragment {
             String themeName = v.getTag().toString();
 			String accentName = getAccentName();
 			
-			if (accentClicked) {
+			if (mAccentClicked) {
+				
 				if (themeName.equals(accentName)) {
 					setThemeName(themeName);
 				} else {
 					setThemeName(themeName + " \u0026 " + accentName);
-				}
+				} // if theme and accent colors identical or not
+				
 			} else {
 				setThemeName(themeName);
-			}
+			} // if an accent item was clicked or not
 			
             removeOldCheckFromTable(master);
 
@@ -417,16 +455,18 @@ public class ThemeChooserDialog extends DialogFragment {
 
             if (mListener != null) {
                 mListener.onThemeChanged(themeName, getIsLightTheme());
-            }
+            } // if listener is not null
 
-        }
-    };
+        } // onClick
+		
+    }; // swatchClickListener
 	
+	// AccentListener
 	View.OnClickListener accentClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 			
-			accentClicked = true;
+			mAccentClicked = true;
 			
 			ViewGroup vg = (ViewGroup) v.getParent();
 			ViewGroup master = (ViewGroup) vg.getParent();
@@ -439,26 +479,32 @@ public class ThemeChooserDialog extends DialogFragment {
 			if (themeName.contains(" \u0026 ")) {
 				String[] items = themeName.split(" \u0026 ");
 				themeName = items[0];
-			}
+			} // if theme has custom accent color
 			
 			if (themeName.equals(accentName)) {
 				setThemeName(themeName);
 			} else {
 				themeName = themeName + " \u0026 " + accentName;
 				setThemeName(themeName);
-			}
+			} // if accent color matches theme color or not
 			
 			ImageView checked = (ImageView) v.findViewWithTag("checked");
             checked.setVisibility(View.VISIBLE);
 			
             if (mListener != null) {
                 mListener.onThemeChanged(themeName, getIsLightTheme());
-            }
+            } // if listener is not null
 
-        }
-    };
+        } // onClick
+		
+    }; // accentClickListener
 
 
+	/**
+	 * Removes Checkmark Icon from Swatch Table
+	 *
+	 * @param  vg a {@code ViewGroup} that is the parent container for swatch items (TableLayout)
+	 */
     public void removeOldCheckFromTable(ViewGroup vg) {
 
         for (int i = 0; i < vg.getChildCount(); i++) {
@@ -474,14 +520,19 @@ public class ThemeChooserDialog extends DialogFragment {
 
                 if (checked.getVisibility() == View.VISIBLE) {
                     checked.setVisibility(View.INVISIBLE);
-                }
+                } // if view is visible
 
             } // for each item in tablerow
 
         } // for each TableRow
 
-    }
+    } // removeOldCheckFromTable
 	
+	/**
+	 * Removes Checkmark Icon from Accent Table
+	 *
+	 * @param  vg a {@code ViewGroup} that is the parent container for swatch items (LinearLayout)
+	 */
 	public void removeOldCheckFromAccent(ViewGroup vg) {
 
         for (int i = 0; i < vg.getChildCount(); i++) {
@@ -497,54 +548,102 @@ public class ThemeChooserDialog extends DialogFragment {
 
                 if (checked.getVisibility() == View.VISIBLE) {
                     checked.setVisibility(View.INVISIBLE);
-                }
+                } // if view is visible
 
             } // for each item in linearlayout
 
         } // for each TableRow
 
-    }
+    } // removeOldCheckFromAccent
 
+	/**
+	 * Sets Theme Hue to SharedPreferences
+	 *
+	 * @param  v a {@code boolean} that is {@code true} for light theme, {@code false} for dark theme
+	 */
     public void setIsLightTheme(boolean v) {
-        SharedPreferences.Editor editor = prefs.edit();
+        SharedPreferences.Editor editor = mPrefs.edit();
         editor.putBoolean(mIsLightThemeKey, v);
         editor.apply();
-    }
+    } // setIsLightTheme
 
+	/**
+	 * Gets Theme Hie from SharedPreferences
+	 *
+	 * return  isLightTheme a {@code boolean} that is {@code true} for light theme, {@code false} for dark theme
+	 */
     public boolean getIsLightTheme() {
-        return prefs.getBoolean(mIsLightThemeKey, false);
-    }
+        return mPrefs.getBoolean(mIsLightThemeKey, false);
+    } // getIsLightTheme
 
+	/**
+	 * Sets Theme Name to SharedPreferences
+	 *
+	 * @param  v a {@code String} that contains the theme name
+	 */
     public void setThemeName(String v) {
-        SharedPreferences.Editor editor = prefs.edit();
+        SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(mThemeKey, v);
         editor.apply();
-    }
+    } // setThemeName
 
+	/**
+	 * Gets Theme Name from SharedPreferences
+	 *
+	 * return  themeName a {@code String} that contains the theme name
+	 */
     public String getThemeName() {
-        return prefs.getString(mThemeKey, "Light Blue");
-    }
+        return mPrefs.getString(mThemeKey, "Light Blue");
+    } // getathemeName
 	
+	/**
+	 * Sets Accent Name to SharedPreferences
+	 *
+	 * @param  v a {@code String} that contains the theme name
+	 */
 	public void setAccentName(String v) {
-		SharedPreferences.Editor editor = prefs.edit();
+		SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(mAccentKey, v);
         editor.apply();
-	}
+	} // setAccentName
 	
+	/**
+	 * Gets Accent Name from SharedPreferences
+	 *
+	 * return  accentName a {@code String} that contains the accent name
+	 */
 	public String getAccentName() {
-		return prefs.getString(mAccentKey, "Light Blue");
-	}
+		return mPrefs.getString(mAccentKey, "Light Blue");
+	} // getAccentName
 	
+	/**
+	 * Sets Cell Size to SharedPreferences
+	 *
+	 * @param  v an {@code int} that is the height and width of Cell Items
+	 */
 	public void setCellSize(int v) {
-		SharedPreferences.Editor editor = prefs.edit();
+		SharedPreferences.Editor editor = mPrefs.edit();
         editor.putInt(mCellDimenKey, v);
         editor.apply();
-	}
+	} // setCellSize
 
+	/**
+	 * Gets Cell Size from SharedPreferences
+	 *
+	 * @return  v an {@code int} that is the height and width of Cell Items
+	 */
 	public int getCellSize() {
-		return prefs.getInt(mCellDimenKey, 0);
-	}
+		return mPrefs.getInt(mCellDimenKey, 0);
+	} // getCellSize
 
+	/**
+	 * Loads drawables asynchronously
+	 *
+	 * @param  title a {@code String} that is used to identify a drawable
+	 * @param  imageView an {@code ImageView} that the drawable will be bound to
+	 * @param  id an {@code int} that is the ResourceId of the Drawable
+	 * @param  color an {@code int} that represents the color we want to make the drawable
+	 */
     public void loadDrawable(String title, ImageView imageView, int id, int color) {
         if (ImageLoader.cancelPotentialWork(title, imageView)) {
 
@@ -555,6 +654,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
             task.execute(title);
         } // if work is not already ongoing
-    } // loadBitmap
+		
+    } // loadDrawable
 
 } // Class

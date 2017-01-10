@@ -4,6 +4,13 @@ import android.content.Context;
 
 public class ColorUtils {
 	
+	/**
+	 * Creates a set of colors that represent Primary, Dark, and Accent colors for a theme
+	 *
+	 * @param  themeName a {@code String} that contains the theme name
+	 * @param  mContext a {@code Context} that contains the theme name
+	 * @return  an {@code int[]} that contains Primary, Dark, and Accent theme colors
+	 */
 	public static int[] getColorSet(String themeName, Context mContext) {
 
         int[] colors = new int[3];
@@ -221,6 +228,13 @@ public class ColorUtils {
 		
     } // getColorSet
 	
+	/**
+	 * Creates a set of colors that represent Primary, Dark, and Accent colors for a theme
+	 *
+	 * @param  themeName a {@code String} that contains the theme name
+	 * @param  mContext a {@code Context} that contains the theme name
+	 * @return  an {@code int} that contains the Accent theme color
+	 */
 	private static int getCustomAccentColor(String themeName, Context mContext) {
 		
 		int color = 0;
