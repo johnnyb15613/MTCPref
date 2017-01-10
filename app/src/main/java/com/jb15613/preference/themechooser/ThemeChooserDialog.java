@@ -47,6 +47,9 @@ public class ThemeChooserDialog extends DialogFragment {
     final String mThemeKey = "themeColor";
 	final String mAccentKey = "accentColor";
 	final String mCellDimenKey = "cellSize";
+	
+	// isLandscape
+	boolean isPortrait;
 
 	// Theme Cange Listener
     OnThemeChangedListener mListener;
@@ -76,6 +79,17 @@ public class ThemeChooserDialog extends DialogFragment {
 
 		// Inflate layoyt
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
+		
+		int w = this.getResources().getDisplayMetrics().widthPixels;
+		int h = this.getResources().getDisplayMetrics().heightPixels;
+		
+		if (w > h) {
+			isPortrait = false;
+		} else if (w < h) {
+			isPortrait = true;
+		} else if (w == h) {
+			isPortrait = true;
+		}
 		
 		// set cell size if it hasn't already been done
 		if (getCellSize() == 0) {
@@ -161,11 +175,21 @@ public class ThemeChooserDialog extends DialogFragment {
             lay.setOnClickListener(swatchClickListener);
 			
             tr.addView(lay);
-
-            if ((counter == 3) || (i == array.size() - 1)) {
-                counter = 0;
-                rows.add(tr);
-            }
+			
+			if (isPortrait) {
+				
+				if ((counter == 3) || (i == array.size() - 1)) {
+					counter = 0;
+					rows.add(tr);
+				}
+				
+			} else {
+				
+				if (i == array.size() - 1) {
+					rows.add(tr);
+				}
+				
+			} // if device is portrait or landscape
 
         } // for loop
 
@@ -321,7 +345,9 @@ public class ThemeChooserDialog extends DialogFragment {
 		
 		TableRow.LayoutParams cvParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
 		cvParams.setMargins(4, 2, 4, 2);
-		cvParams.weight = 1.0f;
+		if (isPortrait) {
+			cvParams.weight = 1.0f;
+		}
 		cv.setLayoutParams(cvParams);
 		cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
 		cv.setCardElevation(5f);
