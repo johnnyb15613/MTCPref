@@ -173,13 +173,12 @@ public class ThemeChooserDialog extends DialogFragment {
             mTableLayout.addView(row);
         } // for each loop
 		
-		ArrayList<LinearLayout> accentArray = getAccentsArray();
+		ArrayList<CardView> accentArray = getAccentsArray();
 
 		for (int ii = 0; ii < accentArray.size(); ii++) {
 
-            LinearLayout lay = accentArray.get(ii);
+            CardView lay = accentArray.get(ii);
             lay.setOnClickListener(accentClickListener);
-			lay.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
 			mAccentLayout.addView(lay);
 
         } // for loop
@@ -187,9 +186,9 @@ public class ThemeChooserDialog extends DialogFragment {
     } // initializeTable
 	
 	// Processes Accent Items
-	public ArrayList<LinearLayout> getAccentsArray() {
+	public ArrayList<CardView> getAccentsArray() {
 
-        ArrayList<LinearLayout> cells = new ArrayList<>();
+        ArrayList<CardView> cells = new ArrayList<>();
 
         String[] themesArray = mContext.getResources().getStringArray(R.array.theme_color_names);
 
@@ -201,20 +200,27 @@ public class ThemeChooserDialog extends DialogFragment {
     } // getAccentsArray
 	
 	/**
-	 * Creates a {@code LinearLayout} containing an Accent Item
+	 * Creates a {@code CardView} containing an Accent Item
 	 *
 	 * @param  themeName a {@code String} 
-	 * @return a {@code LinearLayout};
+	 * @return a {@code CardView};
 	 */
-	public LinearLayout getAccentItem(String themeName) {
+	public CardView getAccentItem(String themeName) {
 
         int[] colors = ColorUtils.getColorSet(themeName, mContext);
 
+		CardView cv = new CardView(mContext);
         LinearLayout ll = new LinearLayout(mContext);
         RelativeLayout rl = new RelativeLayout(mContext);
+		
+		LinearLayout.LayoutParams cvParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+		cvParams.setMargins(4, 2, 4, 2);
+		cvParams.weight = 1.0f;
+		cv.setLayoutParams(cvParams);
+		cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
+		cv.setCardElevation(5f);
 
-        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-		llParams.setMargins(2, 2, 2, 2);
+        CardView.LayoutParams llParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.MATCH_PARENT);
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
@@ -260,8 +266,6 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.addView(rl);
         ll.addView(tv);
 
-        ll.setTag(themeName);
-
         String tn = getThemeName();
 
 		if (tn.contains(" \u0026 ")) {
@@ -281,7 +285,10 @@ public class ThemeChooserDialog extends DialogFragment {
 
         checked.setTag("checked");
 
-        return ll;
+		cv.setTag(themeName);
+		cv.addView(ll);
+		
+        return cv;
     } // getAccentItem
 
 	// Processes Swatch Items
@@ -299,10 +306,10 @@ public class ThemeChooserDialog extends DialogFragment {
     } // getCellsArray
 
 	/**
-	 * Creates a {@code LinearLayout} containing a Swatch Item
+	 * Creates a {@code CardView} containing a Swatch Item
 	 *
 	 * @param  themeName a {@code String} 
-	 * @return a {@code LinearLayout};
+	 * @return a {@code CardView};
 	 */
     public CardView getCellItem(String themeName) {
 
@@ -313,13 +320,13 @@ public class ThemeChooserDialog extends DialogFragment {
         RelativeLayout rl = new RelativeLayout(mContext);
 		
 		TableRow.LayoutParams cvParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
-		cvParams.setMargins(2, 2, 2, 2);
+		cvParams.setMargins(4, 2, 4, 2);
 		cvParams.weight = 1.0f;
 		cv.setLayoutParams(cvParams);
 		cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
 		cv.setCardElevation(5f);
 		
-        CardView.LayoutParams llParams = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
+        CardView.LayoutParams llParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.MATCH_PARENT);
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
@@ -513,7 +520,8 @@ public class ThemeChooserDialog extends DialogFragment {
 
             for (int ii = 0; ii < tr.getChildCount(); ii++) {
 
-                LinearLayout ll = (LinearLayout) tr.getChildAt(ii);
+				CardView cv = (CardView) tr.getChildAt(ii);
+                LinearLayout ll = (LinearLayout) cv.getChildAt(0);
                 RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
                 ImageView checked = (ImageView) rl.findViewWithTag("checked");
@@ -541,7 +549,8 @@ public class ThemeChooserDialog extends DialogFragment {
 
             for (int ii = 0; ii < tr.getChildCount(); ii++) {
 
-                LinearLayout ll = (LinearLayout) tr.getChildAt(ii);
+                CardView cv = (CardView) tr.getChildAt(ii);
+                LinearLayout ll = (LinearLayout) cv.getChildAt(0);
                 RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
                 ImageView checked = (ImageView) rl.findViewWithTag("checked");
