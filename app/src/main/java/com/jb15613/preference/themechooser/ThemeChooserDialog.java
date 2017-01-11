@@ -25,6 +25,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import android.support.v7.widget.CardView;
+import android.widget.ScrollView;
+import android.widget.HorizontalScrollView;
+import java.io.Serializable;
 
 public class ThemeChooserDialog extends DialogFragment {
 
@@ -57,6 +60,9 @@ public class ThemeChooserDialog extends DialogFragment {
 	// Preferences
     SharedPreferences mPrefs;
 	
+	// Cell Item Scroll View
+	View mScrollView;
+	
 	// 
 	boolean mAccentClicked = false;
 
@@ -67,6 +73,34 @@ public class ThemeChooserDialog extends DialogFragment {
 
     public ThemeChooserDialog(){
 	} // Constructor
+	
+	@Override
+    public void onSaveInstanceState(final Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("scrollPositionX", mScrollView.getScrollX());
+		outState.putInt("scrollPositionY", mScrollView.getScrollY());
+		
+    }
+	
+	@Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            
+			if (mScrollView != null) {
+				
+				int spX = savedInstanceState.getInt("scrollPositionX");
+				int spY = savedInstanceState.getInt("scrollPositionY");
+
+				mScrollView.setScrollX(spX);
+				mScrollView.setScrollY(spY);
+				
+			}
+			
+        }
+		
+    }
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -102,6 +136,12 @@ public class ThemeChooserDialog extends DialogFragment {
 		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
         mTableLayout = (TableLayout) view.findViewById(R.id.tcd_tableLayout);
         mSwitch = (Switch) view.findViewById(R.id.tcd_switch);
+		
+		if (isPortrait) {
+			mScrollView = (ScrollView) view.findViewById(R.id.tcd_scrollView);
+		} else {
+			mScrollView = (HorizontalScrollView) view.findViewById(R.id.tcd_scrollViewHorizontal);
+		}
 
 		// set switch position
         mSwitch.setChecked(getIsLightTheme());
