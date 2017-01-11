@@ -39,8 +39,10 @@ public class ThemeChooserDialog extends DialogFragment {
 
 	// Layout to add Accent Items to
 	LinearLayout mAccentLayout;
-	// Layout to add Swatch Items to
+	// Layout to add Portrait Swatch Items to
     TableLayout mTableLayout;
+	// Layout to add Landscape Swatch Items to
+    LinearLayout mLinearLayout;
 	// Switch for Light/Dark
     Switch mSwitch;
 
@@ -60,9 +62,6 @@ public class ThemeChooserDialog extends DialogFragment {
 	// Preferences
     SharedPreferences mPrefs;
 	
-	// Cell Item Scroll View
-	View mScrollView;
-	
 	// 
 	boolean mAccentClicked = false;
 
@@ -74,34 +73,6 @@ public class ThemeChooserDialog extends DialogFragment {
     public ThemeChooserDialog(){
 	} // Constructor
 	
-	@Override
-    public void onSaveInstanceState(final Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("scrollPositionX", mScrollView.getScrollX());
-		outState.putInt("scrollPositionY", mScrollView.getScrollY());
-		
-    }
-	
-	@Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        if (savedInstanceState != null) {
-            
-			if (mScrollView != null) {
-				
-				int spX = savedInstanceState.getInt("scrollPositionX");
-				int spY = savedInstanceState.getInt("scrollPositionY");
-
-				mScrollView.setScrollX(spX);
-				mScrollView.setScrollY(spY);
-				
-			}
-			
-        }
-		
-    }
-
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Holo_Dialog);
@@ -134,15 +105,18 @@ public class ThemeChooserDialog extends DialogFragment {
 
 		// get views
 		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
-        mTableLayout = (TableLayout) view.findViewById(R.id.tcd_tableLayout);
+        mTableLayout = (TableLayout) view.findViewById(R.id.tcd_portraitSwatchContainer);
+		mLinearLayout = (LinearLayout) view.findViewById(R.id.tcd_landSwatchContainer);
         mSwitch = (Switch) view.findViewById(R.id.tcd_switch);
 		
 		if (isPortrait) {
-			mScrollView = (ScrollView) view.findViewById(R.id.tcd_scrollView);
+			mTableLayout.setVisibility(View.VISIBLE);
+			mLinearLayout.setVisibility(View.GONE);
 		} else {
-			mScrollView = (HorizontalScrollView) view.findViewById(R.id.tcd_scrollViewHorizontal);
+			mTableLayout.setVisibility(View.GONE);
+			mLinearLayout.setVisibility(View.VISIBLE);
 		}
-
+		
 		// set switch position
         mSwitch.setChecked(getIsLightTheme());
 		// set switch listener
@@ -203,39 +177,38 @@ public class ThemeChooserDialog extends DialogFragment {
         for (int i = 0; i < array.size(); i++) {
 
             counter++;
-
-            if (counter == 1) {
-                tr = new TableRow(mContext);
-                tr.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                tr.setPadding(10, 5, 10, 5);
-            }
-
-            CardView lay = array.get(i);
+			
+			CardView lay = array.get(i);
             lay.setOnClickListener(swatchClickListener);
 			
-            tr.addView(lay);
-			
 			if (isPortrait) {
+				
+				if (counter == 1) {
+					tr = new TableRow(mContext);
+					tr.setLayoutParams(new TableRow.LayoutParams(
+										   TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+					tr.setPadding(10, 5, 10, 5);
+				
+				}
+				
+				tr.addView(lay);
 				
 				if ((counter == 3) || (i == array.size() - 1)) {
 					counter = 0;
 					rows.add(tr);
-				}
+				} // if its the 3rd item in group or if its the last item
 				
 			} else {
-				
-				if (i == array.size() - 1) {
-					rows.add(tr);
-				}
-				
-			} // if device is portrait or landscape
-
+				mLinearLayout.addView(lay);
+			}
+			
         } // for loop
 
-        for (TableRow row : rows) {
-            mTableLayout.addView(row);
-        } // for each loop
+		if (isPortrait) {
+			for (TableRow row : rows) {
+				mTableLayout.addView(row);
+			} // for each loop
+		}
 		
 		ArrayList<CardView> accentArray = getAccentsArray();
 
@@ -581,22 +554,39 @@ public class ThemeChooserDialog extends DialogFragment {
     public void removeOldCheckFromTable(ViewGroup vg) {
 
         for (int i = 0; i < vg.getChildCount(); i++) {
+			
+			if (isPortrait) {
+				
+				TableRow tr = (TableRow) vg.getChildAt(i);
 
-            TableRow tr = (TableRow) vg.getChildAt(i);
+				for (int ii = 0; ii < tr.getChildCount(); ii++) {
 
-            for (int ii = 0; ii < tr.getChildCount(); ii++) {
+					CardView cv = (CardView) tr.getChildAt(ii);
+					LinearLayout ll = (LinearLayout) cv.getChildAt(0);
+					RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
-				CardView cv = (CardView) tr.getChildAt(ii);
-                LinearLayout ll = (LinearLayout) cv.getChildAt(0);
-                RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
+					ImageView checked = (ImageView) rl.findViewWithTag("checked");
 
-                ImageView checked = (ImageView) rl.findViewWithTag("checked");
+					if (checked.getVisibility() == View.VISIBLE) {
+						checked.setVisibility(View.INVISIBLE);
+					} // if view is visible
 
-                if (checked.getVisibility() == View.VISIBLE) {
-                    checked.setVisibility(View.INVISIBLE);
-                } // if view is visible
+				} // for each item in tablerow
+				
+			} else {
+				
+				CardView cv = (CardView) vg.getChildAt(i);
+				LinearLayout ll = (LinearLayout) cv.getChildAt(0);
+				RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
-            } // for each item in tablerow
+				ImageView checked = (ImageView) rl.findViewWithTag("checked");
+
+				if (checked.getVisibility() == View.VISIBLE) {
+					checked.setVisibility(View.INVISIBLE);
+				} // if view is visible
+				
+			}
+
 
         } // for each TableRow
 

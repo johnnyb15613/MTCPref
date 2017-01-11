@@ -3,8 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/tcd_relativeLayout"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:layout_height="match_parent">
 
 	<ScrollView
 		android:id="@+id/tcd_scrollView"
@@ -19,13 +18,29 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-		<TableLayout
-			android:stretchColumns="*"
-			android:id="@+id/tcd_tableLayout"
+		<RelativeLayout
+			android:id="@+id/tcd_actionContainer"
+			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_width="match_parent">
+			android:orientation="vertical">
+			
+			<LinearLayout
+				android:id="@+id/tcd_landSwatchContainer"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:visibility="gone"
+				android:layout_centerInParent="true"/>
 
-		</TableLayout>
+			<TableLayout
+				android:stretchColumns="*"
+				android:id="@+id/tcd_portraitSwatchContainer"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:visibility="gone"
+				android:layout_centerInParent="true"/>
+
+		</RelativeLayout>
 
 	</ScrollView>
 
