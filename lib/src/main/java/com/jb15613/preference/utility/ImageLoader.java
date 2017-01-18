@@ -1,4 +1,4 @@
-package com.jb15613.preference.themechooser;
+package com.jb15613.preference.utility;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,8 +11,9 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
+import com.jb15613.preference.themechooser.R;
 
-class ImageLoader extends AsyncTask<String, Void, Drawable> {
+public class ImageLoader extends AsyncTask<String, Void, Drawable> {
 
     private final WeakReference<ImageView> mImageViewReference;
     private Context mContext;
@@ -23,7 +24,7 @@ class ImageLoader extends AsyncTask<String, Void, Drawable> {
 
     private PorterDuff.Mode colorMode;
 
-    ImageLoader(ImageView imageView, Context c, int id, int color) {
+    public ImageLoader(ImageView imageView, Context c, int id, int color) {
 
         mImageViewReference = new WeakReference<>(imageView);
         mContext = c;
@@ -69,11 +70,11 @@ class ImageLoader extends AsyncTask<String, Void, Drawable> {
         }
     }
 
-    static class AsyncDrawable extends BitmapDrawable {
+    public static class AsyncDrawable extends BitmapDrawable {
 
         private final WeakReference<ImageLoader> imageLoaderTaskReference;
 
-        AsyncDrawable(Resources res, ImageLoader imageLoader) {
+        public AsyncDrawable(Resources res, ImageLoader imageLoader) {
             super(res);
             imageLoaderTaskReference = new WeakReference<>(imageLoader);
         }
@@ -83,7 +84,7 @@ class ImageLoader extends AsyncTask<String, Void, Drawable> {
         }
     }
 
-    static boolean cancelPotentialWork(String data, ImageView imageView) {
+    public static boolean cancelPotentialWork(String data, ImageView imageView) {
         final ImageLoader imageLoaderTask = getImageLoaderTask(imageView);
 
         if (imageLoaderTask != null) {
@@ -101,7 +102,7 @@ class ImageLoader extends AsyncTask<String, Void, Drawable> {
         return true;
     }
 
-    private static ImageLoader getImageLoaderTask(ImageView imageView) {
+    public static ImageLoader getImageLoaderTask(ImageView imageView) {
         if (imageView != null) {
             final Drawable drawable = imageView.getDrawable();
             if (drawable instanceof AsyncDrawable) {

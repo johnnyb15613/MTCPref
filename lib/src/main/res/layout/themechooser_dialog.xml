@@ -5,50 +5,60 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<ScrollView
-		android:id="@+id/tcd_scrollView"
-		android:gravity="center"
-		android:paddingLeft="10dp"
-		android:paddingTop="10dp"
-		android:paddingRight="10dp"
-		android:paddingBottom="4dp"
+	<RelativeLayout
+		android:id="@+id/tcd_swatchParent"
 		android:layout_above="@+id/tcd_textView"
 		android:layout_alignParentTop="true"
-		android:layout_gravity="center"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-		<RelativeLayout
-			android:id="@+id/tcd_actionContainer"
+		<ScrollView
+			android:id="@+id/tcd_portraitSwatchParent"
+			android:gravity="center"
+			android:paddingLeft="10dp"
+			android:paddingTop="10dp"
+			android:paddingRight="10dp"
+			android:paddingBottom="4dp"
+			android:layout_gravity="center"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:orientation="vertical">
-			
-			<LinearLayout
-				android:id="@+id/tcd_landSwatchContainer"
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:orientation="horizontal"
-				android:visibility="gone"
-				android:layout_centerInParent="true"/>
+			android:layout_centerInParent="true">
 
 			<TableLayout
 				android:stretchColumns="*"
 				android:id="@+id/tcd_portraitSwatchContainer"
 				android:layout_height="match_parent"
-				android:layout_width="match_parent"
-				android:visibility="gone"
-				android:layout_centerInParent="true"/>
+				android:layout_width="match_parent"/>
 
-		</RelativeLayout>
+		</ScrollView>
 
-	</ScrollView>
+		<HorizontalScrollView
+			android:id="@+id/tcd_landSwatchParent"
+			android:gravity="center"
+			android:paddingLeft="10dp"
+			android:paddingTop="0dp"
+			android:paddingRight="10dp"
+			android:paddingBottom="0dp"
+			android:layout_gravity="center"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true">
+
+			<LinearLayout
+				android:id="@+id/tcd_landSwatchContainer"
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:orientation="horizontal"/>
+
+		</HorizontalScrollView>
+
+	</RelativeLayout>
 
 	<TextView
 		android:id="@+id/tcd_textView"
 		android:gravity="center"
 		android:text="Accent Color"
-		android:layout_above="@+id/tcd_horizontalScrollView"
+		android:layout_above="@+id/tcd_accentParent"
 		android:layout_gravity="center"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -56,7 +66,7 @@
 		android:textColor="?attr/textColorPrimary"/>
 
 	<HorizontalScrollView
-		android:id="@+id/tcd_horizontalScrollView"
+		android:id="@+id/tcd_accentParent"
 		android:gravity="center"
 		android:paddingLeft="10dp"
 		android:paddingTop="4dp"

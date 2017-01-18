@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/widget_frame"
     android:paddingLeft="16dp"
-    android:paddingTop="16dp"
+    android:paddingTop="8dp"
     android:paddingRight="24dp"
     android:paddingBottom="8dp"
     android:layout_width="match_parent"

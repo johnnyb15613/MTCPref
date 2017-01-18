@@ -7,27 +7,28 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.widget.CardView;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
+import com.jb15613.preference.utility.ColorUtils;
+import com.jb15613.preference.utility.ImageLoader;
+import com.jb15613.preference.utility.ThemeChooserUtils;
 import java.util.ArrayList;
-import android.support.v7.widget.CardView;
-import android.widget.ScrollView;
-import android.widget.HorizontalScrollView;
-import java.io.Serializable;
+import com.jb15613.preference.utility.Constants;
+import com.jb15613.preference.utility.PrefUtils;
 
 public class ThemeChooserDialog extends DialogFragment {
 
@@ -37,22 +38,24 @@ public class ThemeChooserDialog extends DialogFragment {
 	// Dialog
     AlertDialog mAlertDialog;
 
+	// Accent Scroll View
+	HorizontalScrollView mAccentParent;
 	// Layout to add Accent Items to
-	LinearLayout mAccentLayout;
+	LinearLayout mAccentContainer;
+	
+	// ScrollView to add Portrait 
+	ScrollView mScrollView;
 	// Layout to add Portrait Swatch Items to
-    TableLayout mTableLayout;
+    TableLayout mPortraitContainer;
+	
+	// ScrollView to add Landscape 
+	HorizontalScrollView mHorizontalScrollView;
 	// Layout to add Landscape Swatch Items to
-    LinearLayout mLinearLayout;
+    LinearLayout mLandscapeContainer;
+	
 	// Switch for Light/Dark
     Switch mSwitch;
 
-	// Keys for preferences
-	final String mPrefKey = "mtc_pref_preferences";
-    final String mIsLightThemeKey = "isLightTheme";
-    final String mThemeKey = "themeColor";
-	final String mAccentKey = "accentColor";
-	final String mCellDimenKey = "cellSize";
-	
 	// isLandscape
 	boolean isPortrait;
 
@@ -77,7 +80,18 @@ public class ThemeChooserDialog extends DialogFragment {
         super.onCreate(bundle);
         setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Holo_Dialog);
         mContext = getActivity();
-        mPrefs = mContext.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
+        mPrefs = mContext.getSharedPreferences(Constants.PREF_NAME_KEY, Context.MODE_PRIVATE);
+		
+		switch (getResources().getConfiguration().orientation) {
+			case 1:
+				isPortrait = true;
+				break;
+			case 2:
+				isPortrait = false;
+				break;
+
+		} // switch getOrientation
+		
     } // onCreate
 
     public Dialog onCreateDialog(Bundle bundle) {
@@ -85,58 +99,50 @@ public class ThemeChooserDialog extends DialogFragment {
 		// Inflate layoyt
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.themechooser_dialog, null);
 		
-		int w = this.getResources().getDisplayMetrics().widthPixels;
-		int h = this.getResources().getDisplayMetrics().heightPixels;
-		
-		if (w > h) {
-			isPortrait = false;
-		} else if (w < h) {
-			isPortrait = true;
-		} else if (w == h) {
-			isPortrait = true;
-		}
-		
 		// set cell size if it hasn't already been done
-		if (getCellSize() == 0) {
+		if (PrefUtils.getCellSize(mContext) == 0) {
 			int width = this.getResources().getDisplayMetrics().widthPixels;
 			int cellDimen = width / 6;
-			setCellSize(cellDimen);
+			PrefUtils.setCellSize(mContext, cellDimen);
 		}
 
 		// get views
-		mAccentLayout = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
-        mTableLayout = (TableLayout) view.findViewById(R.id.tcd_portraitSwatchContainer);
-		mLinearLayout = (LinearLayout) view.findViewById(R.id.tcd_landSwatchContainer);
+		mAccentParent = (HorizontalScrollView) view.findViewById(R.id.tcd_accentParent);
+		mAccentContainer = (LinearLayout) view.findViewById(R.id.tcd_accentContainer);
+		mScrollView = (ScrollView) view.findViewById(R.id.tcd_portraitSwatchParent);
+		mHorizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.tcd_landSwatchParent);
+        mPortraitContainer = (TableLayout) view.findViewById(R.id.tcd_portraitSwatchContainer);
+		mLandscapeContainer = (LinearLayout) view.findViewById(R.id.tcd_landSwatchContainer);
         mSwitch = (Switch) view.findViewById(R.id.tcd_switch);
 		
 		if (isPortrait) {
-			mTableLayout.setVisibility(View.VISIBLE);
-			mLinearLayout.setVisibility(View.GONE);
+			mScrollView.setVisibility(View.VISIBLE);
+			mHorizontalScrollView.setVisibility(View.GONE);
 		} else {
-			mTableLayout.setVisibility(View.GONE);
-			mLinearLayout.setVisibility(View.VISIBLE);
+			mScrollView.setVisibility(View.GONE);
+			mHorizontalScrollView.setVisibility(View.VISIBLE);
 		}
 		
-		// set switch position
-        mSwitch.setChecked(getIsLightTheme());
-		// set switch listener
-        mSwitch.setOnCheckedChangeListener(mSwitchListener);
-
 		// start building the table
         initializeTable();
+		
+		// set switch position
+        mSwitch.setChecked(PrefUtils.getThemeHue(mContext));
+		// set switch listener
+        mSwitch.setOnCheckedChangeListener(mSwitchListener);
 
 		// ThemeWrapper for the Dialog
         ContextThemeWrapper context;
 
         if (Build.VERSION.SDK_INT >= 21) {
-            if (getIsLightTheme()) {
+            if (PrefUtils.getThemeHue(mContext)) {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Material_Light_Dialog);
             } else {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Material_Dialog);
             } // if theme is light or dark
 
         } else {
-            if (getIsLightTheme()) {
+            if (PrefUtils.getThemeHue(mContext)) {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Holo_Light_Dialog);
             } else {
                 context = new ContextThemeWrapper(getActivity(), android.R.style.Theme_Holo_Dialog);
@@ -145,14 +151,14 @@ public class ThemeChooserDialog extends DialogFragment {
         } // if we are running on Jellybean or lower
 
 		// set switch text color
-        if (getIsLightTheme()) {
+        if (PrefUtils.getThemeHue(mContext)) {
             mSwitch.setTextColor(0xff000000);
         } else {
             mSwitch.setTextColor(0xffffffff);
         }
-
+		
 		// create dialog
-        mAlertDialog = new AlertDialog.Builder(context).setTitle("MTCPref").setView(view).create();
+        mAlertDialog = new AlertDialog.Builder(context).setTitle(Constants.DIALOG_TITLE).setView(view).create();
 
 		// return dialog
         return this.mAlertDialog;
@@ -165,50 +171,54 @@ public class ThemeChooserDialog extends DialogFragment {
 	
 	// Processes and builds the dialog
     public void initializeTable() {
+		
+		ArrayList<CardView> portraitSwatchArray = getCellsArray(true);
+		ArrayList<CardView> landscapeSwatchArray = getCellsArray(false);
+		
+		ArrayList<TableRow> rows = new ArrayList<>();
 
-        ArrayList<CardView> array = getCellsArray();
+		// need to count how many items we add to tablerow
+		int counter = 0;
 
-        ArrayList<TableRow> rows = new ArrayList<>();
+		TableRow tr = null;
 
-        int counter = 0;
+		for (int i = 0; i < portraitSwatchArray.size(); i++) {
 
-        TableRow tr = null;
-
-        for (int i = 0; i < array.size(); i++) {
-
-            counter++;
+			counter++;
 			
-			CardView lay = array.get(i);
-            lay.setOnClickListener(swatchClickListener);
+			CardView cv = null;
 			
-			if (isPortrait) {
+			if (getIsPortrait()) {
+				
+				cv = portraitSwatchArray.get(i);
+				cv.setOnClickListener(swatchClickListener);
 				
 				if (counter == 1) {
 					tr = new TableRow(mContext);
-					tr.setLayoutParams(new TableRow.LayoutParams(
-										   TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+					tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 					tr.setPadding(10, 5, 10, 5);
-				
 				}
-				
-				tr.addView(lay);
-				
-				if ((counter == 3) || (i == array.size() - 1)) {
+
+				tr.addView(cv);
+
+				if ((counter == 3) || (i == portraitSwatchArray.size() - 1)) {
 					counter = 0;
 					rows.add(tr);
 				} // if its the 3rd item in group or if its the last item
 				
 			} else {
-				mLinearLayout.addView(lay);
+				
+				cv = landscapeSwatchArray.get(i);
+				cv.setOnClickListener(swatchClickListener);
+				
+				mLandscapeContainer.addView(cv);
 			}
-			
-        } // for loop
 
-		if (isPortrait) {
-			for (TableRow row : rows) {
-				mTableLayout.addView(row);
-			} // for each loop
-		}
+		} // for every item in array loop
+
+		for (TableRow row : rows) {
+			mPortraitContainer.addView(row);
+		} // for each loop
 		
 		ArrayList<CardView> accentArray = getAccentsArray();
 
@@ -216,7 +226,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
             CardView lay = accentArray.get(ii);
             lay.setOnClickListener(accentClickListener);
-			mAccentLayout.addView(lay);
+			mAccentContainer.addView(lay);
 
         } // for loop
 
@@ -250,7 +260,7 @@ public class ThemeChooserDialog extends DialogFragment {
         LinearLayout ll = new LinearLayout(mContext);
         RelativeLayout rl = new RelativeLayout(mContext);
 		
-		LinearLayout.LayoutParams cvParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams cvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		cvParams.setMargins(4, 2, 4, 2);
 		cvParams.weight = 1.0f;
 		cv.setLayoutParams(cvParams);
@@ -262,8 +272,10 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
 		ll.setPadding(3, 3, 3, 3);
+		
+		int cellSize = PrefUtils.getCellSize(mContext);
 
-        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(getCellSize(), getCellSize());
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(cellSize, cellSize);
         rl.setLayoutParams(rlParams);
         rl.setPadding(3, 3, 3, 3);
 
@@ -274,8 +286,8 @@ public class ThemeChooserDialog extends DialogFragment {
 
         LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        RelativeLayout.LayoutParams circleParams = new RelativeLayout.LayoutParams((getCellSize() / 2) + 30, (getCellSize() / 2) + 30);
-        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
+        RelativeLayout.LayoutParams circleParams = new RelativeLayout.LayoutParams((cellSize / 2) + 30, (cellSize / 2) + 30);
+        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(cellSize / 2, cellSize / 2);
 		
         tv.setLayoutParams(tvParams);
         tv.setGravity(Gravity.CENTER);
@@ -285,10 +297,10 @@ public class ThemeChooserDialog extends DialogFragment {
 
         loadDrawable("circle" + themeName, circle, R.drawable.themechooser_shape_circle, colors[0]);
         
-		if (getIsLightTheme()) {
-			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xff000000);
+		if (PrefUtils.getThemeHue(mContext)) {
+			loadDrawable(Constants.VIEW_CHECKED + themeName, checked, R.drawable.checkmark, 0xff000000);
 		} else {
-			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xffffffff);
+			loadDrawable(Constants.VIEW_CHECKED + themeName, checked, R.drawable.checkmark, 0xffffffff);
 		}
 
         circleParams.addRule(RelativeLayout.CENTER_IN_PARENT);
@@ -303,10 +315,10 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.addView(rl);
         ll.addView(tv);
 
-        String tn = getThemeName();
+        String tn = PrefUtils.getThemeColor(mContext);
 
-		if (tn.contains(" \u0026 ")) {
-			String[] t = tn.split(" \u0026 ");
+		if (tn.contains(Constants.THEME_SPLITTER)) {
+			String[] t = tn.split(Constants.THEME_SPLITTER);
 			if (t[1].equals(themeName)) {
 				checked.setVisibility(View.VISIBLE);
 			} else {
@@ -320,8 +332,8 @@ public class ThemeChooserDialog extends DialogFragment {
 			}
 		}
 
-        checked.setTag("checked");
-
+        checked.setTag(Constants.VIEW_CHECKED);
+		
 		cv.setTag(themeName);
 		cv.addView(ll);
 		
@@ -329,14 +341,14 @@ public class ThemeChooserDialog extends DialogFragment {
     } // getAccentItem
 
 	// Processes Swatch Items
-    public ArrayList<CardView> getCellsArray() {
+    public ArrayList<CardView> getCellsArray(boolean portrait) {
 
         ArrayList<CardView> cells = new ArrayList<>();
 
         String[] themesArray = mContext.getResources().getStringArray(R.array.theme_color_names);
 
         for (String th : themesArray) {
-            cells.add(getCellItem(th));
+            cells.add(getCellItem(th, portrait));
         }
 
         return cells;
@@ -348,7 +360,7 @@ public class ThemeChooserDialog extends DialogFragment {
 	 * @param  themeName a {@code String} 
 	 * @return a {@code CardView};
 	 */
-    public CardView getCellItem(String themeName) {
+    public CardView getCellItem(String themeName, boolean portrait) {
 
         int[] colors = ColorUtils.getColorSet(themeName, mContext);
 
@@ -356,22 +368,35 @@ public class ThemeChooserDialog extends DialogFragment {
         LinearLayout ll = new LinearLayout(mContext);
         RelativeLayout rl = new RelativeLayout(mContext);
 		
-		TableRow.LayoutParams cvParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
-		cvParams.setMargins(4, 2, 4, 2);
-		if (isPortrait) {
-			cvParams.weight = 1.0f;
+		if (getIsPortrait()) {
+			TableRow.LayoutParams cvParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
+			cvParams.setMargins(4, 2, 4, 2);
+			if (isPortrait) {
+				cvParams.weight = 1.0f;
+			}
+			cv.setLayoutParams(cvParams);
+			cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
+			cv.setCardElevation(5f);
+		} else {
+			LinearLayout.LayoutParams cvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			cvParams.setMargins(4, 2, 4, 2);
+			if (isPortrait) {
+				cvParams.weight = 1.0f;
+			}
+			cv.setLayoutParams(cvParams);
+			cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
+			cv.setCardElevation(5f);
 		}
-		cv.setLayoutParams(cvParams);
-		cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(mContext));
-		cv.setCardElevation(5f);
 		
         CardView.LayoutParams llParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.MATCH_PARENT);
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
 		ll.setPadding(3, 3, 3, 3);
+		
+		int cellSize = PrefUtils.getCellSize(mContext);
 
-        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(getCellSize(), getCellSize());
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(cellSize, cellSize);
         rl.setLayoutParams(rlParams);
         rl.setPadding(3, 3, 3, 3);
 
@@ -384,10 +409,10 @@ public class ThemeChooserDialog extends DialogFragment {
 
         LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        RelativeLayout.LayoutParams bottomCircleParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
-        RelativeLayout.LayoutParams middleCircleParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
-        RelativeLayout.LayoutParams topCircleParams = new RelativeLayout.LayoutParams(getCellSize() / 2, getCellSize() / 2);
-        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(getCellSize() - 8, getCellSize() - 8);
+        RelativeLayout.LayoutParams bottomCircleParams = new RelativeLayout.LayoutParams(cellSize / 2, cellSize / 2);
+        RelativeLayout.LayoutParams middleCircleParams = new RelativeLayout.LayoutParams(cellSize / 2, cellSize / 2);
+        RelativeLayout.LayoutParams topCircleParams = new RelativeLayout.LayoutParams(cellSize / 2, cellSize / 2);
+        RelativeLayout.LayoutParams checkedParams = new RelativeLayout.LayoutParams(cellSize - 8, cellSize - 8);
 
         tv.setLayoutParams(tvParams);
         tv.setGravity(Gravity.CENTER);
@@ -401,10 +426,10 @@ public class ThemeChooserDialog extends DialogFragment {
         loadDrawable("middleCircle" + themeName, middleCircle, R.drawable.themechooser_shape_circle, colors[0]);
         loadDrawable("topCircle" + themeName, topCircle, R.drawable.themechooser_shape_circle, colors[1]);
 		
-		if (getIsLightTheme()) {
-			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xff000000);
+		if (PrefUtils.getThemeHue(mContext)) {
+			loadDrawable(Constants.VIEW_CHECKED + themeName, checked, R.drawable.checkmark, 0xff000000);
 		} else {
-			loadDrawable("checked" + themeName, checked, R.drawable.checkmark, 0xffffffff);
+			loadDrawable(Constants.VIEW_CHECKED + themeName, checked, R.drawable.checkmark, 0xffffffff);
 		}
 
         bottomCircleParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -428,10 +453,10 @@ public class ThemeChooserDialog extends DialogFragment {
         ll.addView(rl);
         ll.addView(tv);
 		
-		String tn = getThemeName();
+		String tn = PrefUtils.getThemeColor(mContext);
 		
-		if (tn.contains(" \u0026 ")) {
-			String[] t = tn.split(" \u0026 ");
+		if (tn.contains(Constants.THEME_SPLITTER)) {
+			String[] t = tn.split(Constants.THEME_SPLITTER);
 			if (t[0].equals(themeName)) {
 				checked.setVisibility(View.VISIBLE);
 			} else {
@@ -445,7 +470,7 @@ public class ThemeChooserDialog extends DialogFragment {
 			}
 		}
 
-        checked.setTag("checked");
+        checked.setTag(Constants.VIEW_CHECKED);
 		
 		cv.setTag(themeName);
 		cv.addView(ll);
@@ -458,13 +483,13 @@ public class ThemeChooserDialog extends DialogFragment {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             
             if (isChecked) {
-                setIsLightTheme(true);
+                PrefUtils.setThemeHue(mContext, true);
             } else {
-                setIsLightTheme(false);
+                PrefUtils.setThemeHue(mContext, false);
             } // if theme is light or dark
 
             if (mListener != null) {
-                mListener.onThemeChanged(getThemeName(), getIsLightTheme());
+                mListener.onThemeChanged(PrefUtils.getThemeColor(mContext), PrefUtils.getThemeHue(mContext));
             } // if listener is not null
 
         } // onCheckChanged
@@ -480,27 +505,35 @@ public class ThemeChooserDialog extends DialogFragment {
             ViewGroup master = (ViewGroup) vg.getParent();
 
             String themeName = v.getTag().toString();
-			String accentName = getAccentName();
+			PrefUtils.setThemeColor(mContext, themeName);
+			PrefUtils.setAccentColor(mContext, themeName);
 			
-			if (mAccentClicked) {
-				
-				if (themeName.equals(accentName)) {
-					setThemeName(themeName);
-				} else {
-					setThemeName(themeName + " \u0026 " + accentName);
-				} // if theme and accent colors identical or not
-				
-			} else {
-				setThemeName(themeName);
-			} // if an accent item was clicked or not
+			int l = v.getLeft();
+			int t = v.getTop();
+			int r = v.getRight();
+			int b = v.getBottom();
+			
+			int w = l + r ;
+			int h = t + b;
+			
+			int[] values = new int[2]; 
+			v.getLocationInWindow(values);
 			
             removeOldCheckFromTable(master);
-
-            ImageView checked = (ImageView) v.findViewWithTag("checked");
+			recheckAccentColor();
+			
+			if (isPortrait) {
+				rescrollAccentItems(themeName);
+			} else {
+				// Landscape
+				rescrollAccentItems(l - (values[0] - (4 * 19)));
+			}
+			
+            ImageView checked = (ImageView) v.findViewWithTag(Constants.VIEW_CHECKED);
             checked.setVisibility(View.VISIBLE);
 
             if (mListener != null) {
-                mListener.onThemeChanged(themeName, getIsLightTheme());
+                mListener.onThemeChanged(themeName, PrefUtils.getThemeHue(mContext));
             } // if listener is not null
 
         } // onClick
@@ -520,25 +553,26 @@ public class ThemeChooserDialog extends DialogFragment {
 			removeOldCheckFromAccent(master);
 
             String accentName = v.getTag().toString();
+			PrefUtils.setAccentColor(mContext, accentName);
 			
-			String themeName = getThemeName();
-			if (themeName.contains(" \u0026 ")) {
-				String[] items = themeName.split(" \u0026 ");
+			String themeName = PrefUtils.getThemeColor(mContext);
+			if (themeName.contains(Constants.THEME_SPLITTER)) {
+				String[] items = themeName.split(Constants.THEME_SPLITTER);
 				themeName = items[0];
 			} // if theme has custom accent color
 			
 			if (themeName.equals(accentName)) {
-				setThemeName(themeName);
+				PrefUtils.setThemeColor(mContext, themeName);
 			} else {
-				themeName = themeName + " \u0026 " + accentName;
-				setThemeName(themeName);
+				themeName = themeName + Constants.THEME_SPLITTER + accentName;
+				PrefUtils.setThemeColor(mContext, themeName);
 			} // if accent color matches theme color or not
 			
-			ImageView checked = (ImageView) v.findViewWithTag("checked");
+			ImageView checked = (ImageView) v.findViewWithTag(Constants.VIEW_CHECKED);
             checked.setVisibility(View.VISIBLE);
 			
             if (mListener != null) {
-                mListener.onThemeChanged(themeName, getIsLightTheme());
+                mListener.onThemeChanged(themeName, PrefUtils.getThemeHue(mContext));
             } // if listener is not null
 
         } // onClick
@@ -565,7 +599,7 @@ public class ThemeChooserDialog extends DialogFragment {
 					LinearLayout ll = (LinearLayout) cv.getChildAt(0);
 					RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
-					ImageView checked = (ImageView) rl.findViewWithTag("checked");
+					ImageView checked = (ImageView) rl.findViewWithTag(Constants.VIEW_CHECKED);
 
 					if (checked.getVisibility() == View.VISIBLE) {
 						checked.setVisibility(View.INVISIBLE);
@@ -575,15 +609,21 @@ public class ThemeChooserDialog extends DialogFragment {
 				
 			} else {
 				
-				CardView cv = (CardView) vg.getChildAt(i);
-				LinearLayout ll = (LinearLayout) cv.getChildAt(0);
-				RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
+				LinearLayout tr = (LinearLayout) vg.getChildAt(0);
+				
+				for (int ii = 0; ii < tr.getChildCount(); ii++) {
 
-				ImageView checked = (ImageView) rl.findViewWithTag("checked");
+					CardView cv = (CardView) tr.getChildAt(ii);
+					LinearLayout ll = (LinearLayout) cv.getChildAt(0);
+					RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
-				if (checked.getVisibility() == View.VISIBLE) {
-					checked.setVisibility(View.INVISIBLE);
-				} // if view is visible
+					ImageView checked = (ImageView) rl.findViewWithTag(Constants.VIEW_CHECKED);
+
+					if (checked.getVisibility() == View.VISIBLE) {
+						checked.setVisibility(View.INVISIBLE);
+					} // if view is visible
+
+				} // for each item in linearlayout
 				
 			}
 
@@ -609,7 +649,7 @@ public class ThemeChooserDialog extends DialogFragment {
                 LinearLayout ll = (LinearLayout) cv.getChildAt(0);
                 RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
-                ImageView checked = (ImageView) rl.findViewWithTag("checked");
+                ImageView checked = (ImageView) rl.findViewWithTag(Constants.VIEW_CHECKED);
 
                 if (checked.getVisibility() == View.VISIBLE) {
                     checked.setVisibility(View.INVISIBLE);
@@ -620,86 +660,116 @@ public class ThemeChooserDialog extends DialogFragment {
         } // for each TableRow
 
     } // removeOldCheckFromAccent
-
-	/**
-	 * Sets Theme Hue to SharedPreferences
-	 *
-	 * @param  v a {@code boolean} that is {@code true} for light theme, {@code false} for dark theme
-	 */
-    public void setIsLightTheme(boolean v) {
-        SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putBoolean(mIsLightThemeKey, v);
-        editor.apply();
-    } // setIsLightTheme
-
-	/**
-	 * Gets Theme Hie from SharedPreferences
-	 *
-	 * return  isLightTheme a {@code boolean} that is {@code true} for light theme, {@code false} for dark theme
-	 */
-    public boolean getIsLightTheme() {
-        return mPrefs.getBoolean(mIsLightThemeKey, false);
-    } // getIsLightTheme
-
-	/**
-	 * Sets Theme Name to SharedPreferences
-	 *
-	 * @param  v a {@code String} that contains the theme name
-	 */
-    public void setThemeName(String v) {
-        SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putString(mThemeKey, v);
-        editor.apply();
-    } // setThemeName
-
-	/**
-	 * Gets Theme Name from SharedPreferences
-	 *
-	 * return  themeName a {@code String} that contains the theme name
-	 */
-    public String getThemeName() {
-        return mPrefs.getString(mThemeKey, "Light Blue");
-    } // getathemeName
 	
-	/**
-	 * Sets Accent Name to SharedPreferences
-	 *
-	 * @param  v a {@code String} that contains the theme name
-	 */
-	public void setAccentName(String v) {
-		SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putString(mAccentKey, v);
-        editor.apply();
-	} // setAccentName
-	
-	/**
-	 * Gets Accent Name from SharedPreferences
-	 *
-	 * return  accentName a {@code String} that contains the accent name
-	 */
-	public String getAccentName() {
-		return mPrefs.getString(mAccentKey, "Light Blue");
-	} // getAccentName
-	
-	/**
-	 * Sets Cell Size to SharedPreferences
-	 *
-	 * @param  v an {@code int} that is the height and width of Cell Items
-	 */
-	public void setCellSize(int v) {
-		SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putInt(mCellDimenKey, v);
-        editor.apply();
-	} // setCellSize
+	public void recheckAccentColor() {
+		
+		for (int i = 0; i < mAccentContainer.getChildCount(); i++) {
+			
+			CardView cv = (CardView) mAccentContainer.getChildAt(i);
+			LinearLayout ll = (LinearLayout) cv.getChildAt(0);
+			RelativeLayout rl = (RelativeLayout) ll.getChildAt(0);
 
-	/**
-	 * Gets Cell Size from SharedPreferences
-	 *
-	 * @return  v an {@code int} that is the height and width of Cell Items
-	 */
-	public int getCellSize() {
-		return mPrefs.getInt(mCellDimenKey, 0);
-	} // getCellSize
+			ImageView checked = (ImageView) rl.findViewWithTag(Constants.VIEW_CHECKED);
+
+			if (checked.getVisibility() == View.VISIBLE) {
+				checked.setVisibility(View.INVISIBLE);
+			} // if view is visible
+			
+			String tn = PrefUtils.getThemeColor(mContext);
+			if (tn.contains(Constants.THEME_SPLITTER)) {
+				String[] items = tn.split(Constants.THEME_SPLITTER);
+				tn = items[0];
+			} // if theme has custom accent color
+			
+			if (cv.getTag().toString().equals(tn)) {
+				checked.setVisibility(View.VISIBLE);
+				PrefUtils.setAccentColor(mContext, cv.getTag().toString());
+			}
+			
+		}
+		
+	}
+	
+	public void rescrollAccentItems(int l) {
+			mAccentParent.setScrollX(l);
+	}
+	
+	public void rescrollAccentItems(String tn) {
+		
+		ArrayList<String> leftsTags = new ArrayList<>();
+		ArrayList<Integer> lefts = new ArrayList<>();
+		
+		for (int i = 0; i < mAccentContainer.getChildCount(); i++) {
+			CardView cv = (CardView) mAccentContainer.getChildAt(i);
+			leftsTags.add(cv.getTag().toString());
+			lefts.add(cv.getLeft());
+		}
+		
+		int dl = 0;
+		
+		switch (tn) {
+			case Constants.RED:
+				dl = lefts.get(0);
+				break;
+			case Constants.PINK:
+				dl = lefts.get(1);
+				break;
+			case Constants.PURPLE:
+				dl = lefts.get(2);
+				break;
+			case Constants.DEEPPURPLE:
+				dl = lefts.get(3);
+				break;
+			case Constants.INDIGO:
+				dl = lefts.get(4);
+				break;
+			case Constants.BLUE:
+				dl = lefts.get(5);
+				break;
+			case Constants.LIGHTBLUE:
+				dl = lefts.get(6);
+				break;
+			case Constants.CYAN:
+				dl = lefts.get(7);
+				break;
+			case Constants.TEAL:
+				dl = lefts.get(8);
+				break;
+			case Constants.GREEN:
+				dl = lefts.get(9);
+				break;
+			case Constants.LIGHTGREEN:
+				dl = lefts.get(10);
+				break;
+			case Constants.LIME:
+				dl = lefts.get(11);
+				break;
+			case Constants.YELLOW:
+				dl = lefts.get(12);
+				break;
+			case Constants.AMBER:
+				dl = lefts.get(13);
+				break;
+			case Constants.ORANGE:
+				dl = lefts.get(14);
+				break;
+			case Constants.DEEPORANGE:
+				dl = lefts.get(15);
+				break;
+			case Constants.BROWN:
+				dl = lefts.get(16);
+				break;
+			case Constants.GREY:
+				dl = lefts.get(17);
+				break;
+			case Constants.BLUEGREY:
+				dl = lefts.get(18);
+				break;
+		}
+		
+		mAccentParent.setScrollX(dl);
+		
+	}
 
 	/**
 	 * Loads drawables asynchronously
@@ -721,5 +791,23 @@ public class ThemeChooserDialog extends DialogFragment {
         } // if work is not already ongoing
 		
     } // loadDrawable
+	
+	public int getOrientationValue() {
+		return getResources().getConfiguration().orientation;
+	}
+	
+	public boolean getIsPortrait() {
+		
+		boolean v;
+		
+		if (getResources().getConfiguration().orientation == 1) {
+			v = true;
+		} else {
+			v = false;
+		}
+		
+		return v;
+		
+	}
 
 } // Class

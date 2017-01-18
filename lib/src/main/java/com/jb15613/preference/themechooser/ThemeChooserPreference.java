@@ -7,10 +7,11 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.os.Build;
+import android.os.Parcelable;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,20 +19,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.os.Bundle;
-import android.os.Parcelable;
+import com.jb15613.preference.utility.ColorUtils;
+import com.jb15613.preference.utility.Constants;
+import com.jb15613.preference.utility.PrefUtils;
 
 public class ThemeChooserPreference extends Preference implements Preference.OnPreferenceClickListener, ThemeChooserDialog.OnThemeChangedListener {
 	
-	final static String mPrefKey = "mtc_pref_preferences";
+	final static String mPrefKey = Constants.PREF_NAME_KEY;
 
     // the theme name
     private String mValue;
     // the hue
     private Boolean mBool;
 
-    //private ThemeChooserDialog mDialog;
-    private SharedPreferences prefs;
+    // private SharedPreferences prefs;
     private Context mContext;
 
     private  LinearLayout mSwatchContainer;
@@ -39,21 +40,19 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
     public ThemeChooserPreference(Context context) {
         super(context);
         mContext = context;
-        prefs = context.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
         init(context, null);
     }
 
     public ThemeChooserPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        prefs = context.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
         init(context, attrs);
     }
 
     public ThemeChooserPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-        prefs = context.getSharedPreferences(mPrefKey, Context.MODE_PRIVATE);
+		mValue = PrefUtils.getThemeColor(context);
         init(context, attrs);
     }
 
@@ -62,10 +61,40 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         LayoutInflater li = (LayoutInflater)getContext().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
         View v = li.inflate( R.layout.themechooser_preference, parent, false);
         mSwatchContainer = (LinearLayout) v.findViewById(R.id.swatchView);
-        swapThemeSwatch(prefs.getString("themeColor", "Light Blue"));
-		setSummary(prefs.getString("themeColor", "Light Blue") + getThemeHue());
+		
+		if (PrefUtils.getDensityScale(mContext) == 0f) {
+			PrefUtils.setDensityScale(mContext, getContext().getResources().getDisplayMetrics().density);
+		}
+		
+		swapThemeSwatch(PrefUtils.getThemeColor(mContext));
+		setSummary(PrefUtils.getThemeColor(mContext) + getThemeHue());
+		
         return v;
     }
+
+	@Override
+	protected Parcelable onSaveInstanceState() {
+		Log.e("MTCPref", "onSaveInstanceState() called");
+		return super.onSaveInstanceState();
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Parcelable state) {
+		super.onRestoreInstanceState(state);
+
+		Log.e("MTCPref", "onRestoreInstanceState() called");
+		
+		FragmentManager fm = getFragManager();
+
+        if (fm != null) {
+            ThemeChooserDialog mDialog = (ThemeChooserDialog) fm.findFragmentByTag("TCD");
+            mDialog.setOnThemeChangedListener(this);
+        }
+		
+		setOnPreferenceClickListener(this);
+		setOnPreferenceChangeListener(pcListener);
+
+	}
 
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
@@ -75,7 +104,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         if (mThemeDefaultValue != null) {
             return mThemeDefaultValue;
         } else {
-            return "Light Blue";
+            return Constants.LIGHTBLUE;
         }
     }
 
@@ -110,7 +139,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
 		
 		String h = "";
 
-		if (prefs.getBoolean("isLightTheme", false)) {
+		if (PrefUtils.getThemeHue(mContext)) {
 			h = " - Light";
 		} else {
 			h = " - Dark";
@@ -140,7 +169,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         if (fm != null) {
             ThemeChooserDialog mDialog = new ThemeChooserDialog();
             mDialog.setOnThemeChangedListener(this);
-            mDialog.show(fm, "");
+            mDialog.show(fm, "TCD");
         }
 
     }
@@ -177,16 +206,16 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setGravity(Gravity.CENTER);
 
-        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(130, 130);
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(pToDp(45), pToDp(45));
         rl.setLayoutParams(rlParams);
 
         ImageView bottomCircle = new ImageView(mContext);
         ImageView middleCircle = new ImageView(mContext);
         ImageView topCircle = new ImageView(mContext);
 
-        RelativeLayout.LayoutParams bottomCircleParams = new RelativeLayout.LayoutParams(60, 60);
-        RelativeLayout.LayoutParams middleCircleParams = new RelativeLayout.LayoutParams(60, 60);
-        RelativeLayout.LayoutParams topCircleParams = new RelativeLayout.LayoutParams(60, 60);
+        RelativeLayout.LayoutParams bottomCircleParams = new RelativeLayout.LayoutParams(pToDp(22), pToDp(22));
+        RelativeLayout.LayoutParams middleCircleParams = new RelativeLayout.LayoutParams(pToDp(22), pToDp(22));
+        RelativeLayout.LayoutParams topCircleParams = new RelativeLayout.LayoutParams(pToDp(22), pToDp(22));
 
         bottomCircle.setLayoutParams(bottomCircleParams);
         middleCircle.setLayoutParams(middleCircleParams);
@@ -224,5 +253,9 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
 
         return ll;
     } // getCellItem
-
+	
+	private int pToDp(int p) {
+		return (int) (p * PrefUtils.getDensityScale(mContext) + 0.5f);
+	}	
+	
 } // Class
