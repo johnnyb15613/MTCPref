@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="AppThemeLight.Pink">
+		<item name="colorPrimary">@color/material_primary_pink</item>
+        <item name="colorPrimaryDark">@color/material_primaryDark_pink</item>
+        <item name="colorAccent">@color/material_accent_pink</item>
+		<item name="colorControlNormal">@color/material_accent_pink</item>
+		<item name="colorControlActivated">@color/material_primary_pink</item>
+		<item name="colorControlHighlight">@color/material_primaryDark_pink</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Red">
+        <item name="colorAccent">@color/material_primary_red</item>
+		<item name="colorControlNormal">@color/material_accent_red</item>
+		<item name="colorControlActivated">@color/material_primary_red</item>
+	</style>
+	<style name="AppThemeLight.Pink.RedA1">
+        <item name="colorAccent">@color/material_accent_red</item>
+		<item name="colorControlNormal">@color/material_accent_red</item>
+		<item name="colorControlActivated">@color/material_accent_red</item>
+	</style>
+	<style name="AppThemeLight.Pink.RedA2">
+		<item name="colorAccent">@color/material_accent_red2</item>
+		<item name="colorControlNormal">@color/material_accent_red2</item>
+		<item name="colorControlActivated">@color/material_accent_red2</item>
+	</style>
+	<style name="AppThemeLight.Pink.RedA4">
+		<item name="colorAccent">@color/material_accent_red4</item>
+		<item name="colorControlNormal">@color/material_accent_red4</item>
+		<item name="colorControlActivated">@color/material_accent_red4</item>
+	</style>
+	<style name="AppThemeLight.Pink.RedA7">
+		<item name="colorAccent">@color/material_accent_red7</item>
+		<item name="colorControlNormal">@color/material_accent_red7</item>
+		<item name="colorControlActivated">@color/material_accent_red7</item>
+	</style>
+	
+	<style name="AppThemeLight.Pink.Pink">
+        <item name="colorAccent">@color/material_primary_pink</item>
+		<item name="colorControlNormal">@color/material_accent_pink</item>
+		<item name="colorControlActivated">@color/material_primary_pink</item>
+	</style>
+	<style name="AppThemeLight.Pink.PinkA1">
+        <item name="colorAccent">@color/material_accent_pink</item>
+		<item name="colorControlNormal">@color/material_accent_pink</item>
+		<item name="colorControlActivated">@color/material_accent_pink</item>
+	</style>
+	<style name="AppThemeLight.Pink.PinkA2">
+		<item name="colorAccent">@color/material_accent_pink2</item>
+		<item name="colorControlNormal">@color/material_accent_pink2</item>
+		<item name="colorControlActivated">@color/material_accent_pink2</item>
+	</style>
+	<style name="AppThemeLight.Pink.PinkA4">
+		<item name="colorAccent">@color/material_accent_pink4</item>
+		<item name="colorControlNormal">@color/material_accent_pink4</item>
+		<item name="colorControlActivated">@color/material_accent_pink4</item>
+	</style>
+	<style name="AppThemeLight.Pink.PinkA7">
+		<item name="colorAccent">@color/material_accent_pink7</item>
+		<item name="colorControlNormal">@color/material_accent_pink7</item>
+		<item name="colorControlActivated">@color/material_accent_pink7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Purple">
+        <item name="colorAccent">@color/material_primary_purple</item>
+		<item name="colorControlNormal">@color/material_accent_purple</item>
+		<item name="colorControlActivated">@color/material_primary_purple</item>
+	</style>
+	<style name="AppThemeLight.Pink.PurpleA1">
+		<item name="colorAccent">@color/material_accent_purple</item>
+		<item name="colorControlNormal">@color/material_accent_purple</item>
+		<item name="colorControlActivated">@color/material_accent_purple</item>
+	</style>
+	<style name="AppThemeLight.Pink.PurpleA2">
+		<item name="colorAccent">@color/material_accent_purple2</item>
+		<item name="colorControlNormal">@color/material_accent_purple2</item>
+		<item name="colorControlActivated">@color/material_accent_purple2</item>
+	</style>
+	<style name="AppThemeLight.Pink.PurpleA4">
+		<item name="colorAccent">@color/material_accent_purple4</item>
+		<item name="colorControlNormal">@color/material_accent_purple4</item>
+		<item name="colorControlActivated">@color/material_accent_purple4</item>
+	</style>
+	<style name="AppThemeLight.Pink.PurpleA7">
+		<item name="colorAccent">@color/material_accent_purple7</item>
+		<item name="colorControlNormal">@color/material_accent_purple7</item>
+		<item name="colorControlActivated">@color/material_accent_purple7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.DeepPurple">
+        <item name="colorAccent">@color/material_primary_deepPurple</item>
+		<item name="colorControlNormal">@color/material_accent_deepPurple</item>
+		<item name="colorControlActivated">@color/material_primary_deepPurple</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepPurpleA1">
+		<item name="colorAccent">@color/material_accent_deepPurple</item>
+		<item name="colorControlNormal">@color/material_accent_deepPurple</item>
+		<item name="colorControlActivated">@color/material_accent_deepPurple</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepPurpleA2">
+		<item name="colorAccent">@color/material_accent_deepPurple2</item>
+		<item name="colorControlNormal">@color/material_accent_deepPurple2</item>
+		<item name="colorControlActivated">@color/material_accent_deepPurple2</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepPurpleA4">
+		<item name="colorAccent">@color/material_accent_deepPurple4</item>
+		<item name="colorControlNormal">@color/material_accent_deepPurple4</item>
+		<item name="colorControlActivated">@color/material_accent_deepPurple4</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepPurpleA7">
+		<item name="colorAccent">@color/material_accent_deepPurple7</item>
+		<item name="colorControlNormal">@color/material_accent_deepPurple7</item>
+		<item name="colorControlActivated">@color/material_accent_deepPurple7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Indigo">
+        <item name="colorAccent">@color/material_primary_indigo</item>
+		<item name="colorControlNormal">@color/material_accent_indigo</item>
+		<item name="colorControlActivated">@color/material_primary_indigo</item>
+	</style>
+	<style name="AppThemeLight.Pink.IndigoA1">
+		<item name="colorAccent">@color/material_accent_indigo</item>
+		<item name="colorControlNormal">@color/material_accent_indigo</item>
+		<item name="colorControlActivated">@color/material_accent_indigo</item>
+	</style>
+	<style name="AppThemeLight.Pink.IndigoA2">
+		<item name="colorAccent">@color/material_accent_indigo2</item>
+		<item name="colorControlNormal">@color/material_accent_indigo2</item>
+		<item name="colorControlActivated">@color/material_accent_indigo2</item>
+	</style>
+	<style name="AppThemeLight.Pink.IndigoA4">
+		<item name="colorAccent">@color/material_accent_indigo4</item>
+		<item name="colorControlNormal">@color/material_accent_indigo4</item>
+		<item name="colorControlActivated">@color/material_accent_indigo4</item>
+	</style>
+	<style name="AppThemeLight.Pink.IndigoA7">
+		<item name="colorAccent">@color/material_accent_indigo7</item>
+		<item name="colorControlNormal">@color/material_accent_indigo7</item>
+		<item name="colorControlActivated">@color/material_accent_indigo7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Blue">
+        <item name="colorAccent">@color/material_primary_blue</item>
+		<item name="colorControlNormal">@color/material_accent_blue</item>
+		<item name="colorControlActivated">@color/material_primary_blue</item>
+	</style>
+	<style name="AppThemeLight.Pink.BlueA1">
+		<item name="colorAccent">@color/material_accent_blue</item>
+		<item name="colorControlNormal">@color/material_accent_blue</item>
+		<item name="colorControlActivated">@color/material_accent_blue</item>
+	</style>
+	<style name="AppThemeLight.Pink.BlueA2">
+		<item name="colorAccent">@color/material_accent_blue2</item>
+		<item name="colorControlNormal">@color/material_accent_blue2</item>
+		<item name="colorControlActivated">@color/material_accent_blue2</item>
+	</style>
+	<style name="AppThemeLight.Pink.BlueA4">
+		<item name="colorAccent">@color/material_accent_blue4</item>
+		<item name="colorControlNormal">@color/material_accent_blue4</item>
+		<item name="colorControlActivated">@color/material_accent_blue4</item>
+	</style>
+	<style name="AppThemeLight.Pink.BlueA7">
+		<item name="colorAccent">@color/material_accent_blue7</item>
+		<item name="colorControlNormal">@color/material_accent_blue7</item>
+		<item name="colorControlActivated">@color/material_accent_blue7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.LightBlue">
+        <item name="colorAccent">@color/material_primary_lightBlue</item>
+		<item name="colorControlNormal">@color/material_accent_lightBlue</item>
+		<item name="colorControlActivated">@color/material_primary_lightBlue</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightBlueA1">
+		<item name="colorAccent">@color/material_accent_lightBlue</item>
+		<item name="colorControlNormal">@color/material_accent_lightBlue</item>
+		<item name="colorControlActivated">@color/material_accent_lightBlue</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightBlueA2">
+		<item name="colorAccent">@color/material_accent_lightBlue2</item>
+		<item name="colorControlNormal">@color/material_accent_lightBlue2</item>
+		<item name="colorControlActivated">@color/material_accent_lightBlue2</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightBlueA4">
+		<item name="colorAccent">@color/material_accent_lightBlue4</item>
+		<item name="colorControlNormal">@color/material_accent_lightBlue4</item>
+		<item name="colorControlActivated">@color/material_accent_lightBlue4</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightBlueA7">
+		<item name="colorAccent">@color/material_accent_lightBlue7</item>
+		<item name="colorControlNormal">@color/material_accent_lightBlue7</item>
+		<item name="colorControlActivated">@color/material_accent_lightBlue7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Cyan">
+        <item name="colorAccent">@color/material_primary_cyan</item>
+		<item name="colorControlNormal">@color/material_accent_cyan</item>
+		<item name="colorControlActivated">@color/material_primary_cyan</item>
+	</style>
+	<style name="AppThemeLight.Pink.CyanA1">
+		<item name="colorAccent">@color/material_accent_cyan</item>
+		<item name="colorControlNormal">@color/material_accent_cyan</item>
+		<item name="colorControlActivated">@color/material_accent_cyan</item>
+	</style>
+	<style name="AppThemeLight.Pink.CyanA2">
+		<item name="colorAccent">@color/material_accent_cyan2</item>
+		<item name="colorControlNormal">@color/material_accent_cyan2</item>
+		<item name="colorControlActivated">@color/material_accent_cyan2</item>
+	</style>
+	<style name="AppThemeLight.Pink.CyanA4">
+		<item name="colorAccent">@color/material_accent_cyan4</item>
+		<item name="colorControlNormal">@color/material_accent_cyan4</item>
+		<item name="colorControlActivated">@color/material_accent_cyan4</item>
+	</style>
+	<style name="AppThemeLight.Pink.CyanA7">
+		<item name="colorAccent">@color/material_accent_cyan7</item>
+		<item name="colorControlNormal">@color/material_accent_cyan7</item>
+		<item name="colorControlActivated">@color/material_accent_cyan7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Teal">
+        <item name="colorAccent">@color/material_primary_teal</item>
+		<item name="colorControlNormal">@color/material_accent_teal</item>
+		<item name="colorControlActivated">@color/material_primary_teal</item>
+	</style>
+	<style name="AppThemeLight.Pink.TealA1">
+		<item name="colorAccent">@color/material_accent_teal</item>
+		<item name="colorControlNormal">@color/material_accent_teal</item>
+		<item name="colorControlActivated">@color/material_accent_teal</item>
+	</style>
+	<style name="AppThemeLight.Pink.TealA2">
+		<item name="colorAccent">@color/material_accent_teal2</item>
+		<item name="colorControlNormal">@color/material_accent_teal2</item>
+		<item name="colorControlActivated">@color/material_accent_teal2</item>
+	</style>
+	<style name="AppThemeLight.Pink.TealA4">
+		<item name="colorAccent">@color/material_accent_teal4</item>
+		<item name="colorControlNormal">@color/material_accent_teal4</item>
+		<item name="colorControlActivated">@color/material_accent_teal4</item>
+	</style>
+	<style name="AppThemeLight.Pink.TealA7">
+		<item name="colorAccent">@color/material_accent_teal7</item>
+		<item name="colorControlNormal">@color/material_accent_teal7</item>
+		<item name="colorControlActivated">@color/material_accent_teal7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Green">
+        <item name="colorAccent">@color/material_primary_green</item>
+		<item name="colorControlNormal">@color/material_accent_green</item>
+		<item name="colorControlActivated">@color/material_primary_green</item>
+	</style>
+	<style name="AppThemeLight.Pink.GreenA1">
+		<item name="colorAccent">@color/material_accent_green</item>
+		<item name="colorControlNormal">@color/material_accent_green</item>
+		<item name="colorControlActivated">@color/material_accent_green</item>
+	</style>
+	<style name="AppThemeLight.Pink.GreenA2">
+		<item name="colorAccent">@color/material_accent_green2</item>
+		<item name="colorControlNormal">@color/material_accent_green2</item>
+		<item name="colorControlActivated">@color/material_accent_green2</item>
+	</style>
+	<style name="AppThemeLight.Pink.GreenA4">
+		<item name="colorAccent">@color/material_accent_green4</item>
+		<item name="colorControlNormal">@color/material_accent_green4</item>
+		<item name="colorControlActivated">@color/material_accent_green4</item>
+	</style>
+	<style name="AppThemeLight.Pink.GreenA7">
+		<item name="colorAccent">@color/material_accent_green7</item>
+		<item name="colorControlNormal">@color/material_accent_green7</item>
+		<item name="colorControlActivated">@color/material_accent_green7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.LightGreen">
+        <item name="colorAccent">@color/material_primary_lightGreen</item>
+		<item name="colorControlNormal">@color/material_accent_lightGreen</item>
+		<item name="colorControlActivated">@color/material_primary_lightGreen</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightGreenA1">
+		<item name="colorAccent">@color/material_accent_lightGreen</item>
+		<item name="colorControlNormal">@color/material_accent_lightGreen</item>
+		<item name="colorControlActivated">@color/material_accent_lightGreen</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightGreenA2">
+		<item name="colorAccent">@color/material_accent_lightGreen2</item>
+		<item name="colorControlNormal">@color/material_accent_lightGreen2</item>
+		<item name="colorControlActivated">@color/material_accent_lightGreen2</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightGreenA4">
+		<item name="colorAccent">@color/material_accent_lightGreen4</item>
+		<item name="colorControlNormal">@color/material_accent_lightGreen4</item>
+		<item name="colorControlActivated">@color/material_accent_lightGreen4</item>
+	</style>
+	<style name="AppThemeLight.Pink.LightGreenA7">
+		<item name="colorAccent">@color/material_accent_lightGreen7</item>
+		<item name="colorControlNormal">@color/material_accent_lightGreen7</item>
+		<item name="colorControlActivated">@color/material_accent_lightGreen7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Lime">
+        <item name="colorAccent">@color/material_primary_lime</item>
+		<item name="colorControlNormal">@color/material_accent_lime</item>
+		<item name="colorControlActivated">@color/material_primary_lime</item>
+	</style>
+	<style name="AppThemeLight.Pink.LimeA1">
+		<item name="colorAccent">@color/material_accent_lime</item>
+		<item name="colorControlNormal">@color/material_accent_lime</item>
+		<item name="colorControlActivated">@color/material_accent_lime</item>
+	</style>
+	<style name="AppThemeLight.Pink.LimeA2">
+		<item name="colorAccent">@color/material_accent_lime2</item>
+		<item name="colorControlNormal">@color/material_accent_lime2</item>
+		<item name="colorControlActivated">@color/material_accent_lime2</item>
+	</style>
+	<style name="AppThemeLight.Pink.LimeA4">
+		<item name="colorAccent">@color/material_accent_lime4</item>
+		<item name="colorControlNormal">@color/material_accent_lime4</item>
+		<item name="colorControlActivated">@color/material_accent_lime4</item>
+	</style>
+	<style name="AppThemeLight.Pink.LimeA7">
+		<item name="colorAccent">@color/material_accent_lime7</item>
+		<item name="colorControlNormal">@color/material_accent_lime7</item>
+		<item name="colorControlActivated">@color/material_accent_lime7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Yellow">
+        <item name="colorAccent">@color/material_primary_yellow</item>
+		<item name="colorControlNormal">@color/material_accent_yellow</item>
+		<item name="colorControlActivated">@color/material_primary_yellow</item>
+	</style>
+	<style name="AppThemeLight.Pink.YellowA1">
+		<item name="colorAccent">@color/material_accent_yellow</item>
+		<item name="colorControlNormal">@color/material_accent_yellow</item>
+		<item name="colorControlActivated">@color/material_accent_yellow</item>
+	</style>
+	<style name="AppThemeLight.Pink.YellowA2">
+		<item name="colorAccent">@color/material_accent_yellow2</item>
+		<item name="colorControlNormal">@color/material_accent_yellow2</item>
+		<item name="colorControlActivated">@color/material_accent_yellow2</item>
+	</style>
+	<style name="AppThemeLight.Pink.YellowA4">
+		<item name="colorAccent">@color/material_accent_yellow4</item>
+		<item name="colorControlNormal">@color/material_accent_yellow4</item>
+		<item name="colorControlActivated">@color/material_accent_yellow4</item>
+	</style>
+	<style name="AppThemeLight.Pink.YellowA7">
+		<item name="colorAccent">@color/material_accent_yellow7</item>
+		<item name="colorControlNormal">@color/material_accent_yellow7</item>
+		<item name="colorControlActivated">@color/material_accent_yellow7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Amber">
+        <item name="colorAccent">@color/material_primary_amber</item>
+		<item name="colorControlNormal">@color/material_accent_amber</item>
+		<item name="colorControlActivated">@color/material_primary_amber</item>
+	</style>
+	<style name="AppThemeLight.Pink.AmberA1">
+		<item name="colorAccent">@color/material_accent_amber</item>
+		<item name="colorControlNormal">@color/material_accent_amber</item>
+		<item name="colorControlActivated">@color/material_accent_amber</item>
+	</style>
+	<style name="AppThemeLight.Pink.AmberA2">
+		<item name="colorAccent">@color/material_accent_amber2</item>
+		<item name="colorControlNormal">@color/material_accent_amber2</item>
+		<item name="colorControlActivated">@color/material_accent_amber2</item>
+	</style>
+	<style name="AppThemeLight.Pink.AmberA4">
+		<item name="colorAccent">@color/material_accent_amber4</item>
+		<item name="colorControlNormal">@color/material_accent_amber4</item>
+		<item name="colorControlActivated">@color/material_accent_amber4</item>
+	</style>
+	<style name="AppThemeLight.Pink.AmberA7">
+		<item name="colorAccent">@color/material_accent_amber7</item>
+		<item name="colorControlNormal">@color/material_accent_amber7</item>
+		<item name="colorControlActivated">@color/material_accent_amber7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Orange">
+        <item name="colorAccent">@color/material_primary_orange</item>
+		<item name="colorControlNormal">@color/material_accent_orange</item>
+		<item name="colorControlActivated">@color/material_primary_orange</item>
+	</style>
+	<style name="AppThemeLight.Pink.OrangeA1">
+		<item name="colorAccent">@color/material_accent_orange</item>
+		<item name="colorControlNormal">@color/material_accent_orange</item>
+		<item name="colorControlActivated">@color/material_accent_orange</item>
+	</style>
+	<style name="AppThemeLight.Pink.OrangeA2">
+		<item name="colorAccent">@color/material_accent_orange2</item>
+		<item name="colorControlNormal">@color/material_accent_orange2</item>
+		<item name="colorControlActivated">@color/material_accent_orange2</item>
+	</style>
+	<style name="AppThemeLight.Pink.OrangeA4">
+		<item name="colorAccent">@color/material_accent_orange4</item>
+		<item name="colorControlNormal">@color/material_accent_orange4</item>
+		<item name="colorControlActivated">@color/material_accent_orange4</item>
+	</style>
+	<style name="AppThemeLight.Pink.OrangeA7">
+		<item name="colorAccent">@color/material_accent_orange7</item>
+		<item name="colorControlNormal">@color/material_accent_orange7</item>
+		<item name="colorControlActivated">@color/material_accent_orange7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.DeepOrange">
+        <item name="colorAccent">@color/material_primary_deepOrange</item>
+		<item name="colorControlNormal">@color/material_accent_deepOrange</item>
+		<item name="colorControlActivated">@color/material_primary_deepOrange</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepOrangeA1">
+		<item name="colorAccent">@color/material_accent_deepOrange</item>
+		<item name="colorControlNormal">@color/material_accent_deepOrange</item>
+		<item name="colorControlActivated">@color/material_accent_deepOrange</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepOrangeA2">
+		<item name="colorAccent">@color/material_accent_deepOrange2</item>
+		<item name="colorControlNormal">@color/material_accent_deepOrange2</item>
+		<item name="colorControlActivated">@color/material_accent_deepOrange2</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepOrangeA4">
+		<item name="colorAccent">@color/material_accent_deepOrange4</item>
+		<item name="colorControlNormal">@color/material_accent_deepOrange4</item>
+		<item name="colorControlActivated">@color/material_accent_deepOrange4</item>
+	</style>
+	<style name="AppThemeLight.Pink.DeepOrangeA7">
+		<item name="colorAccent">@color/material_accent_deepOrange7</item>
+		<item name="colorControlNormal">@color/material_accent_deepOrange7</item>
+		<item name="colorControlActivated">@color/material_accent_deepOrange7</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Brown">
+        <item name="colorAccent">@color/material_primary_brown</item>
+		<item name="colorControlNormal">@color/material_accent_brown</item>
+		<item name="colorControlActivated">@color/material_primary_brown</item>
+	</style>
+	<style name="AppThemeLight.Pink.Brown3">
+        <item name="colorAccent">@color/brown300</item>
+		<item name="colorControlNormal">@color/brown300</item>
+		<item name="colorControlActivated">@color/brown300</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.Grey">
+        <item name="colorAccent">@color/material_primary_grey</item>
+		<item name="colorControlNormal">@color/material_accent_grey</item>
+		<item name="colorControlActivated">@color/material_primary_grey</item>
+	</style>
+	<style name="AppThemeLight.Pink.Grey3">
+        <item name="colorAccent">@color/grey300</item>
+		<item name="colorControlNormal">@color/grey300</item>
+		<item name="colorControlActivated">@color/grey300</item>
+	</style>
+
+	<style name="AppThemeLight.Pink.BlueGrey">
+        <item name="colorAccent">@color/material_primary_blueGrey</item>
+		<item name="colorControlNormal">@color/material_accent_blueGrey</item>
+		<item name="colorControlActivated">@color/material_primary_blueGrey</item>
+	</style>
+	<style name="AppThemeLight.Pink.BlueGrey3">
+        <item name="colorAccent">@color/bluegrey300</item>
+		<item name="colorControlNormal">@color/bluegrey300</item>
+		<item name="colorControlActivated">@color/bluegrey300</item>
+	</style>
+
+</resources>

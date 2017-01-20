@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import com.jb15613.preference.utility.ColorUtils;
 import com.jb15613.preference.utility.Constants;
 import com.jb15613.preference.utility.PrefUtils;
+import com.jb15613.preference.utility.Color.AccentColor;
 
 public class ThemeChooserPreference extends Preference implements Preference.OnPreferenceClickListener, ThemeChooserDialog.OnThemeChangedListener {
 	
@@ -197,6 +198,11 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
     private LinearLayout getCellItem(String themeName) {
 
         int[] colors = ColorUtils.getColorSet(themeName, mContext);
+		
+		if (themeName.contains(Constants.THEME_SPLITTER)) {
+			String[] tn = themeName.split(Constants.THEME_SPLITTER);
+			colors[2] = AccentColor.getColor(tn[1], mContext);
+		}
 
         LinearLayout ll = new LinearLayout(mContext);
         RelativeLayout rl = new RelativeLayout(mContext);

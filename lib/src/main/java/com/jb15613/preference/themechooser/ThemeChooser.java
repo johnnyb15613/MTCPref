@@ -2,8 +2,10 @@ package com.jb15613.preference.themechooser;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.jb15613.preference.utility.ThemeUtils;
 import com.jb15613.preference.utility.Constants;
+import com.jb15613.preference.utility.DarkThemeUtils;
+import com.jb15613.preference.utility.LightThemeUtils;
+import com.jb15613.preference.utility.ThemeUtils;
 
 public class ThemeChooser {
 
@@ -18,7 +20,7 @@ public class ThemeChooser {
 			// Dark Theme
 			if (themeName.contains(Constants.THEME_SPLITTER)) {
 				// Custom Color Theme
-				return ThemeUtils.getCustomColoredDarkTheme(themeName);
+				return DarkThemeUtils.getCustomColoredDarkTheme(themeName);
 			} else {
 				// Default Color Theme
 				return ThemeUtils.getColoredThemeDark(themeName);
@@ -28,7 +30,7 @@ public class ThemeChooser {
 			// Light Theme
 			if (themeName.contains(Constants.THEME_SPLITTER)) {
 				// Custom Color Theme
-				return ThemeUtils.getCustomColoredLightTheme(themeName);
+				return LightThemeUtils.getCustomColoredLightTheme(themeName);
 			} else {
 				// Default Color Theme
 				return ThemeUtils.getColoredThemeLight(themeName);
@@ -67,7 +69,7 @@ public class ThemeChooser {
 			// Dark Theme
 			if (TN.contains(Constants.THEME_SPLITTER)) {
 				// Custom Color Theme
-				return ThemeUtils.getCustomColoredDarkTheme(TN);
+				return DarkThemeUtils.getCustomColoredDarkTheme(TN);
 			} else {
 				// Default Color Theme
 				return ThemeUtils.getColoredThemeDark(TN);
@@ -77,7 +79,7 @@ public class ThemeChooser {
 			// Light Theme
 			if (TN.contains(Constants.THEME_SPLITTER)) {
 				// Custom Color Theme
-				return ThemeUtils.getCustomColoredLightTheme(TN);
+				return LightThemeUtils.getCustomColoredLightTheme(TN);
 			} else {
 				// Default Color Theme
 				return ThemeUtils.getColoredThemeLight(TN);

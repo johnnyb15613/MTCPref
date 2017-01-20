@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<!-- Dark Theme -->
+    <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
+		<item name="android:windowTranslucentStatus">true</item>
+
+		<item name="colorPrimary">@color/material_primary</item>
+        <item name="colorPrimaryDark">@color/material_primaryDark</item>
+        <item name="colorAccent">@color/material_primary</item>
+
+		<item name="textColorPrimary">@color/textColorPrimary</item>
+		<item name="textColorSecondary">@color/textColorSecondary</item>
+		<item name="textColorPrimaryInverse">@color/textColorPrimaryInverse</item>
+		<item name="textColorSecondaryInverse">@color/textColorSecondaryInverse</item>
+
+		<item name="primaryBgColor">@color/primaryBgColor</item>
+		<item name="secondaryBgColor">@color/secondaryBgColor</item>
+		<item name="primaryBgColorInverse">@color/primaryBgColorInverse</item>
+		<item name="secondaryBgColorInverse">@color/secondaryBgColorInverse</item>
+
+		<item name="colorControlNormal">@color/material_accent</item>
+		<item name="colorControlActivated">@color/material_accent</item>
+		<item name="colorControlHighlight">@color/material_primaryDark</item>
+	</style>
+
+	<!-- Light Theme -->
+	<style name="AppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="android:windowTranslucentStatus">true</item>
+
+		<item name="colorPrimary">@color/material_primary</item>
+        <item name="colorPrimaryDark">@color/material_primaryDark</item>
+        <item name="colorAccent">@color/material_primary</item>
+
+		<item name="textColorPrimary">@color/textColorPrimaryInverse</item>
+		<item name="textColorSecondary">@color/textColorSecondaryInverse</item>
+		<item name="textColorPrimaryInverse">@color/textColorPrimary</item>
+		<item name="textColorSecondaryInverse">@color/textColorSecondary</item>
+
+		<item name="primaryBgColor">@color/primaryBgColorInverse</item>
+		<item name="secondaryBgColor">@color/secondaryBgColorInverse</item>
+		<item name="primaryBgColorInverse">@color/primaryBgColor</item>
+		<item name="secondaryBgColorInverse">@color/secondaryBgColor</item>
+
+		<item name="colorControlNormal">@color/material_accent</item>
+		<item name="colorControlActivated">@color/material_accent</item>
+		<item name="colorControlHighlight">@color/material_primaryDark</item>
+	</style>
+
+	<!-- ActionBar Theme -->
+	<style name="ActionBarTheme" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+		<item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="selectableItemBackground">?android:selectableItemBackground</item>
+        <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
+	</style>
+
+</resources>

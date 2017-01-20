@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	
     <string-array name="theme_color_names">
         <item>Red</item>
         <item>Pink</item>
@@ -21,4 +22,94 @@
         <item>Grey</item>
         <item>Blue Grey</item>
     </string-array>
+	
+	<string-array name="accent_color_names">
+        <item>Red</item>
+		<item>Red A1</item>
+		<item>Red A2</item>
+		<item>Red A4</item>
+		<item>Red A7</item>
+        <item>Pink</item>
+		<item>Pink A1</item>
+		<item>Pink A2</item>
+		<item>Pink A4</item>
+		<item>Pink A7</item>
+        <item>Purple</item>
+		<item>Purple A1</item>
+		<item>Purple A2</item>
+		<item>Purple A4</item>
+		<item>Purple A7</item>
+        <item>Deep Purple</item>
+		<item>Deep Purple A1</item>
+		<item>Deep Purple A2</item>
+		<item>Deep Purple A4</item>
+		<item>Deep Purple A7</item>
+        <item>Indigo</item>
+		<item>Indigo A1</item>
+		<item>Indigo A2</item>
+		<item>Indigo A4</item>
+		<item>Indigo A7</item>
+        <item>Blue</item>
+		<item>Blue A1</item>
+		<item>Blue A2</item>
+		<item>Blue A4</item>
+		<item>Blue A7</item>
+        <item>Light Blue</item>
+		<item>Light Blue A1</item>
+		<item>Light Blue A2</item>
+		<item>Light Blue A4</item>
+		<item>Light Blue A7</item>
+        <item>Cyan</item>
+		<item>Cyan A1</item>
+		<item>Cyan A2</item>
+		<item>Cyan A4</item>
+		<item>Cyan A7</item>
+        <item>Teal</item>
+		<item>Teal A1</item>
+		<item>Teal A2</item>
+		<item>Teal A4</item>
+		<item>Teal A7</item>
+        <item>Green</item>
+		<item>Green A1</item>
+		<item>Green A2</item>
+		<item>Green A4</item>
+		<item>Green A7</item>
+        <item>Light Green</item>
+		<item>Light Green A1</item>
+		<item>Light Green A2</item>
+		<item>Light Green A4</item>
+		<item>Light Green A7</item>
+        <item>Lime</item>
+		<item>Lime A1</item>
+		<item>Lime A2</item>
+		<item>Lime A4</item>
+		<item>Lime A7</item>
+        <item>Yellow</item>
+		<item>Yellow A1</item>
+		<item>Yellow A2</item>
+		<item>Yellow A4</item>
+		<item>Yellow A7</item>
+        <item>Amber</item>
+		<item>Amber A1</item>
+		<item>Amber A2</item>
+		<item>Amber A4</item>
+		<item>Amber A7</item>
+        <item>Orange</item>
+		<item>Orange A1</item>
+		<item>Orange A2</item>
+		<item>Orange A4</item>
+		<item>Orange A7</item>
+        <item>Deep Orange</item>
+		<item>Deep Orange A1</item>
+		<item>Deep Orange A2</item>
+		<item>Deep Orange A4</item>
+		<item>Deep Orange A7</item>
+        <item>Brown</item>
+		<item>Brown 3</item>
+        <item>Grey</item>
+		<item>Grey 3</item>
+        <item>Blue Grey</item>
+		<item>Blue Grey 3</item>
+    </string-array>
+	
 </resources>

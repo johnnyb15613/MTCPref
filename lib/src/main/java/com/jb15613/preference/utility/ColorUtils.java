@@ -229,6 +229,146 @@ public class ColorUtils {
         return colors;
 
     } // getColorSet
+	
+	public static int[] getTrueAccentColorSet(String themeName, Context mContext) {
+
+        int[] colors = new int[5];
+
+		switch (themeName) {
+
+			case Constants.RED:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_red, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_red, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_red2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_red4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_red7, null);
+				break;
+
+			case Constants.PINK:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_pink, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_pink, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_pink2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_pink4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_pink7, null);
+				break;
+
+			case Constants.PURPLE:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_purple, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_purple, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_purple2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_purple4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_purple7, null);
+				break;
+
+			case Constants.DEEPPURPLE:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_deepPurple, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepPurple, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepPurple2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepPurple4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepPurple7, null);
+				break;
+
+			case Constants.INDIGO:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_indigo, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_indigo, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_indigo2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_indigo4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_indigo7, null);
+				break;
+
+			case Constants.BLUE:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_blue, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_blue, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_blue2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_blue4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_blue7, null);
+				break;
+
+			case Constants.LIGHTBLUE:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_lightBlue, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightBlue, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightBlue2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightBlue4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightBlue7, null);
+				break;
+
+			case Constants.CYAN:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_cyan, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_cyan, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_cyan2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_cyan4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_cyan7, null);
+				break;
+
+			case Constants.TEAL:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_teal, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_teal, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_teal2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_teal4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_teal7, null);
+				break;
+
+			case Constants.GREEN:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_green, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_green, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_green2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_green4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_green7, null);
+				break;
+
+			case Constants.LIGHTGREEN:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_lightGreen, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightGreen, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightGreen2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightGreen4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lightGreen7, null);
+				break;
+
+			case Constants.LIME:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_lime, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lime, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lime2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lime4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_lime7, null);
+				break;
+
+			case Constants.YELLOW:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_yellow, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_yellow, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_yellow2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_yellow4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_yellow7, null);
+				break;
+
+			case Constants.AMBER:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_amber, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_amber, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_amber2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_amber4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_amber7, null);
+				break;
+
+			case Constants.ORANGE:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_orange, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_orange, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_orange2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_orange4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_orange7, null);
+				break;
+
+			case Constants.DEEPORANGE:
+				colors[0] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_primary_deepOrange, null);
+				colors[1] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepOrange, null);
+				colors[2] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepOrange2, null);
+				colors[3] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepOrange4, null);
+				colors[4] = ResourcesCompat.getColor(mContext.getResources(), R.color.material_accent_deepOrange7, null);
+				break;
+
+		}
+
+        return colors;
+
+    } // getTrueAccentColorSet
 
 	/**
 	 * Creates a set of colors that represent Primary, Dark, and Accent colors for a theme

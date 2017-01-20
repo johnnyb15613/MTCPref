@@ -103,8 +103,13 @@ public class Constants {
 	public static final String DEEPORANGE_A7 = "Deep Orange A7";
 	
 	public static final String BROWN = "Brown";
+	public static final String BROWN_3 = "Brown 3";
+	
 	public static final String GREY = "Grey";
+	public static final String GREY_3 = "Grey 3";
+	
 	public static final String BLUEGREY = "Blue Grey";
+	public static final String BLUEGREY_3 = "Blue Grey 3";
 	
 	// Pref names
 	public final static String PREF_NAME_KEY = "mtc_pref_preferences";
@@ -120,5 +125,24 @@ public class Constants {
 	
 	// Tags
 	public final static String VIEW_CHECKED = "checked";
+	
+	public final static String[] ACCENT_ITEMS_RED = {RED, RED_A1, RED_A2, RED_A4, RED_A7};
+	public final static String[] ACCENT_ITEMS_PINK = {PINK, PINK_A1, PINK_A2, PINK_A4, PINK_A7};
+	public final static String[] ACCENT_ITEMS_PURPLE = {PURPLE, PURPLE_A1, PURPLE_A2, PURPLE_A4, PURPLE_A7};
+	public final static String[] ACCENT_ITEMS_DEEPPURPLE = {DEEPPURPLE, DEEPPURPLE_A1, DEEPPURPLE_A2, DEEPPURPLE_A4, DEEPPURPLE_A7};
+	public final static String[] ACCENT_ITEMS_INDIGO = {INDIGO, INDIGO_A1, INDIGO_A2, INDIGO_A4, INDIGO_A7};
+	public final static String[] ACCENT_ITEMS_BLUE = {BLUE, BLUE_A1, BLUE_A2, BLUE_A4, BLUE_A7};
+	public final static String[] ACCENT_ITEMS_LIGHTBLUE = {LIGHTBLUE, LIGHTBLUE_A1, LIGHTBLUE_A2, LIGHTBLUE_A4, LIGHTBLUE_A7};
+	public final static String[] ACCENT_ITEMS_CYAN = {CYAN, CYAN_A1, CYAN_A2, CYAN_A4, CYAN_A7};
+	public final static String[] ACCENT_ITEMS_TEAL = {TEAL, TEAL_A1, TEAL_A2, TEAL_A4, TEAL_A7};
+	public final static String[] ACCENT_ITEMS_GREEN = {GREEN, GREEN_A1, GREEN_A2, GREEN_A4, GREEN_A7};
+	public final static String[] ACCENT_ITEMS_LIGHTGREEN = {LIGHTGREEN, LIGHTGREEN_A1, LIGHTGREEN_A2, LIGHTGREEN_A4, LIGHTGREEN_A7};
+	public final static String[] ACCENT_ITEMS_LIME = {LIME, LIME_A1, LIME_A2, LIME_A4, LIME_A7};
+	public final static String[] ACCENT_ITEMS_YELLOW = {YELLOW, YELLOW_A1, YELLOW_A2, YELLOW_A4, YELLOW_A7};
+	public final static String[] ACCENT_ITEMS_AMBER = {AMBER, AMBER_A1, AMBER_A2, AMBER_A4, AMBER_A7};
+	public final static String[] ACCENT_ITEMS_ORANGE = {ORANGE, ORANGE_A1, ORANGE_A2, ORANGE_A4, ORANGE_A7};
+	public final static String[] ACCENT_ITEMS_DEEPORANGE = {DEEPORANGE, DEEPORANGE_A1, DEEPORANGE_A2, DEEPORANGE_A4, DEEPORANGE_A7};
+	
+	
 	
 }

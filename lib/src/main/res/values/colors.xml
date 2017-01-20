@@ -22,81 +22,129 @@
     <color name="material_primary_red">@color/red500</color>
     <color name="material_primaryDark_red">@color/red700</color>
     <color name="material_accent_red">@color/redA100</color>
+	<color name="material_accent_red2">@color/redA200</color>
+	<color name="material_accent_red4">@color/redA400</color>
+	<color name="material_accent_red7">@color/redA700</color>
 
     <!-- Pink -->
     <color name="material_primary_pink">@color/pink500</color>
     <color name="material_primaryDark_pink">@color/pink700</color>
     <color name="material_accent_pink">@color/pinkA100</color>
+	<color name="material_accent_pink2">@color/pinkA200</color>
+	<color name="material_accent_pink4">@color/pinkA400</color>
+	<color name="material_accent_pink7">@color/pinkA700</color>
 
     <!-- Purple -->
     <color name="material_primary_purple">@color/purple500</color>
     <color name="material_primaryDark_purple">@color/purple700</color>
     <color name="material_accent_purple">@color/purpleA100</color>
+	<color name="material_accent_purple2">@color/purpleA200</color>
+	<color name="material_accent_purple4">@color/purpleA400</color>
+	<color name="material_accent_purple7">@color/purpleA700</color>
 
     <!-- Deep Purple -->
     <color name="material_primary_deepPurple">@color/deeppurple500</color>
     <color name="material_primaryDark_deepPurple">@color/deeppurple700</color>
     <color name="material_accent_deepPurple"> @color/deeppurpleA100</color>
+	<color name="material_accent_deepPurple2"> @color/deeppurpleA200</color>
+	<color name="material_accent_deepPurple4"> @color/deeppurpleA400</color>
+	<color name="material_accent_deepPurple7"> @color/deeppurpleA700</color>
 
     <!-- Indigo -->
     <color name="material_primary_indigo">@color/indigo500</color>
     <color name="material_primaryDark_indigo">@color/indigo700</color>
     <color name="material_accent_indigo">@color/indigoA100</color>
+	<color name="material_accent_indigo2">@color/indigoA200</color>
+	<color name="material_accent_indigo4">@color/indigoA400</color>
+	<color name="material_accent_indigo7">@color/indigoA700</color>
 
     <!-- Blue -->
     <color name="material_primary_blue">@color/blue500</color>
     <color name="material_primaryDark_blue">@color/blue700</color>
     <color name="material_accent_blue">@color/blueA100</color>
+	<color name="material_accent_blue2">@color/blueA200</color>
+	<color name="material_accent_blue4">@color/blueA400</color>
+	<color name="material_accent_blue7">@color/blueA700</color>
 
     <!-- Light Blue -->
     <color name="material_primary_lightBlue">@color/lightblue500</color>
     <color name="material_primaryDark_lightBlue">@color/lightblue700</color>
     <color name="material_accent_lightBlue">@color/blueA100</color>
+	<color name="material_accent_lightBlue2">@color/blueA200</color>
+	<color name="material_accent_lightBlue4">@color/blueA400</color>
+	<color name="material_accent_lightBlue7">@color/blueA700</color>
 
     <!-- Cyan -->
     <color name="material_primary_cyan">@color/cyan500</color>
     <color name="material_primaryDark_cyan">@color/cyan700</color>
     <color name="material_accent_cyan">@color/cyanA100</color>
+	<color name="material_accent_cyan2">@color/cyanA200</color>
+	<color name="material_accent_cyan4">@color/cyanA400</color>
+	<color name="material_accent_cyan7">@color/cyanA700</color>
 
     <!-- Teal -->
     <color name="material_primary_teal">@color/teal500</color>
     <color name="material_primaryDark_teal">@color/teal700</color>
     <color name="material_accent_teal">@color/tealA100</color>
+	<color name="material_accent_teal2">@color/tealA200</color>
+	<color name="material_accent_teal4">@color/tealA400</color>
+	<color name="material_accent_teal7">@color/tealA700</color>
 
     <!-- Green -->
     <color name="material_primary_green">@color/green500</color>
     <color name="material_primaryDark_green">@color/green700</color>
     <color name="material_accent_green">@color/greenA100</color>
+	<color name="material_accent_green2">@color/greenA200</color>
+	<color name="material_accent_green4">@color/greenA400</color>
+	<color name="material_accent_green7">@color/greenA700</color>
 
     <!-- Light Green -->
     <color name="material_primary_lightGreen">@color/lightgreen500</color>
     <color name="material_primaryDark_lightGreen">@color/lightgreen700</color>
     <color name="material_accent_lightGreen">@color/lightgreenA100</color>
+	<color name="material_accent_lightGreen2">@color/lightgreenA200</color>
+	<color name="material_accent_lightGreen4">@color/lightgreenA400</color>
+	<color name="material_accent_lightGreen7">@color/lightgreenA700</color>
 
     <!-- Lime -->
     <color name="material_primary_lime">@color/lime500</color>
     <color name="material_primaryDark_lime">@color/lime700</color>
     <color name="material_accent_lime">@color/limeA100</color>
+	<color name="material_accent_lime2">@color/limeA200</color>
+	<color name="material_accent_lime4">@color/limeA400</color>
+	<color name="material_accent_lime7">@color/limeA700</color>
 
     <!-- Yellow -->
     <color name="material_primary_yellow">@color/yellow500</color>
     <color name="material_primaryDark_yellow">@color/yellow700</color>
     <color name="material_accent_yellow">@color/yellowA100</color>
+	<color name="material_accent_yellow2">@color/yellowA200</color>
+	<color name="material_accent_yellow4">@color/yellowA400</color>
+	<color name="material_accent_yellow7">@color/yellowA700</color>
 
     <!-- Amber -->
     <color name="material_primary_amber">@color/amber500</color>
     <color name="material_primaryDark_amber">@color/amber700</color>
     <color name="material_accent_amber">@color/amberA100</color>
+	<color name="material_accent_amber2">@color/amberA200</color>
+	<color name="material_accent_amber4">@color/amberA400</color>
+	<color name="material_accent_amber7">@color/amberA700</color>
 
     <!-- Orange -->
     <color name="material_primary_orange">@color/orange500</color>
     <color name="material_primaryDark_orange">@color/orange700</color>
     <color name="material_accent_orange">@color/orangeA100</color>
+	<color name="material_accent_orange2">@color/orangeA200</color>
+	<color name="material_accent_orange4">@color/orangeA400</color>
+	<color name="material_accent_orange7">@color/orangeA700</color>
 
     <!-- Deep Orange -->
     <color name="material_primary_deepOrange">@color/deeporange500</color>
     <color name="material_primaryDark_deepOrange">@color/deeporange700</color>
     <color name="material_accent_deepOrange">@color/deeporangeA100</color>
+	<color name="material_accent_deepOrange2">@color/deeporangeA200</color>
+	<color name="material_accent_deepOrange4">@color/deeporangeA400</color>
+	<color name="material_accent_deepOrange7">@color/deeporangeA700</color>
 
     <!-- Brown -->
     <color name="material_primary_brown">@color/brown500</color>
