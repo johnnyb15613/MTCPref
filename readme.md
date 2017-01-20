@@ -3,7 +3,7 @@
 Material Theme Chooser Preference
 
 
-[![](https://jitpack.io/v/johnnyb15613/MTCPref.svg)](https://jitpack.io/#johnnyb15613/MTCPref)   [![](https://img.shields.io/github/downloads/atom/atom/latest/total.svg)](https://jitpack.io/#johnnyb15613/MTCPref)
+[![](https://jitpack.io/v/johnnyb15613/MTCPref.svg)](https://jitpack.io/#johnnyb15613/MTCPref)   [![](https://img.shields.io/github/downloads/johnnyb15613/MTCPref/latest/total.svg)](https://jitpack.io/#johnnyb15613/MTCPref)
 
 ## Intro
 While learning to theme using the AppCompat and Design Libraries, I started to have the need to support multiple themes. Different Material Color Schemes, as well as alternating between light backgrounds with dark text and dark backgrounds with light text. Setting this up can be a nightmare if you are unfamiliar with the process, not to mention it is a good bit of code to have 10 dark themes and 10 light themes. After the second app I needed to theme, I realised that we needed a library to take the place of all the imported code that comes along with preparing the themes, as well as selecting a theme to use.
