@@ -1,6 +1,7 @@
 <img src="icon.png" align="right" alt="icon" width="100" height="100"/>
 # MTCPref
 Material Theme Chooser Preference
+
 [![](https://jitpack.io/v/johnnyb15613/MTCPref.svg)](https://jitpack.io/#johnnyb15613/MTCPref)
 
 ## Intro
