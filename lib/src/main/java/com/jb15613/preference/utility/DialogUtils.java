@@ -93,6 +93,8 @@ public class DialogUtils {
 		
 		String themeName = PrefUtils.getThemeColor(context);
 		
+		int[] colors = ColorUtils.getColorSet(themeName, context, true);
+		
 		if (themeName.contains(Constants.THEME_SPLITTER)) {
 			String[] items = themeName.split(Constants.THEME_SPLITTER);
 			themeName = items[0];
@@ -118,6 +120,9 @@ public class DialogUtils {
 					
 					if (themeName.equals(cv.getTag().toString())) {
 						checked.setVisibility(View.VISIBLE);
+						cv.setCardBackgroundColor(colors[2]);
+					} else {
+						cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(context));
 					} // if this is selected theme
 
 				} // for each item in tablerow
@@ -140,7 +145,10 @@ public class DialogUtils {
 				
 				if (themeName.equals(cv.getTag().toString())) {
 					checked.setVisibility(View.VISIBLE);
-				} // if this is selected theme
+					cv.setCardBackgroundColor(colors[2]);
+				} else {
+					cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(context));
+				}// if this is selected theme
 				
 			} // for each item in linearlayout
 			
@@ -156,7 +164,10 @@ public class DialogUtils {
 	 */
 	public static void recheckAccentColor(Context context, LinearLayout accentContainer) {
 
+		String themeName = PrefUtils.getThemeColor(context);
 		String accentName = PrefUtils.getAccentColor(context);
+		
+		int[] colors = ColorUtils.getColorSet(themeName, context, true);
 
 		for (int i = 0; i < accentContainer.getChildCount(); i++) {
 
@@ -172,6 +183,9 @@ public class DialogUtils {
 
 			if (cv.getTag().toString().equals(accentName)) {
 				checked.setVisibility(View.VISIBLE);
+				cv.setCardBackgroundColor(colors[0]);
+			} else {
+				cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(context));
 			}
 
 		}
@@ -186,7 +200,7 @@ public class DialogUtils {
 	 */
     public static CardView getSwatchItem(Context context, String themeName, boolean isPortrait) {
 
-        int[] colors = ColorUtils.getColorSet(themeName, context);
+        int[] colors = ColorUtils.getColorSet(themeName, context, false);
 
 		CardView cv = new CardView(context);
         LinearLayout ll = new LinearLayout(context);
@@ -278,12 +292,14 @@ public class DialogUtils {
 			String[] t = tn.split(Constants.THEME_SPLITTER);
 			if (t[0].equals(themeName)) {
 				checked.setVisibility(View.VISIBLE);
+				cv.setCardBackgroundColor(colors[2]);
 			} else {
 				checked.setVisibility(View.INVISIBLE);
 			}
 		} else {
 			if (tn.equals(themeName)) {
 				checked.setVisibility(View.VISIBLE);
+				cv.setCardBackgroundColor(colors[2]);
 			} else {
 				checked.setVisibility(View.INVISIBLE);
 			}
@@ -307,7 +323,10 @@ public class DialogUtils {
 
 		// comes from accent_names_array
 		// no splitting needed
+		String thna = PrefUtils.getThemeColor(context);
 
+		int[] colors = ColorUtils.getColorSet(thna, context, true);
+		
         int color = AccentColor.getColor(themeName, context);
 
 		CardView cv = new CardView(context);
@@ -398,8 +417,10 @@ public class DialogUtils {
 
 		if (themeName.equals(aName)) {
 			checked.setVisibility(View.VISIBLE);
+			cv.setCardBackgroundColor(colors[0]);
 		} else {
 			checked.setVisibility(View.INVISIBLE);
+			cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(context));
 		}
 
         checked.setTag(Constants.VIEW_CHECKED);

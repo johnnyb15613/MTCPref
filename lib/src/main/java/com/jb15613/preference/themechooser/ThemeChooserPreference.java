@@ -197,7 +197,7 @@ public class ThemeChooserPreference extends Preference implements Preference.OnP
 
     private LinearLayout getCellItem(String themeName) {
 
-        int[] colors = ColorUtils.getColorSet(themeName, mContext);
+        int[] colors = ColorUtils.getColorSet(themeName, mContext, false);
 		
 		if (themeName.contains(Constants.THEME_SPLITTER)) {
 			String[] tn = themeName.split(Constants.THEME_SPLITTER);

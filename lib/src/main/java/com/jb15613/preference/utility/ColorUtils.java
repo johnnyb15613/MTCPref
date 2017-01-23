@@ -13,7 +13,7 @@ public class ColorUtils {
 	 * @param  mContext a {@code Context} that contains the theme name
 	 * @return  an {@code int[]} that contains Primary, Dark, and Accent theme colors
 	 */
-	public static int[] getColorSet(String themeName, Context mContext) {
+	public static int[] getColorSet(String themeName, Context mContext, boolean isTrue) {
 
         int[] colors = new int[3];
 
@@ -30,6 +30,11 @@ public class ColorUtils {
 			// colors = getCustomColorSet(themeName, mContext);
 		} else {
 			tn = themeName;
+		}
+		
+		if (isTrue) {
+			// we need a true color set, no custom accents
+			isCustom = false;
 		}
 
 		switch (tn) {

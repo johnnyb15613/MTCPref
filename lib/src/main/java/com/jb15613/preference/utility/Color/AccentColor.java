@@ -14,7 +14,7 @@ public class AccentColor {
 		switch (themeName) {
 
 			case Constants.RED:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.red700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.red500, null);
 				break;
 			case Constants.RED_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.redA100, null);
@@ -30,7 +30,7 @@ public class AccentColor {
 				break;
 
 			case Constants.PINK:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.pink700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.pink500, null);
 				break;
 			case Constants.PINK_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.pinkA100, null);
@@ -46,7 +46,7 @@ public class AccentColor {
 				break;
 
 			case Constants.PURPLE:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.purple700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.purple500, null);
 				break;
 			case Constants.PURPLE_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.purpleA100, null);
@@ -62,7 +62,7 @@ public class AccentColor {
 				break;
 
 			case Constants.DEEPPURPLE:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.deeppurple700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.deeppurple500, null);
 				break;
 			case Constants.DEEPPURPLE_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.deeppurpleA100, null);
@@ -78,7 +78,7 @@ public class AccentColor {
 				break;
 
 			case Constants.INDIGO:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.indigo700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.indigo500, null);
 				break;
 			case Constants.INDIGO_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.indigoA100, null);
@@ -94,7 +94,7 @@ public class AccentColor {
 				break;
 
 			case Constants.BLUE:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.blue700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.blue500, null);
 				break;
 			case Constants.BLUE_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.blueA100, null);
@@ -110,7 +110,7 @@ public class AccentColor {
 				break;
 
 			case Constants.LIGHTBLUE:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.lightblue700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.lightblue500, null);
 				break;
 			case Constants.LIGHTBLUE_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.lightblueA100, null);
@@ -126,7 +126,7 @@ public class AccentColor {
 				break;
 
 			case Constants.CYAN:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.cyan700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.cyan500, null);
 				break;
 			case Constants.CYAN_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.cyanA100, null);
@@ -142,7 +142,7 @@ public class AccentColor {
 				break;
 
 			case Constants.TEAL:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.teal700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.teal500, null);
 				break;
 			case Constants.TEAL_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.tealA100, null);
@@ -158,7 +158,7 @@ public class AccentColor {
 				break;
 
 			case Constants.GREEN:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.green700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.green500, null);
 				break;
 			case Constants.GREEN_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.greenA100, null);
@@ -174,7 +174,7 @@ public class AccentColor {
 				break;
 
 			case Constants.LIGHTGREEN:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.lightgreen700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.lightgreen500, null);
 				break;
 			case Constants.LIGHTGREEN_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.lightgreenA100, null);
@@ -190,7 +190,7 @@ public class AccentColor {
 				break;
 
 			case Constants.LIME:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.lime700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.lime500, null);
 				break;
 			case Constants.LIME_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.limeA100, null);
@@ -206,7 +206,7 @@ public class AccentColor {
 				break;
 
 			case Constants.YELLOW:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.yellow700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.yellow500, null);
 				break;
 			case Constants.YELLOW_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.yellowA100, null);
@@ -222,7 +222,7 @@ public class AccentColor {
 				break;
 
 			case Constants.AMBER:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.amber700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.amber500, null);
 				break;
 			case Constants.AMBER_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.amberA100, null);
@@ -238,7 +238,7 @@ public class AccentColor {
 				break;
 
 			case Constants.ORANGE:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.orange700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.orange500, null);
 				break;
 			case Constants.ORANGE_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.orangeA100, null);
@@ -254,7 +254,7 @@ public class AccentColor {
 				break;
 
 			case Constants.DEEPORANGE:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.deeporange700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.deeporange500, null);
 				break;
 			case Constants.DEEPORANGE_A1:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.deeporangeA100, null);
@@ -270,21 +270,21 @@ public class AccentColor {
 				break;
 
 			case Constants.BROWN:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.brown700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.brown500, null);
 				break;
 			case Constants.BROWN_3:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.brown300, null);
 				break;
 
 			case Constants.GREY:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.grey700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.grey500, null);
 				break;
 			case Constants.GREY_3:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.grey300, null);
 				break;
 
 			case Constants.BLUEGREY:
-				color = ResourcesCompat.getColor(context.getResources(), R.color.bluegrey700, null);
+				color = ResourcesCompat.getColor(context.getResources(), R.color.bluegrey500, null);
 				break;
 			case Constants.BLUEGREY_3:
 				color = ResourcesCompat.getColor(context.getResources(), R.color.bluegrey300, null);

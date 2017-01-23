@@ -23,6 +23,7 @@ import com.jb15613.preference.utility.Constants;
 import com.jb15613.preference.utility.DialogUtils;
 import com.jb15613.preference.utility.PrefUtils;
 import java.util.ArrayList;
+import com.jb15613.preference.utility.ColorUtils;
 
 public class ThemeChooserDialog extends DialogFragment {
 
