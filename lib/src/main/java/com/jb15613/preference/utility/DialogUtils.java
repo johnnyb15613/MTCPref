@@ -15,6 +15,9 @@ import android.view.Gravity;
 import android.widget.TextView;
 import com.jb15613.preference.themechooser.R;
 import com.jb15613.preference.utility.Color.AccentColor;
+import android.os.Build;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 
 public class DialogUtils {
 	
@@ -202,7 +205,10 @@ public class DialogUtils {
 
         int[] colors = ColorUtils.getColorSet(themeName, context, false);
 
-		CardView cv = new CardView(context);
+		CardView cv; 
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+		cv = (CardView) inflater.inflate(R.layout.card_view, null);
+		
         LinearLayout ll = new LinearLayout(context);
         RelativeLayout rl = new RelativeLayout(context);
 
@@ -309,7 +315,7 @@ public class DialogUtils {
 
 		cv.setTag(themeName);
 		cv.addView(ll);
-
+		
         return cv;
     } // getSwatchItem
 	
@@ -328,8 +334,11 @@ public class DialogUtils {
 		int[] colors = ColorUtils.getColorSet(thna, context, true);
 		
         int color = AccentColor.getColor(themeName, context);
+		
+		CardView cv; 
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+		cv = (CardView) inflater.inflate(R.layout.card_view, null);
 
-		CardView cv = new CardView(context);
         LinearLayout ll = new LinearLayout(context);
         RelativeLayout rl = new RelativeLayout(context);
 
@@ -339,7 +348,7 @@ public class DialogUtils {
 		cv.setLayoutParams(cvParams);
 		cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(context));
 		cv.setCardElevation(5f);
-
+		
         CardView.LayoutParams llParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.MATCH_PARENT);
         ll.setLayoutParams(llParams);
         ll.setOrientation(LinearLayout.VERTICAL);
