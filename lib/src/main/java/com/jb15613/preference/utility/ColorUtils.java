@@ -469,5 +469,20 @@ public class ColorUtils {
 		return color;
 
 	} // getCustomAccentColor
+	
+	public static String getColorAsHtmlString(int color, Context context) {
+		
+		String c = "";
+		
+		String s = Integer.toHexString((color) & 0x00ffffff);
+		
+		/*
+		if (s.length() > 7) {
+			// alpha present, strip it for string
+			c = "#" + s.substring(3);
+		} */
+		
+		return "#" + s;
+	} // getColorAsHtmlString
 
 } // Class
