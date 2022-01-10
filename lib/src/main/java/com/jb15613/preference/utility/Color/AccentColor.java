@@ -2,7 +2,7 @@ package com.jb15613.preference.utility.Color;
 
 import com.jb15613.preference.utility.Constants;
 import android.content.Context;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 import com.jb15613.preference.themechooser.R;
 
 public class AccentColor {

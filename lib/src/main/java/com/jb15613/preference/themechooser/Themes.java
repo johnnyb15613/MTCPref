@@ -1,6 +1,5 @@
 package com.jb15613.preference.themechooser;
 import com.jb15613.preference.utility.Constants;
-import com.jb15613.preference.utility.Color.Pink;
 import java.util.Random;
 
 public class Themes {

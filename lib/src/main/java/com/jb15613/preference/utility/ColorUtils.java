@@ -1,6 +1,6 @@
 package com.jb15613.preference.utility;
 
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 import android.content.Context;
 import com.jb15613.preference.themechooser.R;
 
@@ -471,17 +471,7 @@ public class ColorUtils {
 	} // getCustomAccentColor
 	
 	public static String getColorAsHtmlString(int color, Context context) {
-		
-		String c = "";
-		
 		String s = Integer.toHexString((color) & 0x00ffffff);
-		
-		/*
-		if (s.length() > 7) {
-			// alpha present, strip it for string
-			c = "#" + s.substring(3);
-		} */
-		
 		return "#" + s;
 	} // getColorAsHtmlString
 

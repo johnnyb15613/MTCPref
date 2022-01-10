@@ -1,10 +1,9 @@
 package com.jb15613.preference.utility;
 
 import android.content.Context;
-import android.util.TypedValue;
 import android.graphics.Color;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.util.TypedValue;
+
 import com.jb15613.preference.themechooser.R;
 
 public class ThemeChooserUtils {
@@ -279,5 +278,16 @@ public class ThemeChooserUtils {
 		}
 
 	} // getSecondaryTextColor
+
+	/**
+	 * Retrieves color value of Secondary Text Color
+	 *
+	 * @param  context a {@code Context} that is used to retrieve a theme object
+	 *
+	 * @return  isLightTheme an {@code Boolean} that is true for light, and false or dark
+	 */
+	public static Boolean isLightTheme(Context context) {
+		return PrefUtils.getThemeHue(context);
+	}
 
 } // Class

@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import androidx.cardview.widget.CardView;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +23,6 @@ import com.jb15613.preference.utility.Constants;
 import com.jb15613.preference.utility.DialogUtils;
 import com.jb15613.preference.utility.PrefUtils;
 import java.util.ArrayList;
-import com.jb15613.preference.utility.ColorUtils;
 
 public class ThemeChooserDialog extends DialogFragment {
 
@@ -69,8 +68,8 @@ public class ThemeChooserDialog extends DialogFragment {
         mListener = listener;
     } // setOnThemeChangedListener
 
-    public ThemeChooserDialog(){
-	} // Constructor
+    // public ThemeChooserDialog(){
+	// } // Constructor
 	
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -177,7 +176,7 @@ public class ThemeChooserDialog extends DialogFragment {
 
 			counter++;
 			
-			CardView cv = null;
+			CardView cv;
 			
 			if (getIsPortrait()) {
 				
@@ -190,7 +189,9 @@ public class ThemeChooserDialog extends DialogFragment {
 					tr.setPadding(10, 5, 10, 5);
 				}
 
-				tr.addView(cv);
+				if (tr != null) {
+					tr.addView(cv);
+				}
 
 				if ((counter == 3) || (i == swatchArray.size() - 1)) {
 					counter = 0;
@@ -235,8 +236,8 @@ public class ThemeChooserDialog extends DialogFragment {
 					
 					String tn = PrefUtils.getThemeColor(mContext);
 
-					String tName = "";
-					String aName = "";
+					String tName;
+					String aName;
 
 					if (tn.contains(Constants.THEME_SPLITTER)) {
 						String[] i = tn.split(Constants.THEME_SPLITTER);
@@ -244,7 +245,7 @@ public class ThemeChooserDialog extends DialogFragment {
 						aName = i[1];
 					} else {
 						tName = tn;
-						String al = "";
+						String al;
 						if (tName.equals(Constants.BROWN) || tName.equals(Constants.GREY) || tName.equals(Constants.BLUEGREY)) {
 							al = " 3";
 						} else {
@@ -299,12 +300,9 @@ public class ThemeChooserDialog extends DialogFragment {
 	// Switch Listener
     CompoundButton.OnCheckedChangeListener mSwitchListener = new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            
-            if (isChecked) {
-                PrefUtils.setThemeHue(mContext, true);
-            } else {
-                PrefUtils.setThemeHue(mContext, false);
-            } // if theme is light or dark
+
+			// if theme is light or dark
+			PrefUtils.setThemeHue(mContext, isChecked);
 
             if (mListener != null) {
                 mListener.onThemeChanged(PrefUtils.getThemeColor(mContext), PrefUtils.getThemeHue(mContext));
@@ -323,7 +321,7 @@ public class ThemeChooserDialog extends DialogFragment {
 			
 			PrefUtils.setThemeColor(mContext, themeName);
 			
-			String accentLabel = "";
+			String accentLabel;
 
 			if (themeName.equals(Constants.BROWN) || themeName.equals(Constants.GREY) || themeName.equals(Constants.BLUEGREY)) {
 				accentLabel = " 3";
@@ -383,17 +381,7 @@ public class ThemeChooserDialog extends DialogFragment {
 	 * @return  a {@code Boolean} that is true if Portrait, false if Landscape
 	 */
 	public boolean getIsPortrait() {
-		
-		boolean v;
-		
-		if (getResources().getConfiguration().orientation == 1) {
-			v = true;
-		} else {
-			v = false;
-		}
-		
-		return v;
-		
+		return getResources().getConfiguration().orientation == 1;
 	} // getIsPortrait
 
 } // Class

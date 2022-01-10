@@ -1,7 +1,7 @@
 package com.jb15613.preference.utility;
 
-import android.support.v7.widget.CardView;
-import java.util.ArrayList;
+import androidx.cardview.widget.CardView;
+
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -15,8 +15,7 @@ import android.view.Gravity;
 import android.widget.TextView;
 import com.jb15613.preference.themechooser.R;
 import com.jb15613.preference.utility.Color.AccentColor;
-import android.os.Build;
-import android.util.TypedValue;
+
 import android.view.LayoutInflater;
 
 public class DialogUtils {
@@ -399,8 +398,8 @@ public class DialogUtils {
 
         String tn = PrefUtils.getThemeColor(context);
 
-		String tName = "";
-		String aName = "";
+		String tName;
+		String aName;
 
 		if (tn.contains(Constants.THEME_SPLITTER)) {
 
@@ -412,7 +411,7 @@ public class DialogUtils {
 
 			tName = tn;
 
-			String anl = "";
+			String anl;
 
 			if (tn.equals(Constants.BROWN) || tn.equals(Constants.GREY) || tn.equals(Constants.BLUEGREY)) {
 				anl = " 3";

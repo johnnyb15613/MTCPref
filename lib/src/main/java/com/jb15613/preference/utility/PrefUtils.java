@@ -33,7 +33,7 @@ public class PrefUtils {
 	 * Saves name of accent color to prefs
 	 *
 	 * @param  context a {@code Context} that is used to retrieve a preference object
-	 * @param  acventName a {@code String} that will be saved as the accent name
+	 * @param  accentName a {@code String} that will be saved as the accent name
 	 */
 	public static void setAccentColor(Context context, String accentName) {
 		SharedPreferences prefs = context.getSharedPreferences(Constants.PREF_NAME_KEY, Context.MODE_PRIVATE);
