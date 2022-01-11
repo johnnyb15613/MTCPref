@@ -18,7 +18,7 @@ public class ImageLoader extends AsyncTask<String, Void, Drawable> {
     private final int mId;
     private final int mColor;
 
-    private final int fieldData = 420;
+    private final int fieldData = 0;
 
     private PorterDuff.Mode colorMode;
 
@@ -85,7 +85,6 @@ public class ImageLoader extends AsyncTask<String, Void, Drawable> {
             final int imageData = imageLoaderTask.fieldData;
 
             if (imageData == 0 || imageData != Integer.parseInt(data)) {
-
                 imageLoaderTask.cancel(true);
             } else {
 
