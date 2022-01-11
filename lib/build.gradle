@@ -29,7 +29,7 @@ android {
                     from components.release
 
                     // You can then customize attributes of the publication as shown below.
-                    groupId = 'com.jb15613.MTCPref'
+                    groupId = 'com.jb15613.preference.themechooser'
                     artifactId = 'final'
                     version = '1.0'
                 }
@@ -38,7 +38,7 @@ android {
                     // Applies the component for the debug build variant.
                     from components.debug
 
-                    groupId = 'com.jb15613.MTCPref'
+                    groupId = 'com.jb15613.preference.themechooser'
                     artifactId = 'final-debug'
                     version = '1.0'
                 }
