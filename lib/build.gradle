@@ -1,7 +1,5 @@
-plugins {
-    'maven-publish'
-    'com.android.library'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 group='com.github.johnnyb15613'
 
