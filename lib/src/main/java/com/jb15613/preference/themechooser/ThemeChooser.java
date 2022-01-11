@@ -61,8 +61,6 @@ public class ThemeChooser {
 					break;
 			}
 			
-		} else {
-			isLightTheme = true;
 		}
 		
 		if (!isLightTheme) {

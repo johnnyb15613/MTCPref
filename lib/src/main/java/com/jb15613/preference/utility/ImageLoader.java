@@ -1,12 +1,10 @@
 package com.jb15613.preference.utility;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Build;
 import androidx.core.content.res.ResourcesCompat;
 import android.widget.ImageView;
 
@@ -16,18 +14,18 @@ import com.jb15613.preference.themechooser.R;
 public class ImageLoader extends AsyncTask<String, Void, Drawable> {
 
     private final WeakReference<ImageView> mImageViewReference;
-    private final Context mContext;
+    private final Resources mResources;
     private final int mId;
     private final int mColor;
 
-    private int data = 0;
+    private final int fieldData = 420;
 
     private PorterDuff.Mode colorMode;
 
-    public ImageLoader(ImageView imageView, Context c, int id, int color) {
+    public ImageLoader(ImageView imageView, Resources r, int id, int color) {
 
         mImageViewReference = new WeakReference<>(imageView);
-        mContext = c;
+        mResources = r;
         mId = id;
         mColor = color;
     }
@@ -41,7 +39,7 @@ public class ImageLoader extends AsyncTask<String, Void, Drawable> {
             colorMode = PorterDuff.Mode.SRC_IN;
         }
 
-        return ResourcesCompat.getDrawable(mContext.getResources(), mId, null);
+        return ResourcesCompat.getDrawable(mResources, mId, null);
 
     }
 
@@ -84,7 +82,7 @@ public class ImageLoader extends AsyncTask<String, Void, Drawable> {
         final ImageLoader imageLoaderTask = getImageLoaderTask(imageView);
 
         if (imageLoaderTask != null) {
-            final int imageData = imageLoaderTask.data;
+            final int imageData = imageLoaderTask.fieldData;
 
             if (imageData == 0 || imageData != Integer.parseInt(data)) {
 

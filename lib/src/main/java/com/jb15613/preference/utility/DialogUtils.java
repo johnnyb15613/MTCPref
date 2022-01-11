@@ -450,7 +450,7 @@ public class DialogUtils {
     public static void loadDrawable(Context context, String title, ImageView imageView, int id, int color) {
         if (ImageLoader.cancelPotentialWork(title, imageView)) {
 
-            final ImageLoader task = new ImageLoader(imageView, context, id, color);
+            final ImageLoader task = new ImageLoader(imageView, context.getResources(), id, color);
             final ImageLoader.AsyncDrawable asyncDrawable = new ImageLoader.AsyncDrawable(context.getResources(), task);
 
             imageView.setImageDrawable(asyncDrawable);
